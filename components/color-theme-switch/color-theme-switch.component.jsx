@@ -13,7 +13,7 @@ import { useTranslations } from "next-intl";
 
 // Create btn that will change color theme of website
 const ColorThemeSwitch = ({ variant = "first" }) => {
-  const lang = useTranslations("colorSwitch");
+  const lang = useTranslations("components.colorSwitch");
   // Use local storage for theme persistence
   const [isDarkTheme, setIsDarkTheme] = useState(null);
   useEffect(() => {

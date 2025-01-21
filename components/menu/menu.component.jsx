@@ -6,7 +6,7 @@ import styles from "./menu.module.scss";
 // React/Next Functions
 import { Children, cloneElement } from "react";
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 // Context & Actions
 
 // Componenets

@@ -12,7 +12,7 @@ import IconTiktok from "../../components/svgs/footer-icons/icon-tiktok.component
 import IconX from "../../components/svgs/footer-icons/icon-x.component";
 import IconGithub from "@/components/svgs/footer-icons/icon-github.component";
 // React/Next Functions
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 // Context & Actions

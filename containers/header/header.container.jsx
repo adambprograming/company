@@ -4,7 +4,7 @@ import "./header.styles.scss";
 // Public & Assets
 import Logo from "@/components/svgs/logo.component.jsx";
 // React/Next Functions
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 // Context & Actions
 
@@ -21,19 +21,19 @@ INSTRUCTIONS
               leftmenu-centerlogo-rightsettings
 */
 const Header = ({ variant = "leftsettings-centerlogo-rightmenu" }) => {
-  const lang = useTranslations("header")
+  const lang = useTranslations("header");
   const renderMenu = (location) => {
     return (
       <Menu location={location} paddingOfEachLinkBlock="10px 20px">
         {/* <MenuItem content="‎ TEST ‎">
-          <MenuItem content="TEST" href="/test"></MenuItem>
+          <MenuItem content="TEST" hr"/MenuItem>
           <MenuItem content="TEST" href="/test"></MenuItem>
           <MenuItem content="TEST" href="/test"></MenuItem>
         </MenuItem> */}
         {/* <MenuItem content="Portfolio" href="/portfolio" /> */}
-        <MenuItem content={lang('menu.0')} href="/o-mne" />
-        <MenuItem content={lang('menu.1')} href="/sluzby" />
-        <MenuItem content={lang('menu.2')} href="/kontakt" />
+        <MenuItem content={lang('menu.0')} href="/o-mne"/>
+        <MenuItem content={lang('menu.1')} href="/sluzby"/>
+        <MenuItem content={lang('menu.2')} href="/kontakt"/>
       </Menu>
     );
   };
@@ -42,7 +42,7 @@ const Header = ({ variant = "leftsettings-centerlogo-rightmenu" }) => {
     return (
       <div className="header-settings">
         <ColorThemeSwitch variant="third" />
-        <MenuLanguage languages={["cs", "en"]} variant="second" iconOnly />
+        <MenuLanguage languages={["cs", "en"]} variant="second" iconOnly={false} />
       </div>
     );
   };

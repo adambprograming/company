@@ -1,0 +1,9 @@
+
+User-agent: *
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+Disallow: /404
+Disallow: /500
+
+Sitemap: https://www.adam-bartusek.cz/sitemap.xml

@@ -1,0 +1,80 @@
+const IconResponsiveness = (props) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 40"
+      width="64"
+      height="64"
+      {...props}
+    >
+      <line
+        x1="2"
+        y1="2"
+        x2="37"
+        y2="2"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      <line
+        x1="2"
+        y1="2"
+        x2="2"
+        y2="29"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      <line
+        x1="2"
+        y1="29"
+        x2="30"
+        y2="29"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      <line
+        x1="2"
+        y1="23"
+        x2="30"
+        y2="23"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      <circle cx="21" cy="26" r="1" fill="currentColor" />
+      <line
+        x1="37"
+        y1="2"
+        x2="37"
+        y2="13"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      <rect
+        x="13"
+        y="30"
+        width="16"
+        height="4"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+      />
+      <rect
+        x="33"
+        y="17"
+        width="14"
+        height="22"
+        rx="2"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+      />
+      <circle cx="40" cy="35" r="1" fill="currentColor" />
+    </svg>
+  );
+};
+
+export default IconResponsiveness;

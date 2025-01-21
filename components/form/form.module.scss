@@ -1,0 +1,497 @@
+$padding-inputs: 10px 20px;
+
+.form {
+  margin: auto 0;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  h1, h2, h3, h4, h5, h6 {
+    margin: auto 0;
+    text-align: left;
+  }
+}
+
+.formRow {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.formTitle {
+  margin: auto 0;
+  text-align: left;
+}
+
+.formBtnSubmit {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  background-color: transparent;
+  padding: 0;
+  transition: filter 0.2s;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  .btnBg {
+    background-color: var(--localBgColor);
+    backdrop-filter: var(--localBackdropFilter);
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+  .btnText {
+    color: var(--localTextColor);
+    position: relative;
+    display: block;
+  }
+  &.bgHover {
+    .btnBg::before {
+      content: "";
+      position: absolute; /* Ensure it is positioned relative to its parent */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      transition: background-color 0.4s ease;
+    }
+    .btnText {
+      transition: color 0.4s ease;
+    }
+  }
+  &.cfLeft {
+    .btnBg::before {
+      content: "";
+      position: absolute; /* Ensure it is positioned relative to its parent */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--localBgHoverBorderRadius);
+      background-color: var(--localBgHoverColor) !important;
+      transform: translateX(-105%);
+      transition: transform 0.4s ease;
+    }
+    .btnText {
+      background: linear-gradient(
+        to right,
+        var(--localTextHoverColor) 50%,
+        var(--localTextColor) 50%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: background-position 0.4s ease;
+      background-size: 200% 100%;
+      background-position: 100% 0;
+    }
+  }
+  &.cfRight {
+    .btnBg::before {
+      content: "";
+      position: absolute; /* Ensure it is positioned relative to its parent */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--localBgHoverBorderRadius);
+      background-color: var(--localBgHoverColor) !important;
+      transform: translateX(105%);
+      transition: transform 0.4s ease;
+    }
+    .btnText {
+      background: linear-gradient(
+        to right,
+        var(--localTextHoverColor) 50%,
+        var(--localTextColor) 50%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: background-position 0.4s ease;
+      background-size: 200% 100%;
+      background-position: -100% 0;
+    }
+  }
+  &.cfBottom {
+    .btnBg::before {
+      content: "";
+      position: absolute; /* Ensure it is positioned relative to its parent */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--localBgHoverBorderRadius);
+      background-color: var(--localBgHoverColor) !important;
+      transform: translateY(105%);
+      transition: transform 0.4s ease;
+    }
+    .btnText {
+      background: linear-gradient(
+        to bottom,
+        var(--localTextHoverColor) 50%,
+        var(--localTextColor) 50%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: background-position 0.4s ease;
+      background-size: 100% 200%;
+      background-position: 0 -100%;
+    }
+  }
+  &.cfTop {
+    .btnBg::before {
+      content: "";
+      position: absolute; /* Ensure it is positioned relative to its parent */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--localBgHoverBorderRadius);
+      background-color: var(--localBgHoverColor) !important;
+      transform: translateY(-105%);
+      transition: transform 0.4s ease;
+    }
+    .btnText {
+      background: linear-gradient(
+        to bottom,
+        var(--localTextHoverColor) 50%,
+        var(--localTextColor) 50%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: background-position 0.4s ease;
+      background-size: 100% 200%;
+      background-position: 0 100%;
+    }
+  }
+  &.brc {
+    transition: border-radius 0.4s ease;
+    .btnBg::before {
+      content: "";
+      position: absolute; /* Ensure it is positioned relative to its parent */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      transition: background-color 0.4s ease;
+    }
+    .btnText {
+      transition: color 0.1s ease;
+    }
+  }
+  &.scaleForward {
+    transition: transform 0.4s ease;
+  }
+  &.scaleBackward {
+    transition: transform 0.4s ease;
+  }
+}
+
+.formFieldset {
+  flex: 1 1 25%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: min-content;
+  .formLabel {
+    .requiredStar {
+      color: var(--color-error);
+    }
+    &.above {
+      margin: 0;
+      text-align: left;
+    }
+    &.floating {
+      left: 5px;
+      position: absolute;
+      z-index: 20;
+      top: 50%;
+      white-space: nowrap;
+      transform: translateY(-50%);
+      transition: top 0.4s ease-in-out, color 0.4s ease-in-out;
+      color: var(--shadow-50);
+      pointer-events: none; // Disable click interaction on label
+      font-family: var(--font-secondary);
+      width: min-content;
+      &.active {
+        top: -10%;
+        // color: var(--color-ascent);
+      }
+    }
+  }
+  .inputContainer {
+    position: relative;
+    width: 100%;
+    .formInput {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+      font-family: var(--font-secondary);
+      color: var(--color-text);
+      padding: $padding-inputs;
+      &:focus {
+        border-color: var(--color-ascent);
+        box-shadow: 0 0 5px var(--color-boxshadow);
+      }
+      &::placeholder {
+        color: var(--shadow-50);
+        font-size: var(--fontsize-small);
+      }
+    }
+    .hintIcon {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      fill: var(--shadow-25);
+      // background-color: var(--color-background);
+      padding: 0 0 0 10px;
+      // cursor: pointer;
+    }
+    .hintText {
+      position: absolute;
+      font-family: var(--font-secondary);
+      color: var(--color-text);
+      font-size: var(--fontsize-small);
+      background-color: var(--color-background);
+      padding: 10px 10px;
+      border-radius: 5px;
+      top: 20%;
+      transform: translateY(-80%);
+      right: 25px;
+      box-shadow: 0px 0px 5px var(--color-boxshadow);
+      z-index: 100;
+      display: none;
+    }
+    .hintIcon:hover + .hintText, /* Show hint on hover */
+    .hintIcon:focus + .hintText,
+    .hintText:hover {
+      /* Or on click/focus for accessibility */
+      display: block; /* Display the hint text when the icon is hovered or clicked */
+    }
+  }
+
+  .textareaContainer {
+    position: relative;
+    width: 100%;
+    .formTextarea {
+      resize: vertical;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+      font-family: var(--font-secondary);
+      color: var(--color-text);
+      padding: $padding-inputs;
+      &:focus {
+        border-color: var(--color-ascent);
+        box-shadow: 0 0 5px var(--color-boxshadow);
+      }
+      &::placeholder {
+        color: var(--shadow-50);
+        font-size: var(--fontsize-small);
+      }
+    }
+    .hintIcon {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      fill: var(--shadow-25);
+      // background-color: var(--color-background);
+      padding: 0 0 0 10px;
+      // cursor: pointer;
+    }
+    .hintText {
+      position: absolute;
+      font-family: var(--font-secondary);
+      color: var(--color-text);
+      font-size: var(--fontsize-small);
+      background-color: var(--color-background);
+      padding: 10px 10px;
+      border-radius: 5px;
+      top: 20%;
+      transform: translateY(-80%);
+      right: 25px;
+      box-shadow: 0px 0px 5px var(--color-boxshadow);
+      z-index: 100;
+      display: none;
+    }
+    .hintIcon:hover + .hintText, /* Show hint on hover */
+    .hintIcon:focus + .hintText,
+    .hintText:hover {
+      /* Or on click/focus for accessibility */
+      display: block; /* Display the hint text when the icon is hovered or clicked */
+    }
+  }
+
+  .selectContainer {
+    position: relative;
+    width: 100%;
+    .formSelect {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+      font-family: var(--font-secondary);
+      color: var(--color-text);
+      padding: $padding-inputs;
+      &:focus {
+        border-color: var(--color-ascent);
+        box-shadow: 0 0 5px var(--color-boxshadow);
+      }
+      &::placeholder {
+        color: var(--shadow-50);
+        font-size: var(--fontsize-small);
+      }
+    }
+    .hintIcon {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      fill: var(--shadow-25);
+      // background-color: var(--color-background);
+      padding: 0 0 0 10px;
+      // cursor: pointer;
+    }
+    .hintText {
+      position: absolute;
+      font-family: var(--font-secondary);
+      color: var(--color-text);
+      font-size: var(--fontsize-small);
+      background-color: var(--color-background);
+      padding: 10px 10px;
+      border-radius: 5px;
+      top: 20%;
+      transform: translateY(-80%);
+      right: 25px;
+      box-shadow: 0px 0px 5px var(--color-boxshadow);
+      z-index: 100;
+      display: none;
+    }
+    .hintIcon:hover + .hintText, /* Show hint on hover */
+    .hintIcon:focus + .hintText,
+    .hintText:hover {
+      /* Or on click/focus for accessibility */
+      display: block; /* Display the hint text when the icon is hovered or clicked */
+    }
+  }
+}
+
+.formPicker {
+  flex: 1 1 25%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: min-content;
+  .formLabel {
+    margin: 0;
+    text-align: left;
+  }
+  .pickerContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    .formPickerOption {
+      flex: 1 1 10%;
+      cursor: pointer;
+    }
+  }
+}
+
+
+@media only screen and (pointer: fine) {
+  .formBtnSubmit {
+    &:hover {
+      filter: var(--localFilter);
+    }
+    &.bgHover:hover {
+      .btnBg::before {
+        background-color: var(--localBgHoverColor) !important;
+      }
+      .btnText {
+        color: var(--localTextHoverColor) !important;
+      }
+    }
+    &.cfLeft:hover {
+      .btnText {
+        background-position: 0 0;
+      }
+      .btnBg::before {
+        transform: translateX(0);
+      }
+    }
+    &.cfRight:hover {
+      .btnText {
+        background-position: 0 0;
+      }
+      .btnBg::before {
+        transform: translateX(0);
+      }
+    }
+    &.cfBottom:hover {
+      .btnText {
+        background-position: 0 0;
+      }
+      .btnBg::before {
+        transform: translateY(0);
+      }
+    }
+    &.cfTop:hover {
+      .btnText {
+        background-position: 0 0;
+      }
+      .btnBg::before {
+        transform: translateY(0);
+      }
+    }
+    &.brc:hover {
+      border-radius: var(--localBorderHoverRadius) !important;
+      .btnBg::before {
+        background-color: var(--localBgHoverColor) !important;
+      }
+      .btnText {
+        color: var(--localTextHoverColor);
+      }
+    }
+    &.scaleForward:hover {
+      transform: scale(1.1);
+    }
+    &.scaleBackward:hover {
+      transform: scale(0.9);
+    }
+  }
+  .formPicker {
+    .pickerContainer {
+      .formPickerOption:not(.selected):hover {
+        background-color: var(--shadow-15) !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,713 @@
+{
+  "homePage": {
+    "heroSection": {
+      "title": ["Vytvořím Vám ", "úspěšný", " web"],
+      "text": "Jmenuji se Adam Bartůšek a specializuji se na vývoj webových stránek a e-shopů. Každý projekt tvořím od základu a vše sám programuji. Neváhejte mě kontaktovat a společně najdeme to nejlepší řešení přesně pro Vás.",
+      "btn": [
+        {
+          "aria": "Navigovat do sekce kontakt",
+          "content": "Kontakt"
+        }
+      ],
+      "img": [
+        {
+          "alt": "Obrázek",
+          "aria": "Obrázek této sekce"
+        }
+      ]
+    },
+    "servicesSection": {
+      "title": ["IDK DOKAZU NAKODIT VSE ", "výjimečné", " weby"],
+      "subtitle": "MOJE SLUŽBY",
+      "text": "Poskytuji komplexní služby v oblasti webového vývoje, od moderních webových stránek a e-shopů až po výkonné webové aplikace, které odpovídají vašim jedinečným potřebám.",
+      "list": ["• Webové stránky", "• E-shopy", "• Webové aplikace"],
+      "btn": [
+        {
+          "aria": "Navigovat do sekce služby",
+          "content": "Zjistit více"
+        }
+      ],
+      "img": [
+        {
+          "alt": "Obrázek",
+          "aria": "Obrázek této sekce"
+        }
+      ]
+    },
+    "portfolioSection": {
+      "title": ["Podívejte se na ", "moje", " projekty"],
+      "subtitle": "PORTFOLIO",
+      "text": "Níže jsou projekty, které jsem vytvořil pro inspiraci."
+    }
+  },
+  "aboutPage": {
+    "introductionSection": {
+      "title": ["Zdravím,", "jmenuji se Adam ", "Bartůšek"],
+      "subtitle": "O MNĚ",
+      "text": [
+        "Jsem programátor specializující se na moderní webové technologie. Nabízím komplexní služby v oblasti vývoje webových stránek, e-shopů a webových aplikací. Moje práce klade důraz na rychlost, funkčnost a uživatelskou přívětivost.",
+        "Každý projekt tvořím na míru, s ohledem na vaše potřeby a cíle. Mým cílem je nejen splnit vaše očekávání, ale také je překonat. Společně vytvoříme řešení, které vás odliší a posune vaše podnikání vpřed."
+      ],
+      "img": [
+        {
+          "alt": "Obrázek",
+          "aria": "Obrázek této sekce"
+        }
+      ]
+    },
+    "experienceSection": {
+      "title": ["Zkušenosti s ", "webovými", " technologiemi"],
+      "subtitle": "MOJE CESTA",
+      "box": [
+        {
+          "date": "březen 2022",
+          "text": "Započal jsem svoji cestu programování, která se stala základem mé profesní dráhy v oblasti webového vývoje."
+        },
+        {
+          "date": "leden 2024",
+          "text": "Začal jsem pracovat ve firmě ComArr jako webový vývojář. Vyvíjím zde webovou aplikaci pro tisíce uživatelů."
+        },
+        {
+          "date": "květen 2024",
+          "text": "Úspěšně jsem dokončil bakalářské studium v oboru informačního managementu na Univerzitě Hradec Králové."
+        }
+      ]
+    },
+    "specializationSection": {
+      "title": ["Vyvíjím ", "autentické", " weby"],
+      "subtitle": "VIZE",
+      "text": [
+        "Specializuji se na Next.js, což mi umožňuje vytvářet výkonné, škálovatelné a moderní webové aplikace. Nepoužívám předvytvořené šablony ani knihovny – každý projekt je navržen a implementován od základů tak, aby dokonale odpovídal vašim potřebám.",
+        "Díky tomuto přístupu je váš web nejen unikátní, ale také optimalizovaný pro výkon a přizpůsobený specifikám vašeho podnikání."
+      ],
+      "img": [
+        {
+          "alt": "Obrázek",
+          "aria": "Obrázek této sekce"
+        }
+      ]
+    },
+    "ctaSection": {
+      "title": ["Připraven realizovat ", "Váš", " projekt?"],
+      "subtitle": "SPOLUPRÁCE",
+      "text": "Pokud hledáte webového vývojáře, který Vám vytvoří autentický, moderní a výkonný web na míru, jste na správném místě. Společně vytvoříme řešení, které bude nejen funkční, ale také vynikat v konkurenci.",
+      "btn": [
+        {
+          "aria": "Navigovat do sekce kontakt",
+          "content": "Kontakt"
+        }
+      ]
+    }
+  },
+  "servicesPage": {
+    "processSection": {
+      "title": ["Jak bude naše ", "spolupráce", " probíhat?"],
+      "subtitle": "PRŮBĚH",
+      "list": [
+        {
+          "title": "Společně najdeme směr",
+          "text": "Na první schůzce společně zjistíme, co přesně potřebujete. Nemusíte mít předem jasnou představu - společně najdeme to nejlepší řešení."
+        },
+        {
+          "title": "Postavím Vaše řešení",
+          "text": "Navrhnu a vytvořím projekt, který bude rychlý, responzivní a přesně odrážet Vaší značku."
+        },
+        {
+          "title": "Doladíme vše k dokonalosti",
+          "text": "Společně projdeme hotový projekt, získám od vás zpětnou vazbu a doupravím vše podle vašich představ."
+        },
+        {
+          "title": "Postarám se i po spuštění",
+          "text": "Po spuštění webu se postarám o aktualizace, údržbu a dlouhodobou podporu, abyste se mohli soustředit na své podnikání."
+        }
+      ]
+    },
+    "benefitsSection": {
+      "title": ["Co ", "splňuje", " každý můj projekt?"],
+      "subtitle": "STANDARDY",
+      "box": [
+        {
+          "title": "Výkon",
+          "text": "Vaše webové stránky budou bleskově rychlé a snadno zvládnou vysoký provoz."
+        },
+        {
+          "title": "Responsivita",
+          "text": "Moderní design, který se přizpůsobí každému zařízení."
+        },
+        {
+          "title": "SEO",
+          "text": "Pomůžeme vám vyniknout ve vyhledávačích a přilákat více zákazníků."
+        },
+        {
+          "title": "Autentičnost",
+          "text": "Weby vytvořené na míru Vašim potřebám a značce."
+        }
+      ]
+    },
+    "checkAlsoSection": {
+      "title": ["Potřebujete ", "zazářit", " v social media světě?"],
+      "subtitle": "JINÉ SLUŽBY",
+      "text": "TODO TEXT",
+      "btn": [
+        {
+          "aria": "Navigovat na web Aurea Socials",
+          "content": "Zjistit více"
+        }
+      ]
+    }
+  },
+  "contactPage": {
+    "contactsSection": {
+      "title": ["Neváhejte mě ", "kontaktovat"],
+      "subtitle": "KONTAKTY",
+      "text": "Sledujte mě",
+      "btn": [
+        {
+          "content": "Mobil"
+        },
+        {
+          "content": "E-mail"
+        },
+        {
+          "content": "Město",
+          "aria": "Navigovat na mapu lokace"
+        },
+        {
+          "content": "IČO"
+        },
+        {
+          "aria": "Navigovat na instagram"
+        },
+        {
+          "aria": "Navigovat na github"
+        },
+        {
+          "aria": "Navigovat na linkedin"
+        }
+      ],
+      "img": [
+        {
+          "alt": "Obrázek",
+          "aria": "Obrázek této sekce"
+        }
+      ],
+      "popup": "Zkopírováno!"
+    },
+    "formSection": {
+      "title": ["Vyplňte", " kontaktní formulář"],
+      "subtitle": "FORMULÁŘ",
+      "text": "Sledujte mě",
+      "field": [
+        {
+          "label": "Jméno:",
+          "placeholder": "Uveďte Vaše jméno",
+          "hintText": "Jméno musí obsahovat 2 až 30 znaků a může obsahovat pouze písmena, mezery a pomlčky."
+        },
+        {
+          "label": "Příjmení:",
+          "placeholder": "Uveďte Vaše příjmení",
+          "hintText": "Příjmení musí obsahovat 2 až 35 znaků a může obsahovat pouze písmena, mezery a pomlčky."
+        },
+        {
+          "label": "Telefonní číslo:",
+          "placeholder": "Uveďte Vaše telefonní číslo",
+          "hintText": "Telefonní číslo musí obsahovat 7 až 15 číslic."
+        },
+        {
+          "label": "E-mail:",
+          "placeholder": "Uveďte Váš e-mail",
+          "hintText": "Zadejte platnou e-mailovou adresu ve formátu např. uzivatel@email.com."
+        },
+        {
+          "label": "Dokážete konkrétně specifikovat Vaši poptávku?",
+          "option": ["Ne", "Ano"]
+        },
+        {
+          "label": "Rozsah zakázky:",
+          "placeholder": "Uveďte, na jaké podstránky chcete mít zakázku rozdělenou, případně i strukturu zakázky."
+        },
+        {
+          "label": "Funkce zakázky:",
+          "placeholder": "Uveďte funkce, které chcete mít v zakázce. (Např. vícejazyčnost, tmavý/světlý režim, platební bránu, databázi, nebo cokoliv co Vás napadne)."
+        },
+        {
+          "label": "Web, který se Vám líbí:",
+          "placeholder": "Uveďte odkaz na web v případě, že znáte web ,který se Vám graficky líbí."
+        },
+        {
+          "label": "Váš rozpočet:",
+          "placeholder": "Uveďte Vaši představu o ceně zakázky."
+        },
+        {
+          "label": "Ideální datum dodání:",
+          "placeholder": "Uveďte v případě, že na zakázku opravdu spěcháte."
+        },
+        {
+          "label": "Ostatní specifikace:",
+          "placeholder": "Uveďte dodatečné informace, či požadavky, k zakázce."
+        },
+        {
+          "label": "Popište Vaší poptávku / dotaz:",
+          "placeholder": "Popište, co potřebujete, jak to jen půjde. Ideálně zaklikněte možnost 'Ano' výše a pokuste se vyplnit konkrétní formulář."
+        }
+      ],
+      "btn": [
+        {
+          "aria": "Odeslání formuláře",
+          "content": "Odeslat"
+        }
+      ]
+    }
+  },
+  "header": {
+    "menu": ["O mně", "Služby", "Kontakt"],
+    "img": [
+      {
+        "alt": "Logo",
+        "aria": "Logo"
+      }
+    ],
+    "link": [
+      {
+        "aria": "Navigovat na domovskou stránku"
+      }
+    ]
+  },
+  "footer": {
+    "nav": {
+      "title": "Menu",
+      "list": [
+        {
+          "aria": "Navigovat na domovskou stránku",
+          "content": "Domovská stránka"
+        },
+        {
+          "aria": "Navigovat do sekce o mně",
+          "content": "O mně"
+        },
+        {
+          "aria": "Navigovat do sekce služby",
+          "content": "Služby"
+        },
+        {
+          "aria": "Navigovat do sekce kontakt",
+          "content": "Kontakt"
+        }
+      ]
+    },
+    "contacts": {
+      "title": "Kontakty",
+      "link": [
+        {
+          "aria": "Odkaz k moji poloze."
+        },
+        {
+          "aria": "Odkaz na můj Facebook profil."
+        },
+        {
+          "aria": "Odkaz na můj Instagram profil."
+        },
+        {
+          "aria": "Odkaz na můj TikTok profil."
+        },
+        {
+          "aria": "Odkaz na můj Linkedin profil."
+        },
+        {
+          "aria": "Odkaz na můj Twitter profil."
+        },
+        {
+          "aria": "Odkaz na můj GitHub profil."
+        }
+      ],
+      "popup": "Zkopírováno!"
+    },
+    "copyright": ["Adam Bartůšek ", " 2022-2024."],
+    "createdBy": ["Vytvořil", "Všechna práva vyhrazena."],
+    "link": [
+      {
+        "aria": "Vytvořil Adam Bartůšek. Navštivte stránky vývojáře.",
+        "content": "Adam Bartůšek"
+      }
+    ]
+  },
+  "notFound": {
+    "title": "404: Stránka nenalezena",
+    "text": "Vámi požadovaná stránka nebyla nalezena. Možná není dostupná nebo byla odstraněna.",
+    "btn": [
+      {
+        "aria": "Navigovat na domovskou stránku",
+        "content": "Zpět na domovskou stránku"
+      }
+    ]
+  },
+  "components": {
+    "portfolioRotatedGrid": {
+      "img": [
+        {
+          "alt": "Projekt",
+          "aria": "Náhled projektu"
+        },
+        {
+          "alt": "Projekt",
+          "aria": "Náhled projektu"
+        },
+        {
+          "alt": "Projekt",
+          "aria": "Náhled projektu"
+        },
+        {
+          "alt": "Projekt",
+          "aria": "Náhled projektu"
+        },
+        {
+          "alt": "Projekt",
+          "aria": "Náhled projektu"
+        },
+        {
+          "alt": "Projekt",
+          "aria": "Náhled projektu"
+        },
+        {
+          "alt": "Projekt",
+          "aria": "Náhled projektu"
+        },
+        {
+          "alt": "Projekt",
+          "aria": "Náhled projektu"
+        },
+        {
+          "alt": "Projekt",
+          "aria": "Náhled projektu"
+        },
+        {
+          "alt": "Projekt",
+          "aria": "Náhled projektu"
+        }
+      ]
+    },
+    "showcase": {
+      "img": [
+        {
+          "alt": "HTML",
+          "aria": "Ikonka HTML"
+        },
+        {
+          "alt": "CSS",
+          "aria": "Ikonka CSS"
+        },
+        {
+          "alt": "Sass",
+          "aria": "Ikonka Sass"
+        },
+        {
+          "alt": "JS",
+          "aria": "Ikonka JS"
+        },
+        {
+          "alt": "React",
+          "aria": "Ikonka React"
+        },
+        {
+          "alt": "NextJs",
+          "aria": "Ikonka NextJs"
+        },
+        {
+          "alt": "Git",
+          "aria": "Ikonka Git"
+        },
+        {
+          "alt": "GitHub",
+          "aria": "Ikonka GitHub"
+        },
+        {
+          "alt": "Python",
+          "aria": "Ikonka Python"
+        },
+        {
+          "alt": "Figma",
+          "aria": "Ikonka Figma"
+        }
+      ]
+    },
+    "interactiveChooser": {
+      "card": [
+        {
+          "title": ["O jaké ", "služby", " máte zájem?"],
+          "subtitle": "VÝBĚR SLUŽBY",
+          "btn": [
+            {
+              "aria": "Vybrat službu webové stránky",
+              "content": {
+                "title": "Webové stránky",
+                "list": [
+                  "Osobní či firemní prezentace",
+                  "Vícejazyčnost",
+                  "Denní a noční režim",
+                  "Systém úpravy obsahu",
+                  "Rychlá navigace"
+                ]
+              }
+            },
+            {
+              "aria": "Vybrat službu e-shopu",
+              "content": {
+                "title": "E-shop",
+                "list": [
+                  "Platební brána",
+                  "Uživatelské rozhraní",
+                  [
+                    "Vlastní řešení pro malé",
+                    "podnikatele bez zbytečných",
+                    "poplatků"
+                  ]
+                ]
+              }
+            },
+            {
+              "aria": "Vybrat službu webové aplikace",
+              "content": {
+                "title": "Webová aplikace",
+                "list": [
+                  "Indiviální řešení na míru",
+                  "Interní firemní aplikace",
+                  ["Spolupráce na vytváření", "webových softwarů"]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": ["O jaké ", "webové", " stránky máte zájem?"],
+          "subtitle": "WEBY",
+          "btn": [
+            {
+              "aria": "Vybrat jednoduché webové stránky",
+              "content": {
+                "title": "Jednoduché",
+                "list": [
+                  "1 stránka",
+                  "Optimalizavané",
+                  "Denní a noční režim",
+                  "Vícejazyčné",
+                  "Systém úpravy obsahu"
+                ]
+              }
+            },
+            {
+              "aria": "Vybrat komplexní webové stránky",
+              "content": {
+                "title": "Komplexní",
+                "list": [
+                  "1-5 stránek",
+                  "Rychlá navigace",
+                  "Denní a noční režim",
+                  "Vícejazyčné",
+                  "Systém úpravy obsahu"
+                ]
+              }
+            },
+            {
+              "aria": "Vybrat profesionální webové stránky",
+              "content": {
+                "title": "Profesionální",
+                "list": [
+                  "5+ stránek",
+                  "Interaktivní",
+                  "Denní a noční režim",
+                  "Vícejazyčné",
+                  "Systém úpravy obsahu"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": ["Jaký typ ", "podnikání", " vlastníte?"],
+          "subtitle": "E-SHOPY",
+          "btn": [
+            {
+              "aria": "Vybrat e-shop pro jedince",
+              "content": {
+                "title": "Jedinec",
+                "list": [
+                  "1-3 produkty",
+                  "Řešení prodeje bez platební brány",
+                  "Systém úpravy obsahu",
+                  "Vícejazyčné",
+                  "Uživatelské rozhraní"
+                ]
+              }
+            },
+            {
+              "aria": "Vybrat e-shop pro maloobchod",
+              "content": {
+                "title": "Maloobchod",
+                "list": [
+                  "Do 10 produktů",
+                  "Platební brána",
+                  "Systém úpravy obsahu",
+                  "Vícejazyčné",
+                  "Uživatelské rozhraní"
+                ]
+              }
+            },
+            {
+              "aria": "Vybrat e-shop pro velkoobchod",
+              "content": {
+                "title": "Velkoobchod",
+                "list": [
+                  "10+ produktů",
+                  "Platební brána",
+                  "Systém úpravy obsahu",
+                  "Vícejazyčné",
+                  "Uživatelské rozhraní"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": ["Webová aplikace ", "na míru"],
+          "subtitle": "VÝVOJ",
+          "text": "V případě, že potřebujete specifickou webovou aplikaci, nebo máte nápad a potřebujete pomoc s jeho realizací v podobě webové aplikace, neváhejte mě kontaktovat. V následujících bodech jsou příklady kategorií webových aplikací.",
+          "list": [
+            "Blog",
+            "Finanční nástroje",
+            "Interní firemní aplikace",
+            "Webový software",
+            "Systém správy"
+          ]
+        },
+        {
+          "title": ["Jednoduché", " webové stránky"],
+          "subtitle": "PREZENTACE",
+          "text": "Jednoduché webové stránky jsou ideální pro jednotlivce nebo malé firmy, které potřebují online prezentaci s minimálním obsahem. Tato varianta nabízí jednu stránku s důrazem na jednoduchost.",
+          "list": [
+            "1 stránka",
+            "Responzivita webu",
+            "Optimalizace SEO",
+            "Vlastní doména včetně možnosti firemního e-mailu",
+            "Rychlá navigace na stránce",
+            "Možnost rozšíření - denní a noční režim, vícejazyčnost a Systém úpravy obsahu"
+          ],
+          "price": "~ 10.000 CZK"
+        },
+        {
+          "title": ["Komplexní", " webové stránky"],
+          "subtitle": "PREZENTACE",
+          "text": "Komplexní webové stránky jsou vhodné pro firmy, které potřebují více obsahu a rychlou navigaci mezi 1-5 stránkami. Tento typ webu zahrnuje také změnu režimu mezi denním a nočním pro příjmenější návštěvu webu.",
+          "list": [
+            "1-5 stránek",
+            "Responzivita webu",
+            "Optimalizace SEO",
+            "Vlastní doména včetně možnosti firemního e-mailu.",
+            "Rychlá navigace na stránce",
+            "Denní a noční režim",
+            "Možnost rozšíření - vícejazyčnost a Systém úpravy obsahu"
+          ],
+          "price": "~ 25.000 CZK"
+        },
+        {
+          "title": ["Profesionální", " webové stránky"],
+          "subtitle": "PREZENTACE",
+          "text": "Profesionální webové stránky jsou ideální pro firmy, které potřebují rozsáhlý a interaktivní web s více než 5 stránkami. Tento typ webu zahrnuje Systém úpravy obsahu, vícejazyčnou podporu a denní/noční režim.",
+          "list": [
+            "5+ stránek",
+            "Responzivita webu",
+            "Optimalizace SEO",
+            "Vlastní doména včetně možnosti firemního e-mailu",
+            "Rychlá navigace na stránce",
+            "Denní a noční režim",
+            "Vícejazyčnost",
+            "Systém úpravy obsahu"
+          ],
+          "price": "~ 45.000 CZK"
+        },
+        {
+          "title": ["E-shop pro ", "jedince"],
+          "subtitle": "PRODEJ",
+          "text": "E-shop je ideální pro jedince, kteří chtějí začít prodávat své produkty online, ale nechtějí platit poplatky platební bráně. V případě, že si produkty vyrábíte a chcete svým zákazníkům umožnit jejich koupi za co nejnižší cenu, je tento typ e-shopu přesně pro Vás.",
+          "list": [
+            "5+ stránek",
+            "Responzivita webu",
+            "Optimalizace SEO",
+            "Vlastní doména včetně možnosti firemního e-mailu",
+            "Rychlá navigace na stránce",
+            "Systém úpravy obsahu",
+            "Správa objednávek",
+            "Možnost rozšíření - denní a noční režim, vícejazyčnost, databáze produktů a uživatelské rozhraní"
+          ],
+          "price": "~ 45.000 CZK"
+        },
+        {
+          "title": ["E-shop pro ", "maloobchod"],
+          "subtitle": "PRODEJ",
+          "text": "E-Shop pro maloobchod je navržen pro firmy, které potřebují robustní online prodejní platformu a mají více produktů. Tento typ e-shopu zahrnuje napojení na platební bránu, což oceníte v případě většího počtu zákazníků.",
+          "list": [
+            "5+ stránek",
+            "Responzivita webu",
+            "Optimalizace SEO",
+            "Vlastní doména včetně možnosti firemního e-mailu",
+            "Rychlá navigace na stránce",
+            "Systém úpravy obsahu",
+            "Správa objednávek",
+            "Denní a noční režim",
+            "Vícejazyčnost",
+            "Možnost rozšíření - databáze produktů a uživatelské rozhraní"
+          ],
+          "price": "~ 75.000 CZK"
+        },
+        {
+          "title": ["E-shop pro ", "velkoobchod"],
+          "subtitle": "PRODEJ",
+          "text": "E-Shop pro velkoobchod je určen pro společnosti, které potřebují komplexní a rozsáhlé e-shopové řešení s vlastním rozhraním pro uživatele a přístupem do vlastní databáze produktů. Tento typ e-shopu podporuje velké množství produktů.",
+          "list": [
+            "Responzivita webu",
+            "Optimalizace SEO",
+            "Vlastní doména včetně možnosti firemního e-mailu",
+            "Rychlá navigace na stránce",
+            "Systém úpravy obsahu",
+            "Správa objednávek",
+            "Denní a noční režim",
+            "Vícejazyčnost",
+            "Databáze produktů",
+            "Uživatelské rozhraní"
+          ],
+          "price": "~ 100.000 CZK"
+        }
+      ],
+      "btn": [
+        {
+          "aria": "Jít zpátky."
+        },
+        {
+          "aria": "Jít zpátky k výběru služby.",
+          "content": "/ Výběr služby"
+        },
+        {
+          "aria": "Jít zpátky ke konkrétnímu výběru podslužby.",
+          "content": ["Výběr typu webových stránek", "Výběr typu e-shopu"]
+        },
+        {
+          "aria": "Navigovat do sekce kontakt a předvyplnit formulář",
+          "content": "Vyplnit formulář"
+        },
+        {
+          "aria": "Zkopírovat číslo",
+          "content": "Zavolejte mi"
+        }
+      ],
+      "popup": "Zkopírováno!",
+      "info": [
+        "Rozdělení je pouze orientační, vždy se můžeme domluvit na individuálním řešení.",
+        "V případě, že již máte webové stránky, můžeme společně domluvit lepší podmínky pro vedení stránek, nebo je zmodernizovat.",
+        "Cena zde nejde přesně určit, odvíjí se primárně od složitosti a velikosti webové aplikace, standartně je počítána podle hodin strávených na projektu.",
+        "V případě, že již máte webové stránky, můžeme společně domluvit lepší podmínky pro vedení stránek, nebo je zmodernizovat."
+      ]
+    },
+    "colorSwitch": {
+      "aria": "Tlačítko po kliknutí změní barevný režim webové stránky."
+    }
+  }
+}

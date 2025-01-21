@@ -1,0 +1,35 @@
+.showcaseImgContainer {
+  margin: auto 0;
+  display: flex;
+  > * {
+    flex: 0 0 50%;
+  }
+  &:hover .showcaseImgGroup.animated {
+    animation-play-state: paused;
+  }
+  .showcaseImgGroup {
+    display: flex;
+    gap: 20px;
+    padding-right: 20px;
+    will-change: transform;
+    &.animated{
+      animation: scrolling 30s linear infinite;
+    }
+    .showcaseItem{
+      position: relative;
+      & * {
+        height: 100%;
+        width: auto;
+      }
+    }
+  }
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

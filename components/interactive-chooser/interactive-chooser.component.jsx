@@ -270,7 +270,7 @@ const InteractiveChooser = () => {
                       <span className={`${styles.btnTitle}`}>{lang('card.0.btn.1.content.title')}</span>
                       <div><span><IconCheckCircle style={{color: "var(--color-success)"}}/></span><p>{lang('card.0.btn.1.content.list.0')}</p></div>
                       <div><span><IconCheckCircle style={{color: "var(--color-success)"}}/></span><p>{lang('card.0.btn.1.content.list.1')}</p></div>
-                      <div><span><IconCheckCircle style={{color: "var(--color-success)"}}/></span><p>{lang('card.0.btn.1.content.list.2')}</p></div>
+                      <div><span><IconCheckCircle style={{color: "var(--color-success)"}}/></span><p>{lang('card.0.btn.1.content.list.2.0')}<br />{lang('card.0.btn.1.content.list.2.1')}<br />{lang('card.0.btn.1.content.list.2.2')}</p></div>
                     </div>
                   </Btn>
                 </CarouselItem>
@@ -292,7 +292,7 @@ const InteractiveChooser = () => {
                       <span className={`${styles.btnTitle}`}>{lang('card.0.btn.2.content.title')}</span>
                       <div><span><IconCheckCircle style={{color: "var(--color-success)"}}/></span><p>{lang('card.0.btn.2.content.list.0')}</p></div>
                       <div><span><IconCheckCircle style={{color: "var(--color-success)"}}/></span><p>{lang('card.0.btn.2.content.list.1')}</p></div>
-                      <div><span><IconCheckCircle style={{color: "var(--color-success)"}}/></span><p>{lang('card.0.btn.2.content.list.2')}</p></div>
+                      <div><span><IconCheckCircle style={{color: "var(--color-success)"}}/></span><p>{lang('card.0.btn.2.content.list.2.0')}<br />{lang('card.0.btn.2.content.list.2.1')}</p></div>
                     </div>
                   </Btn>
                 </CarouselItem>

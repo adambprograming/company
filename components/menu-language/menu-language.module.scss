@@ -33,11 +33,12 @@
       position: absolute;
       top: 100%;
       z-index: 1000;
-      display: none;
+      display: flex;
+      visibility: hidden;
       flex-direction: column;
       box-shadow: 0 4px 8px var(--black-15);
       &.active {
-        display: flex;
+        visibility: visible;
         @include ul-tilt-in-top-animation();
       }
   
@@ -99,11 +100,12 @@
       position: absolute;
       top: 100%;
       z-index: 1000;
-      display: none;
+      display: flex;
+      visibility: hidden;
       flex-direction: column;
       box-shadow: 0 4px 8px var(--black-15);
       &.active {
-        display: flex;
+        visibility: visible;
         @include ul-tilt-in-top-animation();
       }
   
@@ -135,6 +137,10 @@
   
   @media only screen and (pointer: fine) {
     #menuLanguage.firstVariant {
+      &:hover .menuDropdown:not(.active) {
+        visibility: visible;
+        @include ul-tilt-in-top-animation();
+      }
       .menuDropdown button:hover span {
         // filter: brightness(1.1);
         color: var(--color-ascent);
@@ -147,6 +153,10 @@
         }
     }
     #menuLanguage.secondVariant {
+      &:hover .menuDropdown:not(.active) {
+        visibility: visible;
+        @include ul-tilt-in-top-animation();
+      }
       .menuDropdown button:hover span {
         // filter: brightness(1.1);
         color: var(--color-ascent);

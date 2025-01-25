@@ -135,33 +135,29 @@ export const Carousel = ({ children, infinite = "notInfinite", fullWidth = true,
     setIsDragging(true);
   };
 
-  const handleTouchMove = (e) => {
-    if (!isDragging) return;
-    const currentPosition = e.touches[0].clientX;
-    const diff = startPosition - currentPosition;
-    if (diff > 75) {
-      next();
-      setIsDragging(false);
-    } else if (diff < -75) {
-      prev();
-      setIsDragging(false);
-    } else {
-      setCurrentTranslate(diff);
-    }
-  };
+const handleTouchMove = (e) => {
+  if (!isDragging) return;
+  const currentPosition = e.touches[0].clientX;
+  const diff = startPosition - currentPosition;
+  setCurrentTranslate(diff);
+};
 
-  const handleTouchEnd = () => {
-    if (isDragging) {
-      if (currentTranslate > 25) {
-        next();
-      } else if (currentTranslate < -25) {
-        prev();
-      } else {
-        setCurrentTranslate(0);
-      }
-      setIsDragging(false);
-    }
-  };
+const handleTouchEnd = () => {
+  if (!isDragging) return;
+  const threshold = 75; // Minimum distance to consider it a slide
+  if (currentTranslate > threshold) {
+    next();
+  } else if (currentTranslate < -threshold) {
+    prev();
+  } else {
+    // If not enough movement, reset the position
+    setIsTransitioning(true);
+  }
+
+  // Reset drag state
+  setCurrentTranslate(0);
+  setIsDragging(false);
+};
 
   const handleMouseLeave = () => {
     setIsDragging(false);

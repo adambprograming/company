@@ -95,8 +95,8 @@ const MenuLanguage = ({
         )}
       </button>
 
-      {isDropdownOpen && (
-        <div className={`${styles.menuDropdown}`}>
+
+        <div className={`${styles.menuDropdown} ${isDropdownOpen ? styles.active : ""}`}>
           {languages
             .filter((language) => language !== locale)
             .map((language) => (
@@ -122,7 +122,7 @@ const MenuLanguage = ({
               </button>
             ))}
         </div>
-      )}
+      
     </div>
   );
 };

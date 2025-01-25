@@ -72,7 +72,7 @@
           flex-direction: row;
           gap: 1rem;
           width: min-content;
-  
+
           .specContainer {
             position: relative;
             margin: auto 0;
@@ -188,7 +188,8 @@
       align-content: center;
   
       svg {
-        aspect-ratio: 1 / 1;
+        height: clamp(16px, 2vw, 24px);
+        width: clamp(16px, 2vw, 24px);
         fill: var(--color-text-reverse);
       }
     }

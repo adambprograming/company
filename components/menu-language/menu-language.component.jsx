@@ -38,6 +38,7 @@ const MenuLanguage = ({
   paddingOfBtn,
 }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -60,6 +61,24 @@ const MenuLanguage = ({
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+  
+  useEffect(() => {
+    const updateScreenSize = () => {
+      setIsSmallScreen(window.innerWidth <= 768); // Adjust breakpoint as needed
+    };
+  
+    // Set initial value
+    updateScreenSize();
+  
+    // Add resize event listener
+    window.addEventListener("resize", updateScreenSize);
+  
+    // Cleanup listener on component unmount
+    return () => {
+      window.removeEventListener("resize", updateScreenSize);
+    };
+  }, []);
+
 
   return (
     <div
@@ -83,7 +102,7 @@ const MenuLanguage = ({
         }}
       >
         <Image src={flags[locale]} alt={`Flag of ${languageNames[locale]}`} />
-        {!iconOnly && (
+        {(!isSmallScreen && !iconOnly) && (
           <span
             style={{
               fontSize: `${fontSize}`,
@@ -109,7 +128,7 @@ const MenuLanguage = ({
                   src={flags[language]}
                   alt={`Flag of ${languageNames[language]}`}
                 />
-                {!iconOnly && (
+                {(!isSmallScreen && !iconOnly) && (
                   <span
                     style={{
                       fontSize: `${fontSize}`,

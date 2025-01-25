@@ -314,7 +314,7 @@ const Page = () => {
           />
         </div>
       </section>
-      <section className={`${styles.form}`}>
+      <section className={`${styles.form}`} id="form">
         <div className={`${styles.titleContainer}`}>
           <span>{lang("formSection.subtitle")}</span>
           <h1>

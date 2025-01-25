@@ -4,7 +4,7 @@ import styles from "./form.module.scss";
 // Public & Assets
 import IconInfoCircle from "../svgs/icon-info-circle.component";
 // React/Next Functions
-import { Children, cloneElement, useState } from "react";
+import { Children, cloneElement, useState, useEffect } from "react";
 import { useRef } from "react";
 // Context & Actions
 
@@ -19,6 +19,7 @@ FORM
 INSTRUCTIONS
   children                                        Child element
   onSubmit                                        what should happen on submit
+  initialValues                                   initial values (if set, use them)
   styleOfLabels                                   can contain floating, above or none (defines style of labels across form) (floating cant handle selects)
   width                                           style attr for width of whole form element
   padding                                         style attr for padding of whole form element
@@ -45,6 +46,7 @@ INSTRUCTIONS
 export const Form = ({
   children,
   onSubmit,
+  initialValues = {},
   styleOfLabels = "above",
   width = "100%",
   padding = "0px",
@@ -70,6 +72,18 @@ export const Form = ({
   const formRef = useRef();
   const [submitting, setSubmitting] = useState(false);
 
+  useEffect(() => {
+    if (formRef.current) {
+      // Populate form fields with initial values
+      Object.entries(initialValues).forEach(([key, value]) => {
+        const input = formRef.current.querySelector(`[name="${key}"]`);
+        if (input) {
+          input.value = value;
+        }
+      });
+    }
+  }, [initialValues]);
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 

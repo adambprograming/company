@@ -256,7 +256,8 @@
           "aria": "Submit the form",
           "content": "Submit"
         }
-      ]
+      ],
+      "error": ["Required fields must be filled.", "Failed to send data."]
     }
   },
   "header": {
@@ -704,10 +705,58 @@
         "If you already have a website, we can discuss better management terms or modernize it together.",
         "The price cannot be precisely determined here; it primarily depends on the complexity and size of the web application, and it is usually calculated based on the hours spent on the project.",
         "If you already have a website, we can discuss better management terms or modernize it together."
-      ]
+      ],
+      "fillFormData": {
+        "web1": {
+          "scope": "1 page, simple, fast, optimized",
+          "functions": "Responsive, custom domain, hosting",
+          "price": "~ 10,000 CZK"
+        },
+        "web2": {
+          "scope": "1-5 pages, complex, fast, optimized",
+          "functions": "Responsive, custom domain, hosting, day and night mode",
+          "price": "~ 25,000 CZK"
+        },
+        "web3": {
+          "scope": "5+ pages, professional, fast, optimized",
+          "functions": "Responsive, custom domain, hosting, day and night mode, multilingual, content management system",
+          "price": "~ 45,000 CZK"
+        },
+        "eshop1": {
+          "scope": "5+ pages, professional, fast, optimized",
+          "functions": "Responsive, custom domain, hosting, day and night mode, multilingual, content management system, order management",
+          "price": "~ 75,000 CZK"
+        },
+        "eshop2": {
+          "scope": "5+ pages, professional, fast, optimized, payment gateway",
+          "functions": "Responsive, custom domain, hosting, day and night mode, multilingual, content management system, order management",
+          "price": "~ 100,000 CZK"
+        },
+        "eshop3": {
+          "scope": "5+ pages, professional, fast, optimized, payment gateway, product database, user interface",
+          "functions": "Responsive, custom domain, hosting, day and night mode, multilingual, content management system, order management",
+          "price": "~ 150,000 CZK"
+        },
+        "webapp": {
+          "scope": "Web application with the following structure:",
+          "functions": "I need the following functions:"
+        }
+      }
     },
     "colorSwitch": {
       "aria": "Button that switches the color mode of the website upon clicking."
+    },
+    "loader": {
+      "btn": [
+        {
+          "aria": "Button that close message.",
+          "content": "Close"
+        }
+      ],
+      "defaultMessage": {
+        "success": "Successfully sent!",
+        "error": "Something went wrong. Please try again!"
+      }
     }
   }
 }

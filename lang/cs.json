@@ -256,7 +256,8 @@
           "aria": "Odeslání formuláře",
           "content": "Odeslat"
         }
-      ]
+      ],
+      "error": ["Povinná pole musí být vyplněna", "Odeslání se nepovedlo."]
     }
   },
   "header": {
@@ -638,7 +639,7 @@
             "Správa objednávek",
             "Možnost rozšíření - denní a noční režim, vícejazyčnost, databáze produktů a uživatelské rozhraní"
           ],
-          "price": "~ 45.000 CZK"
+          "price": "~ 75.000 CZK"
         },
         {
           "title": ["E-shop pro ", "maloobchod"],
@@ -656,7 +657,7 @@
             "Vícejazyčnost",
             "Možnost rozšíření - databáze produktů a uživatelské rozhraní"
           ],
-          "price": "~ 75.000 CZK"
+          "price": "~ 100.000 CZK"
         },
         {
           "title": ["E-shop pro ", "velkoobchod"],
@@ -674,7 +675,7 @@
             "Databáze produktů",
             "Uživatelské rozhraní"
           ],
-          "price": "~ 100.000 CZK"
+          "price": "~ 150.000 CZK"
         }
       ],
       "btn": [
@@ -704,10 +705,58 @@
         "V případě, že již máte webové stránky, můžeme společně domluvit lepší podmínky pro vedení stránek, nebo je zmodernizovat.",
         "Cena zde nejde přesně určit, odvíjí se primárně od složitosti a velikosti webové aplikace, standartně je počítána podle hodin strávených na projektu.",
         "V případě, že již máte webové stránky, můžeme společně domluvit lepší podmínky pro vedení stránek, nebo je zmodernizovat."
-      ]
+      ],
+      "fillFormData": {
+        "web1": {
+          "scope": "1 stránka, jednoduché, rychlé, optimalizované",
+          "functions": "Responzivní, vlastní doména, hosting",
+          "price": "~ 10.000 CZK"
+        },
+        "web2": {
+          "scope": "1-5 stránek, komplexní, rychlé, optimalizované",
+          "functions": "Responzivní, vlastní doména, hosting, denní a noční režim",
+          "price": "~ 25.000 CZK"
+        },
+        "web3": {
+          "scope": "5+ stránek, profesionální, rychlé, optimalizované",
+          "functions": "Responzivní, vlastní doména, hosting, denní a noční režim, vícejazyčnost, systém úpravy obsahu",
+          "price": "~ 45.000 CZK"
+        },
+        "eshop1": {
+          "scope": "5+ stránek, profesionální, rychlé, optimalizované",
+          "functions": "Responzivní, vlastní doména, hosting, denní a noční režim, vícejazyčnost, systém úpravy obsahu, správa objednávek",
+          "price": "~ 75.000 CZK"
+        },
+        "eshop2": {
+          "scope": "5+ stránek, profesionální, rychlé, optimalizované, platební brána",
+          "functions": "Responzivní, vlastní doména, hosting, denní a noční režim, vícejazyčnost, systém úpravy obsahu, správa objednávek",
+          "price": "~ 100.000 CZK"
+        },
+        "eshop3": {
+          "scope": "5+ stránek, profesionální, rychlé, optimalizované, platební brána, databáze produktů, uživatelské rozhraní",
+          "functions": "Responzivní, vlastní doména, hosting, denní a noční režim, vícejazyčnost, systém úpravy obsahu, správa objednávek",
+          "price": "~ 150.000 CZK"
+        },
+        "webapp": {
+          "scope": "Webová aplikace s následující strukturou:",
+          "functions": "Potřebuji následující funkce:"
+        }
+      }
     },
     "colorSwitch": {
       "aria": "Tlačítko po kliknutí změní barevný režim webové stránky."
+    },
+    "loader": {
+      "btn": [
+        {
+          "aria": "Tlačítko pro zavření zprávy.",
+          "content": "Zavřít"
+        }
+      ],
+      "defaultMessage": {
+        "success": "Úspěšně odesláno!",
+        "error": "Něco se nepovedlo, zkuste to prosím znovu později."
+      }
     }
   }
 }

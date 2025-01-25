@@ -199,7 +199,7 @@ const InteractiveChooser = () => {
 
   const handleFillForm = (option) => {
     setInitialValuesToSessionStorage(option, langForFillFormData);
-    router.push("/kontakt")
+    router.push("/kontakt#form", {scroll: true});
   }
 
   return (

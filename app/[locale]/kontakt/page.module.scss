@@ -79,13 +79,13 @@
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
-            min-width: calc(100%);
+            min-width: 100%;
             right: calc(clamp(16px, 2vw, 24px) + 2 * clamp(10px, 1.5vw, 15px) + 1rem);
   
             .contactTitle {
               position: relative;
               padding-left: calc(clamp(16px, 2vw, 24px) + 2 * clamp(10px, 1.5vw, 15px) + 1rem);
-              width: calc(100% - calc(clamp(16px, 2vw, 24px) + 2 * clamp(10px, 1.5vw, 15px) + 1rem));
+              width: calc(100% - padding-left);
               margin: 0;
               text-align: left;
               font-family: var(--font-primary);
@@ -109,7 +109,7 @@
             .contactValue {
               position: relative;
               padding-left: calc(clamp(16px, 2vw, 24px) + 2 * clamp(10px, 1.5vw, 15px) + 1rem);
-              width: calc(100% - calc(clamp(16px, 2vw, 24px) + 2 * clamp(10px, 1.5vw, 15px) + 1rem));
+              width: calc(100% - padding-left);
               margin: 0;
               text-align: left;
               white-space: nowrap;

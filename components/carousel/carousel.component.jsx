@@ -21,7 +21,13 @@ backdropFilterArrows  backdropfilter of arrows
 animation             animation of carousel, options:
                         "cube": 
 */
-export const Carousel = ({ children, infinite = "notInfinite", fullWidth = true, backdropFilterArrows = "blur(4px)", animation = "none" }) => {
+export const Carousel = ({
+  children,
+  infinite = "notInfinite",
+  fullWidth = true,
+  backdropFilterArrows = "blur(4px)",
+  animation = "none",
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [startPosition, setStartPosition] = useState(0);
@@ -32,15 +38,18 @@ export const Carousel = ({ children, infinite = "notInfinite", fullWidth = true,
   const carouselRef = useRef(null);
 
   // Cloning the first and last children for the infinite loop effect
-  const clonedChildren = infinite === "infinite"
-    ? [
-        cloneElement(children[length - 1], { key: length + 1 }),
-        ...children,
-        cloneElement(children[0], { key: length + 2 }),
-      ]
-    : children;
+  const clonedChildren =
+    infinite === "infinite"
+      ? [
+          cloneElement(children[length - 1], { key: length + 1 }),
+          ...children,
+          cloneElement(children[0], { key: length + 2 }),
+        ]
+      : children;
 
   useEffect(() => {
+    console.log(isTransitioning);
+
     if (isTransitioning) {
       const transitionEnd = () => {
         setIsTransitioning(false);
@@ -66,6 +75,8 @@ export const Carousel = ({ children, infinite = "notInfinite", fullWidth = true,
   }, [isTransitioning, currentIndex, length, infinite]);
 
   const next = () => {
+    console.log(isTransitioning);
+
     if (!isTransitioning) {
       if (infinite === "infinite" || currentIndex < length - 1) {
         setIsTransitioning(true);
@@ -78,6 +89,8 @@ export const Carousel = ({ children, infinite = "notInfinite", fullWidth = true,
   };
 
   const prev = () => {
+    console.log(isTransitioning);
+
     if (!isTransitioning) {
       if (infinite === "infinite" || currentIndex > 0) {
         setIsTransitioning(true);
@@ -135,29 +148,29 @@ export const Carousel = ({ children, infinite = "notInfinite", fullWidth = true,
     setIsDragging(true);
   };
 
-const handleTouchMove = (e) => {
-  if (!isDragging) return;
-  const currentPosition = e.touches[0].clientX;
-  const diff = startPosition - currentPosition;
-  setCurrentTranslate(diff);
-};
+  const handleTouchMove = (e) => {
+    if (!isDragging) return;
+    const currentPosition = e.touches[0].clientX;
+    const diff = startPosition - currentPosition;
+    setCurrentTranslate(diff);
+  };
 
-const handleTouchEnd = () => {
-  if (!isDragging) return;
-  const threshold = 75; // Minimum distance to consider it a slide
-  if (currentTranslate > threshold) {
-    next();
-  } else if (currentTranslate < -threshold) {
-    prev();
-  } else {
-    // If not enough movement, reset the position
-    setIsTransitioning(true);
-  }
+  const handleTouchEnd = () => {
+    if (!isDragging) return;
+    const threshold = 75; // Minimum distance to consider it a slide
+    if (currentTranslate > threshold) {
+      next();
+    } else if (currentTranslate < -threshold) {
+      prev();
+    } else {
+      // If not enough movement, reset the position
+      // setIsTransitioning(true);
+    }
 
-  // Reset drag state
-  setCurrentTranslate(0);
-  setIsDragging(false);
-};
+    // Reset drag state
+    setCurrentTranslate(0);
+    setIsDragging(false);
+  };
 
   const handleMouseLeave = () => {
     setIsDragging(false);
@@ -165,16 +178,18 @@ const handleTouchEnd = () => {
   };
 
   const getRelativePosition = (index) => {
-    if(infinite === "notInfinite" || infinite === "pseudoInfinite") {
+    if (infinite === "notInfinite" || infinite === "pseudoInfinite") {
       if (index === currentIndex) return "active";
       if (index === (currentIndex + 1) % length) return "rightToActive";
       if (index === (currentIndex - 1 + length) % length) return "leftToActive";
     } else if (infinite === "infinite") {
       if (index - 1 === currentIndex) return "active";
       if (index - 1 === (currentIndex + 1) % length) return "rightToActive";
-      if (index - 1 === (currentIndex - 1 + length) % length) return "leftToActive";
-      if (index === 0 && currentIndex === 0) return "leftToActive"
-      if (index - 1 === length && currentIndex + 1 === length) return "rightToActive"
+      if (index - 1 === (currentIndex - 1 + length) % length)
+        return "leftToActive";
+      if (index === 0 && currentIndex === 0) return "leftToActive";
+      if (index - 1 === length && currentIndex + 1 === length)
+        return "rightToActive";
     }
     return "other";
   };
@@ -196,7 +211,9 @@ const handleTouchEnd = () => {
         "--localBackdropFilterArrows": `${backdropFilterArrows}`,
       }}
     >
-      {(infinite === "infinite" || infinite === "pseudoInfinite" || currentIndex > 0) && (
+      {(infinite === "infinite" ||
+        infinite === "pseudoInfinite" ||
+        currentIndex > 0) && (
         <button onClick={prev} className={`${styles.navBtn} ${styles.leftBtn}`}>
           {"<"}
         </button>
@@ -205,7 +222,9 @@ const handleTouchEnd = () => {
         className={styles.carouselInner}
         style={{
           width: `${fullWidth ? "100%" : "86%"}`,
-          transform: `translateX(calc(-${(currentIndex + (infinite === "infinite" ? 1 : 0)) * 100}% - ${currentTranslate}px))`,
+          transform: `translateX(calc(-${
+            (currentIndex + (infinite === "infinite" ? 1 : 0)) * 100
+          }% - ${currentTranslate}px))`,
           transition: isTransitioning ? "transform 0.5s ease" : "none",
         }}
         ref={transitionRef}
@@ -213,12 +232,17 @@ const handleTouchEnd = () => {
         {clonedChildren.map((child, index) =>
           cloneElement(child, {
             key: index,
-            "active": getRelativePosition(index),
+            active: getRelativePosition(index),
           })
         )}
       </div>
-      {(infinite === "infinite" || infinite === "pseudoInfinite" || currentIndex < length - 1) && (
-        <button onClick={next} className={`${styles.navBtn} ${styles.rightBtn}`}>
+      {(infinite === "infinite" ||
+        infinite === "pseudoInfinite" ||
+        currentIndex < length - 1) && (
+        <button
+          onClick={next}
+          className={`${styles.navBtn} ${styles.rightBtn}`}
+        >
           {">"}
         </button>
       )}
@@ -226,10 +250,13 @@ const handleTouchEnd = () => {
   );
 };
 
-export const CarouselItem = ({children, active, height}) => {
+export const CarouselItem = ({ children, active, height }) => {
   return (
-      <div className={`${styles.carouselItem} ${styles[active]}`} style={{height: `${height}`}}>
-          {children}
-      </div>
+    <div
+      className={`${styles.carouselItem} ${styles[active]}`}
+      style={{ height: `${height}` }}
+    >
+      {children}
+    </div>
   );
-}
+};

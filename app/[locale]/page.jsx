@@ -1,7 +1,8 @@
 // Styles
 import styles from "./page.module.scss";
 // Public & Assets
-import HeroImg from "@/public/hero.png";
+import MeImg from "@/public/me/homepage.png";
+import HeroImg from "@/public/hero.png"
 // React/Next Functions
 import Image from "next/image";
 import dynamic from "next/dynamic";
@@ -49,7 +50,7 @@ export default function Home() {
           </div>
         </div>
         <div className={`${styles.imgContainer}`}>
-          <Image src={HeroImg} alt={lang('heroSection.img.0.alt')} aria-label={lang('heroSection.img.0.alt')} priority={true} />
+          <Image src={MeImg} alt={lang('heroSection.img.0.alt')} aria-label={lang('heroSection.img.0.alt')} priority={true} />
         </div>
       </section>
       <section className={`${styles.services}`}>
@@ -86,7 +87,7 @@ export default function Home() {
           </Btn>
         </div>
       </section>
-      <section className={`${styles.portfolio}`}>
+      {/* <section className={`${styles.portfolio}`}>
         <div className={`${styles.contentContainer}`}>
           <div className={`${styles.titleContainer}`}>
             <span>{lang("portfolioSection.subtitle")}</span>
@@ -102,7 +103,7 @@ export default function Home() {
           </div>
         </div>
         <LazyPortfolioRotatedGrid />
-      </section>
+      </section> */}
       <section className={`${styles.testimonials}`}>
         {/* TODO TESTIMONIALS */}
       </section>

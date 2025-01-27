@@ -172,7 +172,7 @@ const ServicesPage = () => {
           </FlipCard>
         </div>
       </section>
-      <section className={`${styles.checkAlso}`}>
+      {/* <section className={`${styles.checkAlso}`}>
         <div className={`${styles.titleContainer}`}>
           <span>{lang('checkAlsoSection.subtitle')}</span>
           <h1>
@@ -195,7 +195,7 @@ const ServicesPage = () => {
         >
           {lang('checkAlsoSection.btn.0.content')}
         </Btn>
-      </section>
+      </section> */}
     </main>
   );
 };

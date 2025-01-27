@@ -1,6 +1,7 @@
 // Styles
 import styles from "./page.module.scss";
 // Public & Assets
+import MeImg from "@/public/me/about.png";
 import HeroImg from "@/public/hero.png";
 import IconHtml from "@/public/techstack/html.svg";
 import IconCss from "@/public/techstack/css.svg";
@@ -32,7 +33,7 @@ const Page = () => {
       <section className={`${styles.introduction}`}>
         <div className={`${styles.imgContainer}`}>
           <Image
-            src={HeroImg}
+            src={MeImg}
             alt={lang("introductionSection.img.0.alt")}
             aria-label={lang("introductionSection.img.0.aria")}
             priority

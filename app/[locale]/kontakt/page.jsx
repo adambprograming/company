@@ -9,6 +9,7 @@ import IconInstagram from "@/components/svgs/footer-icons/icon-instagram.compone
 import IconLinkedin from "@/components/svgs/footer-icons/icon-linkedin.component";
 import IconGithub from "@/components/svgs/footer-icons/icon-github.component";
 import IconInvoice from "@/components/svgs/footer-icons/icon-invoice.component";
+import MeImg from "@/public/me/contact.png";
 import HeroImg from "@/public/hero.png";
 // React/Next Functions
 import { useState, useEffect, useLayoutEffect } from "react";
@@ -307,7 +308,7 @@ const Page = () => {
         </div>
         <div className={`${styles.imgContainer}`}>
           <Image
-            src={HeroImg}
+            src={MeImg}
             alt={lang("contactsSection.img.0.alt")}
             aria-label={lang("contactsSection.img.0.aria")}
             priority

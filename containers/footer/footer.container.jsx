@@ -177,7 +177,7 @@ const Footer = () => {
         <div className="footer-container-copyright">
           <p>{lang('copyright.0')}&copy;{lang('copyright.1')}</p>
           <p>
-            <span>{lang('createdBy.0')}</span>
+            {/*<span>{lang('createdBy.0')}</span>
             <Link
               href="https://www.adam-bartusek.cz/"
               target="_blank"
@@ -186,7 +186,7 @@ const Footer = () => {
             >
               {lang('link.0.content')}
             </Link>
-            <span>.</span>
+            <span>.</span>*/}
             <span>{lang('createdBy.1')}</span>
           </p>
         </div>

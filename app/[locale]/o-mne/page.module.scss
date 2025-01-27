@@ -11,6 +11,20 @@
       flex: 1 1 30%;
     }
     .imgContainer {
+      display: flex;
+      position: relative;
+      &::before{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0px;
+        content: "";
+        width: 80%;
+        height: 85%;
+        background-color: rgb(from var(--color-secondary) r g b / 0.2);
+        border-radius: 15px;
+        z-index: -15;
+      }
       img {
         width: 80%;
         height: auto;

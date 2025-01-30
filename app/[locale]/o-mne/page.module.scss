@@ -6,6 +6,7 @@
     flex-wrap: wrap;
     @media only screen and (max-width: 480px) {
       flex-direction: column-reverse;
+      gap: var(--gap-section-content);
     }
     div {
       flex: 1 1 30%;
@@ -169,13 +170,16 @@
     flex-wrap: wrap;
     @media only screen and (max-width: 480px) {
       flex-direction: column;
+      gap: var(--gap-section-content);
     }
     div {
       flex: 1 1 30%;
     }
     .imgContainer {
+      display: flex;
+      position: relative;
       img {
-        width: 80%;
+        width: 60%;
         height: auto;
       }
     }

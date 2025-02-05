@@ -155,8 +155,6 @@ const Page = () => {
   };
 
   const handleSubmit = async (formData) => {
-    console.log(formData);
-
     setLoaderProps({ isLoading: true, status: null, message: "" });
     var message;
     try {

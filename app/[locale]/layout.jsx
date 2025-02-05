@@ -46,6 +46,7 @@ export async function generateMetadata({ params }) {
         siteName: "Adam Bartůšek",
         images: [
           {
+            // TODO image
             url: "https://www.adam-bartusek.cz/hero.png",
             width: 1200,
             height: 630,
@@ -67,6 +68,7 @@ export async function generateMetadata({ params }) {
         siteName: "Adam Bartůšek",
         images: [
           {
+            // TODO IMAGE
             url: "https://www.adam-bartusek.cz/hero.png",
             width: 1200,
             height: 630,

@@ -26,7 +26,7 @@ import Btn from "@/components/btn/btn.component";
 const ServicesPage = () => {
   const lang = useTranslations("servicesPage");
   return (
-    <main className={styles.main}>
+    <main className={`${styles.main}`}>
       <section className={`${styles.chooser}`}>
         <InteractiveChooser />
       </section>

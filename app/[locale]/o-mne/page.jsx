@@ -189,16 +189,16 @@ const Page = () => {
       </section>
       <section className={`${styles.cta}`}>
         <div className={`${styles.titleContainer}`}>
-          <span>{lang('ctaSection.subtitle')}</span>
+          <span>{lang("ctaSection.subtitle")}</span>
           <h1>
-            {lang('ctaSection.title.0')}<strong>{lang('ctaSection.title.1')}</strong>{lang('ctaSection.title.2')}
+            {lang("ctaSection.title.0")}
+            <strong>{lang("ctaSection.title.1")}</strong>
+            {lang("ctaSection.title.2")}
           </h1>
           <hr />
         </div>
         <div className={`${styles.textContainer}`}>
-          <p>
-            {lang('ctaSection.text')}
-          </p>
+          <p>{lang("ctaSection.text")}</p>
         </div>
         <Btn
           href="/kontakt"
@@ -206,9 +206,9 @@ const Page = () => {
           textColor="var(--color-text-reverse)"
           borderSize="none"
           hoverEffect="scaleForward"
-          ariaLabel={lang('ctaSection.btn.0.aria')}
+          ariaLabel={lang("ctaSection.btn.0.aria")}
         >
-          {lang('ctaSection.btn.0.content')}
+          {lang("ctaSection.btn.0.content")}
         </Btn>
       </section>
     </main>

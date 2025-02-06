@@ -120,12 +120,12 @@ body{
     --breakpoint-768: 768px; // < Tablet < 1024px
     --breakpoint-480: 480px; // > Mobile (Between 480px & 768px is small tablet)
     --breakpoint-300: 320px; // Smallest phone width
-    --padding-page: 7.5rem var(--padding-page-sides);
+    --padding-page: clamp(2.5rem, 5vw, 5rem) var(--padding-page-sides);
     --padding-header: 2.5rem var(--padding-page-sides) 0 var(--padding-page-sides);
     --padding-page-sides: clamp(1rem, 5vw, 8rem);
     // INDIVIDUAL FOR PROJECT
     --border-radius-btn: 15px;
-    --gap-section-content: 6rem;
+    --gap-section: 6rem;
 }
 
 .dark-theme {
@@ -162,26 +162,28 @@ body{
     min-height: 100svh;
     display: flex;
     flex-direction: column;
+    gap: var(--gap-section);
     margin: 0;
     & > * {
         margin: 0;
         align-self: center;
-        width: calc(100% - var(--padding-page-sides) * 2);
     }
 }
 
 main {
     flex-grow: 1;
-    padding: var(--padding-page);
-    max-width: 1440px;
+    width: 100%;
+    max-width: calc(1440px + var(--padding-page-sides) * 2);
     display: flex;
     flex-direction: column;
-    gap: 12rem;
-    @media only screen and (max-width: 480px) {
-        gap: var(--gap-section-content);
-    }
+    gap: var(--gap-section);
 }
 
+section {
+    width: calc(100% - var(--padding-page-sides) * 2);
+    padding: var(--padding-page);
+    gap: var(--gap-section);
+}
 
 p {
     font-size: var(--fontsize-p);

@@ -63,7 +63,8 @@ const Page = () => {
   });
 
   useEffect(() => {
-    const initialValuesFromSessionStorage = getInitialValuesFromSessionStorage();
+    const initialValuesFromSessionStorage =
+      getInitialValuesFromSessionStorage();
     if (initialValuesFromSessionStorage) {
       setChoosedOptionForm(1);
       setInitialValues(initialValuesFromSessionStorage);

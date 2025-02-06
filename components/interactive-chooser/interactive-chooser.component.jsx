@@ -29,7 +29,6 @@ import { Carousel, CarouselItem } from "../carousel/carousel.component";
 import Popup from "../popup/popup.component";
 
 function setInitialValuesToSessionStorage(option, lang) {
-  
   var initialValues;
   switch (option) {
     case "web1":
@@ -95,7 +94,9 @@ INSTRUCTIONS
 
 const InteractiveChooser = () => {
   const lang = useTranslations("components.interactiveChooser");
-  const langForFillFormData = useTranslations("components.interactiveChooser.fillFormData")
+  const langForFillFormData = useTranslations(
+    "components.interactiveChooser.fillFormData"
+  );
   const router = useRouter();
   const phoneNumber = "+42077780333073";
   const [popupPhone, setPopupPhone] = useState(false);
@@ -199,8 +200,8 @@ const InteractiveChooser = () => {
 
   const handleFillForm = (option) => {
     setInitialValuesToSessionStorage(option, langForFillFormData);
-    router.push("/kontakt#form", {scroll: true});
-  }
+    router.push("/kontakt#form", { scroll: true });
+  };
 
   return (
     <div className={`${styles.interactiveChooserContainer}`}>
@@ -1493,7 +1494,9 @@ const InteractiveChooser = () => {
                   </div>
                   <div className={`${styles.ctaBtns}`}>
                     <Btn
-                      functionOnClick={() => {handleFillForm("webapp")}}
+                      functionOnClick={() => {
+                        handleFillForm("webapp");
+                      }}
                       width="clamp(100px, 100%, 250px)"
                       bgColor="var(--color-secondary)"
                       textColor="var(--color-text)"
@@ -1613,7 +1616,9 @@ const InteractiveChooser = () => {
                   </div>
                   <div className={`${styles.ctaBtns}`}>
                     <Btn
-                      functionOnClick={() => {handleFillForm("web1")}}
+                      functionOnClick={() => {
+                        handleFillForm("web1");
+                      }}
                       width="clamp(100px, 100%, 250px)"
                       bgColor="var(--color-secondary)"
                       textColor="var(--color-text)"
@@ -1725,7 +1730,9 @@ const InteractiveChooser = () => {
                   </div>
                   <div className={`${styles.ctaBtns}`}>
                     <Btn
-                      functionOnClick={() => {handleFillForm("web2")}}
+                      functionOnClick={() => {
+                        handleFillForm("web2");
+                      }}
                       width="clamp(100px, 100%, 250px)"
                       bgColor="var(--color-secondary)"
                       textColor="var(--color-text)"
@@ -1847,7 +1854,9 @@ const InteractiveChooser = () => {
                   </div>
                   <div className={`${styles.ctaBtns}`}>
                     <Btn
-                      functionOnClick={() => {handleFillForm("web3")}}
+                      functionOnClick={() => {
+                        handleFillForm("web3");
+                      }}
                       width="clamp(100px, 100%, 250px)"
                       bgColor="var(--color-secondary)"
                       textColor="var(--color-text)"
@@ -1892,8 +1901,8 @@ const InteractiveChooser = () => {
                 <div className={`${styles.titleContainer}`}>
                   <span>{lang("card.7.subtitle")}</span>
                   <h1>
-                    <strong>{lang("card.7.title.0")}</strong>
-                    {lang("card.7.title.1")}
+                    {lang("card.7.title.0")}
+                    <strong>{lang("card.7.title.1")}</strong>
                   </h1>
                   <hr />
                 </div>
@@ -1967,7 +1976,9 @@ const InteractiveChooser = () => {
                   </div>
                   <div className={`${styles.ctaBtns}`}>
                     <Btn
-                      functionOnClick={() => {handleFillForm("eshop1")}}
+                      functionOnClick={() => {
+                        handleFillForm("eshop1");
+                      }}
                       width="clamp(100px, 100%, 250px)"
                       bgColor="var(--color-secondary)"
                       textColor="var(--color-text)"
@@ -2012,8 +2023,8 @@ const InteractiveChooser = () => {
                 <div className={`${styles.titleContainer}`}>
                   <span>{lang("card.8.subtitle")}</span>
                   <h1>
-                    <strong>{lang("card.8.title.0")}</strong>
-                    {lang("card.8.title.1")}
+                    {lang("card.8.title.0")}
+                    <strong>{lang("card.8.title.1")}</strong>
                   </h1>
                   <hr />
                 </div>
@@ -2103,7 +2114,9 @@ const InteractiveChooser = () => {
                   </div>
                   <div className={`${styles.ctaBtns}`}>
                     <Btn
-                      functionOnClick={() => {handleFillForm("eshop2")}}
+                      functionOnClick={() => {
+                        handleFillForm("eshop2");
+                      }}
                       width="clamp(100px, 100%, 250px)"
                       bgColor="var(--color-secondary)"
                       textColor="var(--color-text)"
@@ -2148,8 +2161,8 @@ const InteractiveChooser = () => {
                 <div className={`${styles.titleContainer}`}>
                   <span>{lang("card.9.subtitle")}</span>
                   <h1>
-                    <strong>{lang("card.9.title.0")}</strong>
-                    {lang("card.9.title.1")}
+                    {lang("card.9.title.0")}
+                    <strong>{lang("card.9.title.1")}</strong>
                   </h1>
                   <hr />
                 </div>
@@ -2241,7 +2254,9 @@ const InteractiveChooser = () => {
                   </div>
                   <div className={`${styles.ctaBtns}`}>
                     <Btn
-                      functionOnClick={() => {handleFillForm("eshop3")}}
+                      functionOnClick={() => {
+                        handleFillForm("eshop3");
+                      }}
                       width="clamp(100px, 100%, 250px)"
                       bgColor="var(--color-secondary)"
                       textColor="var(--color-text)"

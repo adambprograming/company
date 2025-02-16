@@ -11,6 +11,7 @@ $width-logo: clamp(50px, 12vw, 120px);
   gap: 12rem;
   align-self: center;
   width: calc(100% - var(--padding-page-sides) * 2);
+  background-color: var(--color-background);
 }
 
 // Variant 1
@@ -109,5 +110,48 @@ $width-logo: clamp(50px, 12vw, 120px);
       width: fit-content;
       margin: auto 0 auto auto;
     }
+  }
+}
+
+#article-header.fixedOnScrollUp {
+  position: fixed;
+  top: 0;
+  z-index: 100000000000000000;
+  transition: transform 0.2s ease-in-out;
+  &::before {
+    backdrop-filter: var(--localBackdropFilter);
+    content: "";
+    width: 100vw;
+    height: 100%;
+    background-color: inherit;
+    position: absolute;
+    z-index: -100;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+  }
+  &.hidden {
+    transform: translateY(-100%);
+  }
+  &.visible {
+    transform: translateY(0);
+  }
+}
+
+#article-header.fixedAllTime {
+  position: fixed;
+  top: 0;
+  z-index: 100000000000000000;
+  &::before {
+    backdrop-filter: var(--localBackdropFilter);
+    content: "";
+    width: 100vw;
+    height: 100%;
+    background-color: inherit;
+    position: absolute;
+    z-index: -100;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
   }
 }

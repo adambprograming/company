@@ -121,11 +121,11 @@ body{
     --breakpoint-480: 480px; // > Mobile (Between 480px & 768px is small tablet)
     --breakpoint-300: 320px; // Smallest phone width
     --padding-page: clamp(2.5rem, 5vw, 5rem) var(--padding-page-sides);
-    --padding-header: 2.5rem var(--padding-page-sides) 0 var(--padding-page-sides);
+    --padding-header: 1.25rem var(--padding-page-sides) 1.25rem var(--padding-page-sides);
     --padding-page-sides: clamp(1rem, 5vw, 8rem);
     // INDIVIDUAL FOR PROJECT
     --border-radius-btn: 15px;
-    --gap-section: 6rem;
+    --gap-section: clamp(3rem, 4vw, 6rem);
 }
 
 .dark-theme {
@@ -177,6 +177,9 @@ main {
     display: flex;
     flex-direction: column;
     gap: var(--gap-section);
+    & > * {
+        margin: 0;
+    }
 }
 
 section {

@@ -330,9 +330,9 @@ const Page = () => {
           width="calc(100% - (2 * clamp(8px, 2vw, 32px)))"
           padding="clamp(8px, 2vw, 32px)"
           bgColor="var(--shadow-5)"
-          fontWeightOfLabelsForm="500"
+          fontWeightOfLabels="500"
           borderRadius="15px"
-          bgColorOfLabelsForm="transparent"
+          bgColorOfLabels="transparent"
         >
           <FormRow>
             <FormInput
@@ -381,14 +381,14 @@ const Page = () => {
             />
           </FormRow>
           <FormPicker
-            fontWeightInput="500"
+            fontWeightOfBtns="500"
             label={lang("formSection.field.4.label")}
           >
             <FormPickerOption
               functionOnClick={() => {
                 setChoosedOptionForm(0);
               }}
-              selected={choosedOptionForm === 0}
+              picked={choosedOptionForm === 0}
             >
               {lang("formSection.field.4.option.0")}
             </FormPickerOption>
@@ -396,7 +396,7 @@ const Page = () => {
               functionOnClick={() => {
                 setChoosedOptionForm(1);
               }}
-              selected={choosedOptionForm === 1}
+              picked={choosedOptionForm === 1}
             >
               {lang("formSection.field.4.option.1")}
             </FormPickerOption>

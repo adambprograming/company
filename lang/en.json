@@ -260,6 +260,75 @@
       "error": ["Required fields must be filled.", "Failed to send data."]
     }
   },
+  "orderPage": {
+    "title": "Specs of order",
+    "formSection": {
+      "title": ["Fill out the", " contact form"],
+      "subtitle": "FORM",
+      "text": "Follow me",
+      "field": [
+        {
+          "label": "Name:",
+          "placeholder": "Enter your name",
+          "hintText": "The name must be 2 to 30 characters long and can contain only letters, spaces, and hyphens."
+        },
+        {
+          "label": "Surname:",
+          "placeholder": "Enter your surname",
+          "hintText": "The surname must be 2 to 35 characters long and can contain only letters, spaces, and hyphens."
+        },
+        {
+          "label": "Phone number:",
+          "placeholder": "Enter your phone number",
+          "hintText": "The phone number must contain 7 to 15 digits."
+        },
+        {
+          "label": "E-mail:",
+          "placeholder": "Enter your e-mail",
+          "hintText": "Enter a valid email address in the format, e.g., user@email.com."
+        },
+        {
+          "label": "Can you specifically define your request?",
+          "option": ["No", "Yes"]
+        },
+        {
+          "label": "Scope of the project:",
+          "placeholder": "Specify the subpages you want the project divided into, or the structure of the project."
+        },
+        {
+          "label": "Project functionalities:",
+          "placeholder": "Specify the features you want in the project (e.g., multilingual support, dark/light mode, payment gateway, database, or anything else you can think of)."
+        },
+        {
+          "label": "A website you like:",
+          "placeholder": "Provide a link to a website you like visually, if you know one."
+        },
+        {
+          "label": "Your budget:",
+          "placeholder": "Enter your budget expectation for the project."
+        },
+        {
+          "label": "Ideal delivery date:",
+          "placeholder": "Specify if the project is urgent."
+        },
+        {
+          "label": "Other specifications:",
+          "placeholder": "Provide additional information or requirements for the project."
+        },
+        {
+          "label": "Describe your request / inquiry:",
+          "placeholder": "Describe your needs as thoroughly as possible. Ideally, select 'Yes' above and try to fill out the specific form."
+        }
+      ],
+      "btn": [
+        {
+          "aria": "Submit the form",
+          "content": "Submit"
+        }
+      ],
+      "error": ["Required fields must be filled.", "Failed to send data."]
+    }
+  },
   "header": {
     "menu": ["About Me", "Services", "Contact"],
     "img": [

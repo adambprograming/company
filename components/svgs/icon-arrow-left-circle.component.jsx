@@ -1,4 +1,4 @@
-const IconInfoCircle = (props) => {
+const IconArrowLeftCircle = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,4 +12,4 @@ const IconInfoCircle = (props) => {
   );
 };
 
-export default IconInfoCircle;
+export default IconArrowLeftCircle;

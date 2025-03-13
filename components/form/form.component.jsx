@@ -3,9 +3,9 @@
 import styles from "./form.module.scss";
 // Public & Assets
 import IconInfoCircle from "../svgs/icon-info-circle.component";
+import IconDropdownCircle from "@/components/svgs/icon-dropdown-circle.component";
 // React/Next Functions
-import { Children, cloneElement, useState, useEffect } from "react";
-import { useRef } from "react";
+import { Children, cloneElement, useState, useEffect, useRef } from "react";
 // Context & Actions
 
 // Componenets
@@ -27,20 +27,6 @@ INSTRUCTIONS
   borderRadius                                    style attr for border-radius of whole form element
   borderSize                                      style attr for border-size of whole form element
   borderColor                                     style attr for border-color of whole form element
-  fontSizeOfLabelsForm                            style attribute for every label - can be overwritten individauly for each label element by setting fontSizeLabel there
-  fontWeightOfLabelsForm                          style attribute for every label - can be overwritten individauly for each label element by setting fontWeightLabel there
-  textColorOfLabelsForm                           style attribute for every label - can be overwritten individauly for each label element by setting textColorLabel there
-  paddingOfLabelsForm                             style attribute for every label - can be overwritten individauly for each label element by setting paddingLabel there
-  bgColorOfLabelsForm                             style attribute for every label - can be overwritten individauly for each label element by setting bgColorLabel there
-  fontSizeOfInputsAndBtnsForm                     style attribute for every input and btn - can be overwritten individauly for each input/btn element by setting fontSizeInput or fontSizeBtn there
-  fontWeightOfInputsAndBtnsForm                   style attribute for every input and btn - can be overwritten individauly for each input/btn element by setting fontWeightInput or fontWeightBtn there
-  textColorOfInputsAndBtnsForm                    style attribute for every input and btn - can be overwritten individauly for each input/btn element by setting textColorInput or textColorBtn there
-  paddingOfInputsAndBtnsForm                      style attribute for every input and btn - can be overwritten individauly for each input/btn element by setting paddingInput or paddingBtn there
-  borderRadiusOfInputsAndBtnsForm                 style attribute for every input and btn - can be overwritten individauly for each input/btn element by setting borderRadius there
-  borderSizeOfInputsAndBtnsForm                   style attribute for every input and btn - can be overwritten individauly for each input/btn element by setting borderSize there
-  borderColorOfInputsAndBtnsForm                  style attribute for every input and btn - can be overwritten individauly for each input/btn element by setting borderColor there
-  bgColorOfInputsAndBtnsForm                      style attribute for every input and btn - can be overwritten individauly for each input/btn element by setting bgColorInput or bgColor (btn) there
-  fontFamilyOfInputsAndBtnsAndLabelsForm          style attribute for every input, btn and label - can be overwritten individauly for each input/btn/label element by setting fontFamily there
 */
 
 export const Form = ({
@@ -54,20 +40,58 @@ export const Form = ({
   borderRadius = "5px",
   borderSize = "0px",
   borderColor = "var(--color-border)",
-  fontSizeOfLabelsForm = "var(--fontsize-small)",
-  fontWeightOfLabelsForm = "400",
-  textColorOfLabelsForm = "var(--shadow-75)",
-  paddingOfLabelsForm = "5px 10px",
-  bgColorOfLabelsForm = "var(--color-background)",
-  fontSizeOfInputsAndBtnsForm = "var(--fontsize-small)",
-  fontWeightOfInputsAndBtnsForm = "400",
-  textColorOfInputsAndBtnsForm = "var(--color-text)",
-  paddingOfInputsAndBtnsForm = "10px 20px",
-  borderRadiusOfInputsAndBtnsForm = "5px",
-  borderSizeOfInputsAndBtnsForm = "1px",
-  borderColorOfInputsAndBtnsForm = "var(--color-border)",
-  fontFamilyOfInputsAndBtnsAndLabelsForm = "var(--font-secondary)",
-  bgColorOfInputsAndBtnsForm = "var(--color-background)",
+  // LABELS
+  fontFamilyOfLabels = "var(--font-primary)",
+  fontSizeOfLabels = "var(--fontsize-small)",
+  fontWeightOfLabels = "400",
+  textColorOfLabels = "var(--shadow-75)",
+  paddingOfLabels = "5px 10px",
+  bgColorOfLabels = "var(--color-background)",
+  borderRadiusOfLabels = "5px",
+  // CONTAINERS - INPUTS + TEXTAREAS + SELECTS + MULTISELECTS + MULTICHECKBOXS
+  paddingOfContainers = "10px 20px",
+  bgColorOfContainer = "var(--color-background)",
+  borderRadiusOfContainers = "5px",
+  borderSizeOfContainers = "1px",
+  borderColorOfContainers = "var(--color-border)",
+  boxShadowOnFocusOfContainers = "0 0 5px var(--color-boxshadow)",
+  boxShadowOnFocusOfDropdowns = "0 0 2.5px var(--color-boxshadow)",
+  // BTNS - SUBMIT + PICKER OPTIONS
+  fontFamilyOfBtns = "var(--font-secondary)", // SUBMIT + PICKER OPTION
+  fontSizeOfBtns = "var(--fontsize-small)", // SUBMIT + PICKER OPTION
+  fontWeightOfBtns = "400", // SUBMIT + PICKER OPTION
+  textColorOfSubmit = "var(--color-text-reverse)", // SUBMIT
+  textColorOnHoverOfSubmit = "var(--color-text)", // SUBMIT
+  textColorOfPicker = "var(--color-text)", // PICKER
+  textColorOnHoverOfPicker = "var(--color-text)", // PICKER
+  textColorOnPickedOfPicker = "var(--color-text-reverse)", // PICKER
+  paddingOfBtns = "10px 20px", // SUBMIT + PICKER OPTION
+  bgColorOfSubmit = "var(--color-primary)", // SUBMIT
+  bgColorOnHoverOfSubmit = "var(--color-ascent)", // SUBMIT
+  bgColorOfPicker = "var(--color-background)", // PICKER
+  bgColorOnHoverOfPicker = "var(--shadow-15)", // PICKER
+  bgColorOnPickedOfPicker = "var(--color-primary)", // PICKER
+  borderRadiusOfBtns = "5px", // SUBMIT + PICKER OPTION
+  borderSizeOfBtns = "0px", // SUBMIT + PICKER OPTION
+  borderColorOfBtns = "var(--color-border)", // SUBMIT + PICKER OPTION
+  // VALUES - filled or selected values
+  fontFamilyOfValues = "var(--font-secondary)",
+  fontSizeOfValues = "var(--fontsize-small)",
+  fontWeightOfValues = "400",
+  textColorOfValues = "var(--color-text)",
+  paddingOfValues = "10px 20px",
+  bgColorOfValues = "var(--shadow-5)",
+  bgColorOnHoverOfValues = "var(--shadow-10)",
+  // PLACEHOLDERS
+  fontFamilyOfPlaceholders = "var(--font-secondary)",
+  fontSizeOfPlaceholders = "var(--fontsize-smaller)",
+  fontWeightOfPlaceholders = "400",
+  textColorOfPlaceholders = "rgb(from var(--color-text) r g b / 0.5)",
+  // UNSELECTED VALUES
+  textColorOfUnselected = "rgb(from var(--color-text) r g b / 0.5)",
+  // SELECTED VALUES
+  textColorOfSelected = "var(--color-text)",
+  bgColorOfSelected = "rgb(from var(--color-success) r g b / 0.15)",
 }) => {
   const formRef = useRef();
   const [submitting, setSubmitting] = useState(false);
@@ -83,7 +107,7 @@ export const Form = ({
       });
     }
   }, [initialValues]);
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -140,7 +164,59 @@ export const Form = ({
         padding: `${padding}`,
         backgroundColor: `${bgColor}`,
         borderRadius: `${borderRadius}`,
-        border: `${borderSize} solid ${borderColor}`
+        border: `${borderSize} solid ${borderColor}`,
+        // LABELS
+        "--localFontFamilyOfLabels": `${fontFamilyOfLabels}`,
+        "--localFontSizeOfLabels": `${fontSizeOfLabels}`,
+        "--localFontWeightOfLabels": `${fontWeightOfLabels}`,
+        "--localTextColorOfLabels": `${textColorOfLabels}`,
+        "--localPaddingOfLabels": `${paddingOfLabels}`,
+        "--localBgColorOfLabels": `${bgColorOfLabels}`,
+        "--localBorderRadiusOfLabels": `${borderRadiusOfLabels}`,
+        // CONTAINERS
+        "--localPaddingOfContainers": `${paddingOfContainers}`,
+        "--localBgColorOfContainers": `${bgColorOfContainer}`,
+        "--localBorderRadiusOfContainers": `${borderRadiusOfContainers}`,
+        "--localBorderSizeOfContainers": `${borderSizeOfContainers}`,
+        "--localBorderColorOfContainers": `${borderColorOfContainers}`,
+        "--localBoxShadowOnFocusOfContainers": `${boxShadowOnFocusOfContainers}`,
+        "--localBoxShadowOnFocusOfDropdowns": `${boxShadowOnFocusOfDropdowns}`,
+        // BTNS
+        "--localFontFamilyOfBtns": `${fontFamilyOfBtns}`,
+        "--localFontSizeOfBtns": `${fontSizeOfBtns}`,
+        "--localFontWeightOfBtns": `${fontWeightOfBtns}`,
+        "--localTextColorOfSubmit": `${textColorOfSubmit}`,
+        "--localTextColorOnHoverOfSubmit": `${textColorOnHoverOfSubmit}`,
+        "--localTextColorOfPicker": `${textColorOfPicker}`,
+        "--localTextColorOnHoverOfPicker": `${textColorOnHoverOfPicker}`,
+        "--localTextColorOnPickedOfPicker": `${textColorOnPickedOfPicker}`,
+        "--localPaddingOfBtns": `${paddingOfBtns}`,
+        "--localBgColorOfSubmit": `${bgColorOfSubmit}`,
+        "--localBgColorOnHoverOfSubmit": `${bgColorOnHoverOfSubmit}`,
+        "--localBgColorOfPicker": `${bgColorOfPicker}`,
+        "--localBgColorOnHoverOfPicker": `${bgColorOnHoverOfPicker}`,
+        "--localBgColorOnPickedOfPicker": `${bgColorOnPickedOfPicker}`,
+        "--localBorderRadiusOfBtns": `${borderRadiusOfBtns}`,
+        "--localBorderSizeOfBtns": `${borderSizeOfBtns}`,
+        "--localBorderColorOfBtns": `${borderColorOfBtns}`,
+        // VALUES
+        "--localFontFamilyOfValues": `${fontFamilyOfValues}`,
+        "--localFontSizeOfValues": `${fontSizeOfValues}`,
+        "--localFontWeightOfValues": `${fontWeightOfValues}`,
+        "--localTextColorOfValues": `${textColorOfValues}`,
+        "--localPaddingOfValues": `${paddingOfValues}`,
+        "--localBgColorOfValues": `${bgColorOfValues}`,
+        "--localBgColorOnHoverOfValues": `${bgColorOnHoverOfValues}`,
+        // PLACEHOLDERS
+        "--localFontFamilyOfPlaceholders": `${fontFamilyOfPlaceholders}`,
+        "--localFontSizeOfPlaceholders": `${fontSizeOfPlaceholders}`,
+        "--localFontWeightOfPlaceholders": `${fontWeightOfPlaceholders}`,
+        "--localTextColorOfPlaceholders": `${textColorOfPlaceholders}`,
+        // UNSELECTED VALUES
+        "--localTextColorOfUnselected": `${textColorOfUnselected}`,
+        // SELECTED VALUES
+        "--localTextColorOfSelected": `${textColorOfSelected}`,
+        "--localBgColorOfSelected": `${bgColorOfSelected}`,
       }}
       ref={formRef}
       onSubmit={handleSubmit}
@@ -150,21 +226,6 @@ export const Form = ({
         try {
           return cloneElement(child, {
             styleOfLabels: styleOfLabels,
-            fontSizeOfLabelsForm: fontSizeOfLabelsForm,
-            fontWeightOfLabelsForm: fontWeightOfLabelsForm,
-            textColorOfLabelsForm: textColorOfLabelsForm,
-            paddingOfLabelsForm: paddingOfLabelsForm,
-            bgColorOfLabelsForm: bgColorOfLabelsForm,
-            fontSizeOfInputsAndBtnsForm: fontSizeOfInputsAndBtnsForm,
-            fontWeightOfInputsAndBtnsForm: fontWeightOfInputsAndBtnsForm,
-            textColorOfInputsAndBtnsForm: textColorOfInputsAndBtnsForm,
-            paddingOfInputsAndBtnsForm: paddingOfInputsAndBtnsForm,
-            borderRadiusOfInputsAndBtnsForm: borderRadiusOfInputsAndBtnsForm,
-            borderSizeOfInputsAndBtnsForm: borderSizeOfInputsAndBtnsForm,
-            borderColorOfInputsAndBtnsForm: borderColorOfInputsAndBtnsForm,
-            fontFamilyOfInputsAndBtnsAndLabelsForm:
-              fontFamilyOfInputsAndBtnsAndLabelsForm,
-            bgColorOfInputsAndBtnsForm: bgColorOfInputsAndBtnsForm,
           });
         } catch (error) {}
       })}
@@ -197,49 +258,41 @@ export const FormTitle = ({ children, css }) => {
 };
 
 /*
+SPAN
+#F0F
+*/
+
+/*
+INSTRUCTIONS
+  children                    Child element
+  css                         styles (can set all css here), exemple - css={{backgroundColor: "red"}}
+*/
+
+export const FormSpan = ({ children, css }) => {
+  return (
+    <h2
+      className={`${styles.formSpan}`}
+      style={{
+        ...css,
+      }}
+    >
+      {children}
+    </h2>
+  );
+};
+
+/*
 ROW
 Should be used if more items should be in one row
 #F0F
 */
 
-export const FormRow = ({
-  children,
-  styleOfLabels,
-  fontSizeOfLabelsForm,
-  fontWeightOfLabelsForm,
-  textColorOfLabelsForm,
-  paddingOfLabelsForm,
-  bgColorOfLabelsForm,
-  fontSizeOfInputsAndBtnsForm,
-  fontWeightOfInputsAndBtnsForm,
-  textColorOfInputsAndBtnsForm,
-  paddingOfInputsAndBtnsForm,
-  borderRadiusOfInputsAndBtnsForm,
-  borderSizeOfInputsAndBtnsForm,
-  borderColorOfInputsAndBtnsForm,
-  fontFamilyOfInputsAndBtnsAndLabelsForm,
-  bgColorOfInputsAndBtnsForm,
-}) => {
+export const FormRow = ({ children, styleOfLabels }) => {
   return (
     <div className={`${styles.formRow}`}>
       {Children.map(children, (child) => {
         return cloneElement(child, {
           styleOfLabels: styleOfLabels,
-          fontSizeOfLabelsForm: fontSizeOfLabelsForm,
-          fontWeightOfLabelsForm: fontWeightOfLabelsForm,
-          textColorOfLabelsForm: textColorOfLabelsForm,
-          paddingOfLabelsForm: paddingOfLabelsForm,
-          bgColorOfLabelsForm: bgColorOfLabelsForm,
-          fontSizeOfInputsAndBtnsForm: fontSizeOfInputsAndBtnsForm,
-          fontWeightOfInputsAndBtnsForm: fontWeightOfInputsAndBtnsForm,
-          textColorOfInputsAndBtnsForm: textColorOfInputsAndBtnsForm,
-          paddingOfInputsAndBtnsForm: paddingOfInputsAndBtnsForm,
-          borderRadiusOfInputsAndBtnsForm: borderRadiusOfInputsAndBtnsForm,
-          borderSizeOfInputsAndBtnsForm: borderSizeOfInputsAndBtnsForm,
-          borderColorOfInputsAndBtnsForm: borderColorOfInputsAndBtnsForm,
-          fontFamilyOfInputsAndBtnsAndLabelsForm:
-            fontFamilyOfInputsAndBtnsAndLabelsForm,
-          bgColorOfInputsAndBtnsForm: bgColorOfInputsAndBtnsForm,
         });
       })}
     </div>
@@ -286,28 +339,19 @@ INSTRUCTIONS
 export const FormBtnSubmit = ({
   children = "Odeslat",
   ariaLabel = "",
-  fontSizeOfInputsAndBtnsForm,
-  fontWeightOfInputsAndBtnsForm,
-  textColorOfInputsAndBtnsForm,
-  paddingOfInputsAndBtnsForm,
-  borderRadiusOfInputsAndBtnsForm,
-  borderSizeOfInputsAndBtnsForm,
-  borderColorOfInputsAndBtnsForm,
-  fontFamilyOfInputsAndBtnsAndLabelsForm,
-  bgColorOfInputsAndBtnsForm,
   fontSize = "",
   fontWeight = "500",
-  textColor = "var(--color-text-reverse)",
+  textColor = "",
   padding = "",
   borderRadius = "",
   borderSize = "",
   borderColor = "",
   fontFamily = "",
-  bgColor = "var(--color-primary)",
-  textHoverColor = "var(--color-text)",
+  bgColor = "",
+  textHoverColor = "",
   borderHoverRadius = "",
   bgHoverBorderRadius = "",
-  bgHoverColor = "var(--color-ascent)",
+  bgHoverColor = "",
   opacity = 1,
   width = "",
   backdropFilter = "",
@@ -320,12 +364,9 @@ export const FormBtnSubmit = ({
       type="submit"
       style={{
         "--localBorderHoverRadius": `${borderHoverRadius}`,
-        borderRadius: `${
-          borderRadius ? borderRadius : borderRadiusOfInputsAndBtnsForm
-        }`,
-        border: `${
-          borderSize ? borderSize : borderSizeOfInputsAndBtnsForm
-        } solid ${borderColor ? borderColor : borderColorOfInputsAndBtnsForm}`,
+        "--localBorderRadiusOfBtns": `${borderRadius}`,
+        "--localBorderSizeOfBtns": `${borderSize}`,
+        "--localBorderColorOfBtns": `${borderColor}`,
         width: `${width}`,
         "--localFilter": `${filter}`,
       }}
@@ -334,35 +375,22 @@ export const FormBtnSubmit = ({
       <span
         className={`${styles.btnBg}`}
         style={{
-          "--localBgColor": `${bgColor ? bgColor : bgColorOfInputsAndBtnsForm}`,
+          "--localBgColorOfSubmit": `${bgColor}`,
           opacity: `${opacity}`,
           "--localBackdropFilter": `${backdropFilter}`,
-          "--localBgHoverColor": `${bgHoverColor}`,
+          "--localBgColorOnHoverOfSubmit": `${bgHoverColor}`,
           "--localBgHoverBorderRadius": `${bgHoverBorderRadius}`,
         }}
       ></span>
       <span
         className={`${styles.btnText}`}
         style={{
-          "--localTextColor": `${
-            textColor ? textColor : textColorOfInputsAndBtnsForm
-          }`,
-          "--localTextHoverColor": `${
-            textHoverColor
-              ? textHoverColor
-              : textColor
-              ? textColor
-              : textColorOfInputsAndBtnsForm
-          }`,
-          fontSize: `${fontSize ? fontSize : fontSizeOfInputsAndBtnsForm}`,
-          fontWeight: `${
-            fontWeight ? fontWeight : fontWeightOfInputsAndBtnsForm
-          }`,
-          color: `${textColor ? textColor : textColorOfInputsAndBtnsForm}`,
-          padding: `${padding ? padding : paddingOfInputsAndBtnsForm}`,
-          fontFamily: `${
-            fontFamily ? fontFamily : fontFamilyOfInputsAndBtnsAndLabelsForm
-          }`,
+          "--localFontFamilyOfBtns": `${fontFamily}`,
+          "--localFontSizeOfBtns": `${fontSize}`,
+          "--localFontWeightOfBtns": `${fontWeight}`,
+          "--localPaddingOfBtns": `${padding}`,
+          "--localTextColorOfSubmit": `${textColor}`,
+          "--localTextColorOnHoverOfSubmit": `${textHoverColor}`,
         }}
       >
         {children}
@@ -439,21 +467,7 @@ INSTRUCTIONS
   functionOnFocus                         function that proceed onFocus
   functionOnKeyDown                       function that proceed onKeyDown
   minWidth                                minWidth of fieldset element (default to 200px) - if space, it take full width
-  flex                                    flex of fieldset (default is "1 1 25%" - if two in same row with this default, it will be 50/50 until wrapped bcs of minWidth) 
-  fontSizeLabel                           style attribute for input that overwrite fontSizeOfLabelsForm  
-  fontWeightLabel                         style attribute for input that overwrite fontWeightOfLabelsForm  
-  textColorLabel                          style attribute for input that overwrite textColorOfLabelsForm  
-  paddingLabel                            style attribute for input that overwrite paddingOfLabelsForm
-  bgColorLabel                            style attribute for input that overwrite bgColorOfLabelsForm
-  fontSizeInput                           style attribute for input that overwrite fontSizeOfInputsAndBtnsForm  
-  fontWeightInput                         style attribute for input that overwrite fontWeightOfInputsAndBtnsForm  
-  textColorInput                          style attribute for input that overwrite textColorOfInputsAndBtnsForm  
-  paddingInput                            style attribute for input that overwrite paddingOfInputsAndBtnsForm  
-  bgColorInput                            style attribute for input that overwrite bgColorOfInputsAndBtnsForm  
-  borderRadius                            style attribute for input that overwrite borderRadiusOfInputsAndBtnsForm  
-  borderSize                              style attribute for input that overwrite borderSizeOfInputsAndBtnsForm  
-  borderColor                             style attribute for input that overwrite borderColorOfInputsAndBtnsForm  
-  fontFamily                              style attribute for input that overwrite fontFamilyOfInputsAndBtnsAndLabelsForm  
+  flex                                    flex of fieldset (default is "1 1 25%" - if two in same row with this default, it will be 50/50 until wrapped bcs of minWidth)
 */
 
 export const FormInput = ({
@@ -471,36 +485,29 @@ export const FormInput = ({
   functionOnKeyDown,
   minWidth = "200px",
   flex = "1 1 25%",
+  hintVisibleOnlyOnInvalid = false,
   hintText = "",
   styleOfLabels,
-  fontSizeOfLabelsForm,
-  fontWeightOfLabelsForm,
-  textColorOfLabelsForm,
-  paddingOfLabelsForm,
-  bgColorOfLabelsForm,
-  fontSizeOfInputsAndBtnsForm,
-  fontWeightOfInputsAndBtnsForm,
-  textColorOfInputsAndBtnsForm,
-  paddingOfInputsAndBtnsForm,
-  borderRadiusOfInputsAndBtnsForm,
-  borderSizeOfInputsAndBtnsForm,
-  borderColorOfInputsAndBtnsForm,
-  fontFamilyOfInputsAndBtnsAndLabelsForm,
-  bgColorOfInputsAndBtnsForm,
-  fontSizeLabel = "",
-  fontWeightLabel = "",
-  textColorLabel = "",
-  paddingLabel = "",
-  bgColorLabel = "",
-  fontSizeInput = "",
-  fontWeightInput = "",
-  textColorInput = "",
-  paddingInput = "",
-  bgColorInput = "",
-  borderRadius = "",
-  borderSize = "",
-  borderColor = "",
-  fontFamily = "",
+  // LABEL
+  fontFamilyOfLabel = "",
+  fontSizeOfLabel = "",
+  fontWeightOfLabel = "",
+  textColorOfLabel = "",
+  paddingOfLabel = "",
+  bgColorOfLabel = "",
+  borderRadiusOfLabel = "",
+  // CONTAINER
+  paddingOfContainer = "",
+  bgColorOfContainer = "",
+  borderRadiusOfContainer = "",
+  borderSizeOfContainer = "",
+  borderColorOfContainer = "",
+  boxShadowOnFocusOfContainer = "",
+  // VALUE
+  fontFamilyOfValues = "",
+  fontSizeOfValues = "",
+  fontWeightOfValues = "",
+  textColorOfValues = "",
 }) => {
   const [isActive, setIsActive] = useState(false);
   const [isValid, setIsValid] = useState(true);
@@ -529,7 +536,7 @@ export const FormInput = ({
 
   const validateInput = (e) => {
     if (isRequired || (!isRequired && e.target.value && validationPattern)) {
-      const pattern = validationPattern;
+      const pattern = validationPattern || /^.+$/;
       const value = e.target.value;
       if (!pattern.test(value)) {
         setIsValid(false);
@@ -556,21 +563,13 @@ export const FormInput = ({
         <label
           htmlFor={`${tag}`}
           style={{
-            fontSize: `${fontSizeLabel ? fontSizeLabel : fontSizeOfLabelsForm}`,
-            fontWeight: `${
-              fontWeightLabel ? fontWeightLabel : fontWeightOfLabelsForm
-            }`,
-            color: `${textColorLabel ? textColorLabel : textColorOfLabelsForm}`,
-            padding: `${paddingLabel ? paddingLabel : paddingOfLabelsForm}`,
-            borderRadius: `${
-              borderRadius ? borderRadius : borderRadiusOfInputsAndBtnsForm
-            }`,
-            fontFamily: `${
-              fontFamily ? fontFamily : fontFamilyOfInputsAndBtnsAndLabelsForm
-            }`,
-            backgroundColor: `${
-              bgColorLabel ? bgColorLabel : bgColorOfLabelsForm
-            }`,
+            "--localFontFamilyOfLabels": `${fontFamilyOfLabel}`,
+            "--localFontSizeOfLabels": `${fontSizeOfLabel}`,
+            "--localFontWeightOfLabels": `${fontWeightOfLabel}`,
+            "--localTextColorOfLabels": `${textColorOfLabel}`,
+            "--localPaddingOfLabels": `${paddingOfLabel}`,
+            "--localBgColorOfLabels": `${bgColorOfLabel}`,
+            "--localBorderRadiusOfLabels": `${borderRadiusOfLabel}`,
           }}
           className={`${styles.formLabel} ${
             isActive ? `${styles.active}` : ""
@@ -594,50 +593,23 @@ export const FormInput = ({
           onFocus={handleFocus}
           onKeyDown={handleKeyDown}
           required={isRequired}
-          // onInvalid={(e) => {
-          // e.target.setCustomValidity("Vyplňte prosím Váš e-mail.");
-          // }}
-          // onInput={(e) => e.target.setCustomValidity("")}
           disabled={isDisabled}
           style={{
-            fontSize: `${
-              fontSizeInput ? fontSizeInput : fontSizeOfInputsAndBtnsForm
-            }`,
-            fontWeight: `${
-              fontWeightInput ? fontWeightInput : fontWeightOfInputsAndBtnsForm
-            }`,
-            color: `${
-              textColorInput ? textColorInput : textColorOfInputsAndBtnsForm
-            }`,
-            padding: `${
-              paddingInput ? paddingInput : paddingOfInputsAndBtnsForm
-            }`,
-            borderRadius: `${
-              borderRadius ? borderRadius : borderRadiusOfInputsAndBtnsForm
-            }`,
-            border: `${
-              borderSize ? borderSize : borderSizeOfInputsAndBtnsForm
-            } solid ${
-              !isValid
-                ? "var(--color-error)"
-                : borderColor
-                ? borderColor
-                : borderColorOfInputsAndBtnsForm
-            }`,
-            fontFamily: `${
-              fontFamily ? fontFamily : fontFamilyOfInputsAndBtnsAndLabelsForm
-            }`,
-            backgroundColor: `${
-              bgColorInput ? bgColorInput : bgColorOfInputsAndBtnsForm
-            }`,
+            "--localFontFamilyOfValues": `${fontFamilyOfValues}`,
+            "--localFontSizeOfValues": `${fontSizeOfValues}`,
+            "--localFontWeightOfValues": `${fontWeightOfValues}`,
+            "--localTextColorOfValues": `${textColorOfValues}`,
+            "--localPaddingOfContainers": `${paddingOfContainer}`,
+            "--localBgColorOfContainers": `${bgColorOfContainer}`,
+            "--localBorderRadiusOfContainers": `${borderRadiusOfContainer}`,
+            "--localBorderSizeOfContainers": `${borderSizeOfContainer}`,
+            "--localBorderColorOfContainers": `${borderColorOfContainer}`,
+            "--localBoxShadowOnFocusOfContainers": `${boxShadowOnFocusOfContainer}`,
           }}
         ></input>
-        {hintText && !isValid && (
+        {hintText && (hintVisibleOnlyOnInvalid ? !isValid : true) && (
           <>
-            <IconInfoCircle
-              className={`${styles.hintIcon}`}
-              style={{ fill: `${isValid ? "" : "var(--color-error)"}` }}
-            />
+            <IconInfoCircle className={`${styles.hintIcon}`} />
             <span className={`${styles.hintText}`}>{hintText}</span>
           </>
         )}
@@ -678,21 +650,7 @@ INSTRUCTIONS
   functionOnFocus                         function that proceed onFocus
   functionOnKeyDown                       function that proceed onKeyDown
   minWidth                                minWidth of fieldset element (default to 200px) - if space, it take full width
-  flex                                    flex of fieldset (default is "1 1 25%" - if two in same row with this default, it will be 50/50 until wrapped bcs of minWidth) 
-  fontSizeLabel                           style attribute for textarea that overwrite fontSizeOfLabelsForm  
-  fontWeightLabel                         style attribute for textarea that overwrite fontWeightOfLabelsForm  
-  textColorLabel                          style attribute for textarea that overwrite textColorOfLabelsForm  
-  paddingLabel                            style attribute for textarea that overwrite paddingOfLabelsForm
-  bgColorLabel                            style attribute for textarea that overwrite bgColorOfLabelsForm
-  fontSizeInput                           style attribute for textarea that overwrite fontSizeOfInputsAndBtnsForm  
-  fontWeightInput                         style attribute for textarea that overwrite fontWeightOfInputsAndBtnsForm  
-  textColorInput                          style attribute for textarea that overwrite textColorOfInputsAndBtnsForm  
-  paddingInput                            style attribute for textarea that overwrite paddingOfInputsAndBtnsForm  
-  bgColorInput                            style attribute for textarea that overwrite bgColorOfInputsAndBtnsForm  
-  borderRadius                            style attribute for textarea that overwrite borderRadiusOfInputsAndBtnsForm  
-  borderSize                              style attribute for textarea that overwrite borderSizeOfInputsAndBtnsForm  
-  borderColor                             style attribute for textarea that overwrite borderColorOfInputsAndBtnsForm  
-  fontFamily                              style attribute for textarea that overwrite fontFamilyOfInputsAndBtnsAndLabelsForm  
+  flex                                    flex of fieldset (default is "1 1 25%" - if two in same row with this default, it will be 50/50 until wrapped bcs of minWidth)
 */
 
 export const FormTextarea = ({
@@ -712,36 +670,29 @@ export const FormTextarea = ({
   functionOnKeyDown,
   minWidth = "200px",
   flex = "1 1 25%",
+  hintVisibleOnlyOnInvalid = false,
   hintText = "",
   styleOfLabels,
-  fontSizeOfLabelsForm,
-  fontWeightOfLabelsForm,
-  textColorOfLabelsForm,
-  paddingOfLabelsForm,
-  bgColorOfLabelsForm,
-  fontSizeOfInputsAndBtnsForm,
-  fontWeightOfInputsAndBtnsForm,
-  textColorOfInputsAndBtnsForm,
-  paddingOfInputsAndBtnsForm,
-  borderRadiusOfInputsAndBtnsForm,
-  borderSizeOfInputsAndBtnsForm,
-  borderColorOfInputsAndBtnsForm,
-  fontFamilyOfInputsAndBtnsAndLabelsForm,
-  bgColorOfInputsAndBtnsForm,
-  fontSizeLabel = "",
-  fontWeightLabel = "",
-  textColorLabel = "",
-  paddingLabel = "",
-  bgColorLabel = "",
-  fontSizeInput = "",
-  fontWeightInput = "",
-  textColorInput = "",
-  paddingInput = "",
-  bgColorInput = "",
-  borderRadius = "",
-  borderSize = "",
-  borderColor = "",
-  fontFamily = "",
+  // LABEL
+  fontFamilyOfLabel = "",
+  fontSizeOfLabel = "",
+  fontWeightOfLabel = "",
+  textColorOfLabel = "",
+  paddingOfLabel = "",
+  bgColorOfLabel = "",
+  borderRadiusOfLabel = "",
+  // CONTAINER
+  paddingOfContainer = "",
+  bgColorOfContainer = "",
+  borderRadiusOfContainer = "",
+  borderSizeOfContainer = "",
+  borderColorOfContainer = "",
+  boxShadowOnFocusOfContainer = "",
+  // VALUE
+  fontFamilyOfValues = "",
+  fontSizeOfValues = "",
+  fontWeightOfValues = "",
+  textColorOfValues = "",
 }) => {
   const [isActive, setIsActive] = useState(false);
   const [isValid, setIsValid] = useState(true);
@@ -770,7 +721,7 @@ export const FormTextarea = ({
 
   const validateInput = (e) => {
     if (isRequired || (!isRequired && e.target.value && validationPattern)) {
-      const pattern = validationPattern;
+      const pattern = validationPattern || /^.+$/;
       const value = e.target.value;
       if (!pattern.test(value)) {
         setIsValid(false);
@@ -797,21 +748,13 @@ export const FormTextarea = ({
         <label
           htmlFor={`${tag}`}
           style={{
-            fontSize: `${fontSizeLabel ? fontSizeLabel : fontSizeOfLabelsForm}`,
-            fontWeight: `${
-              fontWeightLabel ? fontWeightLabel : fontWeightOfLabelsForm
-            }`,
-            color: `${textColorLabel ? textColorLabel : textColorOfLabelsForm}`,
-            padding: `${paddingLabel ? paddingLabel : paddingOfLabelsForm}`,
-            borderRadius: `${
-              borderRadius ? borderRadius : borderRadiusOfInputsAndBtnsForm
-            }`,
-            fontFamily: `${
-              fontFamily ? fontFamily : fontFamilyOfInputsAndBtnsAndLabelsForm
-            }`,
-            backgroundColor: `${
-              bgColorLabel ? bgColorLabel : bgColorOfLabelsForm
-            }`,
+            "--localFontFamilyOfLabels": `${fontFamilyOfLabel}`,
+            "--localFontSizeOfLabels": `${fontSizeOfLabel}`,
+            "--localFontWeightOfLabels": `${fontWeightOfLabel}`,
+            "--localTextColorOfLabels": `${textColorOfLabel}`,
+            "--localPaddingOfLabels": `${paddingOfLabel}`,
+            "--localBgColorOfLabels": `${bgColorOfLabel}`,
+            "--localBorderRadiusOfLabels": `${borderRadiusOfLabel}`,
           }}
           className={`${styles.formLabel} ${
             isActive ? `${styles.active}` : ""
@@ -823,63 +766,36 @@ export const FormTextarea = ({
           )}
         </label>
       )}
-      <div className={`${styles.textareaContainer}`}>
+      <div className={`${styles.textAreaContainer}`}>
         <textarea
           name={`${tag}`}
           maxLength={maxLength}
           rows={rows}
-          className={`${styles.formTextarea}`}
+          className={`${styles.formTextArea}`}
           placeholder={styleOfLabels !== "floating" ? placeholder : ""}
           onChange={handleChange}
           onBlur={handleBlur}
           onFocus={handleFocus}
           onKeyDown={handleKeyDown}
           required={isRequired}
-          // onInvalid={(e) => {
-          // e.target.setCustomValidity("Vyplňte prosím Váš e-mail.");
-          // }}
-          // onInput={(e) => e.target.setCustomValidity("")}
           disabled={isDisabled}
           style={{
-            fontSize: `${
-              fontSizeInput ? fontSizeInput : fontSizeOfInputsAndBtnsForm
-            }`,
-            fontWeight: `${
-              fontWeightInput ? fontWeightInput : fontWeightOfInputsAndBtnsForm
-            }`,
-            color: `${
-              textColorInput ? textColorInput : textColorOfInputsAndBtnsForm
-            }`,
-            padding: `${
-              paddingInput ? paddingInput : paddingOfInputsAndBtnsForm
-            }`,
-            borderRadius: `${
-              borderRadius ? borderRadius : borderRadiusOfInputsAndBtnsForm
-            }`,
-            border: `${
-              borderSize ? borderSize : borderSizeOfInputsAndBtnsForm
-            } solid ${
-              !isValid
-                ? "var(--color-error)"
-                : borderColor
-                ? borderColor
-                : borderColorOfInputsAndBtnsForm
-            }`,
-            fontFamily: `${
-              fontFamily ? fontFamily : fontFamilyOfInputsAndBtnsAndLabelsForm
-            }`,
-            backgroundColor: `${
-              bgColorInput ? bgColorInput : bgColorOfInputsAndBtnsForm
-            }`,
+            "--localFontFamilyOfValues": `${fontFamilyOfValues}`,
+            "--localFontSizeOfValues": `${fontSizeOfValues}`,
+            "--localFontWeightOfValues": `${fontWeightOfValues}`,
+            "--localTextColorOfValues": `${textColorOfValues}`,
+            "--localPaddingOfContainers": `${paddingOfContainer}`,
+            "--localBgColorOfContainers": `${bgColorOfContainer}`,
+            "--localBorderRadiusOfContainers": `${borderRadiusOfContainer}`,
+            "--localBorderSizeOfContainers": `${borderSizeOfContainer}`,
+            "--localBorderColorOfContainers": `${borderColorOfContainer}`,
+            "--localBoxShadowOnFocusOfContainers": `${boxShadowOnFocusOfContainer}`,
             resize: `${resize}`,
           }}
         ></textarea>
-        {hintText && !isValid && (
+        {hintText && (hintVisibleOnlyOnInvalid ? !isValid : true) && (
           <>
-            <IconInfoCircle
-              className={`${styles.hintIcon}`}
-              style={{ fill: `${isValid ? "" : "var(--color-error)"}` }}
-            />
+            <IconInfoCircle className={`${styles.hintIcon}`} />
             <span className={`${styles.hintText}`}>{hintText}</span>
           </>
         )}
@@ -913,26 +829,12 @@ INSTRUCTIONS
   functionOnFocus                         function that proceed onFocus
   functionOnKeyDown                       function that proceed onKeyDown
   minWidth                                minWidth of fieldset element (default to 200px) - if space, it take full width
-  flex                                    flex of fieldset (default is "1 1 25%" - if two in same row with this default, it will be 50/50 until wrapped bcs of minWidth) 
-  fontSizeLabel                           style attribute for select that overwrite fontSizeOfLabelsForm  
-  fontWeightLabel                         style attribute for select that overwrite fontWeightOfLabelsForm  
-  textColorLabel                          style attribute for select that overwrite textColorOfLabelsForm  
-  paddingLabel                            style attribute for select that overwrite paddingOfLabelsForm
-  bgColorLabel                            style attribute for select that overwrite bgColorOfLabelsForm
-  fontSizeInput                           style attribute for select that overwrite fontSizeOfInputsAndBtnsForm  
-  fontWeightInput                         style attribute for select that overwrite fontWeightOfInputsAndBtnsForm  
-  textColorInput                          style attribute for select that overwrite textColorOfInputsAndBtnsForm  
-  paddingInput                            style attribute for select that overwrite paddingOfInputsAndBtnsForm  
-  borderRadius                            style attribute for select that overwrite borderRadiusOfInputsAndBtnsForm  
-  borderSize                              style attribute for select that overwrite borderSizeOfInputsAndBtnsForm  
-  borderColor                             style attribute for select that overwrite borderColorOfInputsAndBtnsForm  
-  fontFamily                              style attribute for select that overwrite fontFamilyOfInputsAndBtnsAndLabelsForm  
-  bgColorInput                            style attribute for select that overwrite bgColorOfInputsAndBtnsForm  
+  flex                                    flex of fieldset (default is "1 1 25%" - if two in same row with this default, it will be 50/50 until wrapped bcs of minWidth)
 */
 
 export const FormSelect = ({
   tag = "",
-  options = ["Option 1", "Option 2"],
+  options = ["Option 1", "Option 2", "Other"],
   defaultOption = "Vyberte",
   defaultOptionShowInOptions = false,
   label = "",
@@ -947,47 +849,283 @@ export const FormSelect = ({
   flex = "1 1 25%",
   hintText = "",
   styleOfLabels,
-  fontSizeOfLabelsForm,
-  fontWeightOfLabelsForm,
-  textColorOfLabelsForm,
-  paddingOfLabelsForm,
-  fontSizeOfInputsAndBtnsForm,
-  fontWeightOfInputsAndBtnsForm,
-  textColorOfInputsAndBtnsForm,
-  paddingOfInputsAndBtnsForm,
-  bgColorOfLabelsForm,
-  borderRadiusOfInputsAndBtnsForm,
-  borderSizeOfInputsAndBtnsForm,
-  borderColorOfInputsAndBtnsForm,
-  fontFamilyOfInputsAndBtnsAndLabelsForm,
-  bgColorOfInputsAndBtnsForm,
-  fontSizeLabel = "",
-  fontWeightLabel = "",
-  textColorLabel = "",
-  paddingLabel = "",
-  bgColorLabel = "",
-  fontSizeInput = "",
-  fontWeightInput = "",
-  textColorInput = "",
-  paddingInput = "",
-  bgColorInput = "var(--shadow-5)",
-  borderRadius = "",
-  borderSize = "",
-  borderColor = "",
-  fontFamily = "",
+  // LABEL
+  fontFamilyOfLabel = "",
+  fontSizeOfLabel = "",
+  fontWeightOfLabel = "",
+  textColorOfLabel = "",
+  paddingOfLabel = "",
+  bgColorOfLabel = "",
+  borderRadiusOfLabel = "",
+  // CONTAINER
+  paddingOfContainer = "",
+  bgColorOfContainer = "",
+  borderRadiusOfContainer = "",
+  borderSizeOfContainer = "",
+  borderColorOfContainer = "",
+  boxShadowOnFocusOfContainer = "",
+  boxShadowOnFocusOfDropdown = "",
+  // VALUE
+  fontFamilyOfValues = "",
+  fontSizeOfValues = "",
+  fontWeightOfValues = "",
+  textColorOfValues = "",
+  paddingOfValues = "",
+  bgColorOfValues = "",
+  bgColorOnHoverOfValues = "",
+  // UNSELECTED
+  textColorOfUnselected = "",
+  // SELECTED VALUES
+  textColorOfSelected = "",
+  bgColorOfSelected = "",
 }) => {
+  const [value, setValue] = useState(defaultOption);
+  const [isOpen, setIsOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);
-  const [value, setValue] = useState(
-    defaultOption ? defaultOption : options[0]
-  );
+  const selectRef = useRef(null);
 
-  const handleChange = (e) => {
-    // setIsActive(value !== "" && value !== null && value !== undefined) && e.target === document.activeElement;
-    functionOnChange && functionOnChange(e);
-    setValue(e.target.value);
+  const handleOptionClick = (clickedValue) => {
+    if (clickedValue === value) {
+      setValue(defaultOption);
+    } else {
+      setValue(clickedValue);
+    }
+    functionOnChange && functionOnChange(clickedValue);
+    setIsOpen(false); // Close dropdown after selection
   };
 
   const handleBlur = (e) => {
+    if (!selectRef.current.contains(document.activeElement)) {
+      setIsOpen(false);
+    }
+    setIsActive(value !== "" && value !== null && value !== undefined);
+    functionOnBlur && functionOnBlur(e);
+  };
+
+  const handleFocus = (e) => {
+    setIsActive(true);
+    functionOnFocus && functionOnFocus(e);
+  };
+
+  return (
+    <fieldset
+      className={styles.formFieldset}
+      ref={selectRef}
+      style={{
+        marginTop: `${styleOfLabels === "floating" ? "1.5rem" : "0"}`,
+        minWidth: `${minWidth}`,
+        flex: `${flex}`,
+      }}
+    >
+      {label && (
+        <label
+          htmlFor={`${tag}`}
+          style={{
+            "--localFontFamilyOfLabels": `${fontFamilyOfLabel}`,
+            "--localFontSizeOfLabels": `${fontSizeOfLabel}`,
+            "--localFontWeightOfLabels": `${fontWeightOfLabel}`,
+            "--localTextColorOfLabels": `${textColorOfLabel}`,
+            "--localPaddingOfLabels": `${paddingOfLabel}`,
+            "--localBgColorOfLabels": `${bgColorOfLabel}`,
+            "--localBorderRadiusOfLabels": `${borderRadiusOfLabel}`,
+          }}
+          className={`${styles.formLabel} ${
+            isActive ? `${styles.active}` : ""
+          } ${styles[styleOfLabels]}`}
+        >
+          {label}
+          {isRequired && isRequiredStar && (
+            <span className={`${styles.requiredStar}`}> *</span>
+          )}
+        </label>
+      )}
+      <div className={`${styles.selectContainer}`}>
+        <input type="hidden" name={tag} value={value} />
+        <div
+          name={`${tag}`}
+          className={`${styles.formSelect} ${isOpen ? styles.open : ""}`}
+          onClick={() => !isDisabled && setIsOpen((prev) => !prev)}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+          onKeyDown={functionOnKeyDown}
+          required={isRequired}
+          disabled={isDisabled}
+          tabIndex={0}
+          role="button"
+          style={{
+            // CONTAINERS
+            "--localPaddingOfContainers": `${paddingOfContainer}`,
+            "--localBgColorOfContainers": `${bgColorOfContainer}`,
+            "--localBorderRadiusOfContainers": `${borderRadiusOfContainer}`,
+            "--localBorderSizeOfContainers": `${borderSizeOfContainer}`,
+            "--localBorderColorOfContainers": `${borderColorOfContainer}`,
+            "--localBoxShadowOnFocusOfContainers": `${boxShadowOnFocusOfContainer}`,
+            "--localBoxShadowOnFocusOfDropdowns": `${boxShadowOnFocusOfDropdown}`,
+            // VALUES
+            "--localFontFamilyOfValues": `${fontFamilyOfValues}`,
+            "--localFontSizeOfValues": `${fontSizeOfValues}`,
+            "--localFontWeightOfValues": `${fontWeightOfValues}`,
+            "--localTextColorOfValues": `${
+              value === defaultOption
+                ? textColorOfUnselected
+                  ? textColorOfUnselected
+                  : "var(--localTextColorOfUnselected)"
+                : textColorOfValues
+            }`,
+            "--localPaddingOfValues": `${paddingOfValues}`,
+            "--localBgColorOfValues": `${bgColorOfValues}`,
+            "--localBgColorOnHoverOfValues": `${bgColorOnHoverOfValues}`,
+            // SELECTED VALUES
+            "--localTextColorOfSelected": `${textColorOfSelected}`,
+            "--localBgColorOfSelected": `${bgColorOfSelected}`,
+          }}
+        >
+          {value}
+          <IconDropdownCircle className={`${styles.dropdownIcon}`} />
+        </div>
+        {isOpen && (
+          <div
+            className={styles.optionsList}
+            onMouseDown={(e) => e.preventDefault()}
+          >
+            {defaultOption &&
+              defaultOptionShowInOptions &&
+              value !== defaultOption && (
+                <div
+                  key={"default"}
+                  className={`${styles.option}`}
+                  style={{
+                    color: `${
+                      textColorOfUnselected
+                        ? textColorOfUnselected
+                        : "var(--localTextColorOfUnselected)"
+                    }`,
+                  }}
+                  onClick={() =>
+                    !isDisabled && handleOptionClick(defaultOption)
+                  }
+                >
+                  {defaultOption}
+                </div>
+              )}
+            {options.map((option, index) => (
+              <div
+                key={index}
+                className={`${styles.option} ${
+                  value === option ? styles.selected : ""
+                }`}
+                onClick={() => !isDisabled && handleOptionClick(option)}
+              >
+                {option}
+              </div>
+            ))}
+          </div>
+        )}
+        {hintText && (
+          <>
+            <IconInfoCircle className={`${styles.hintIcon}`} />
+            <span className={`${styles.hintText}`}>{hintText}</span>
+          </>
+        )}
+      </div>
+    </fieldset>
+  );
+};
+
+/*
+INPUT MultiSelect (Universal - can be used multiple times in one form with different tag)
+#F0F
+*/
+
+/*
+EXEMPLES
+
+*/
+
+/*
+INSTRUCTIONS
+  tag                                     *REQUIRED - its for htmlFor and name of select to make it original (cant be two selects with same name in form)
+  options                                 *REQUIRED - list of options (["Option 1", "Option 2"])
+  defaultOption                           Default option that will be visible on default
+  defaultOptionShowInOptions              If true, default option can be picked from dropdown list of option, false means its not visible in list (default false)
+  label                                   fill either label or placeholder
+  isRequired                              true if required field (can't submit without this field filled)
+  isRequiredStar                          if true, show red start next to label (default true)
+  isDisabled                              true if select is disabled
+  functionOnChange                        function that proceed onChange
+  functionOnBlur                          function that proceed onBlur
+  functionOnFocus                         function that proceed onFocus
+  functionOnKeyDown                       function that proceed onKeyDown
+  minWidth                                minWidth of fieldset element (default to 200px) - if space, it take full width
+  flex                                    flex of fieldset (default is "1 1 25%" - if two in same row with this default, it will be 50/50 until wrapped bcs of minWidth)
+*/
+
+export const FormMultiSelect = ({
+  tag = "",
+  options = ["Option 1", "Option 2", "Other"],
+  defaultOption = "Vyberte",
+  defaultOptionShowInOptions = false,
+  label = "",
+  isRequired = false,
+  isRequiredStar = true,
+  isDisabled,
+  functionOnChange,
+  functionOnBlur,
+  functionOnFocus,
+  functionOnKeyDown,
+  minWidth = "200px",
+  flex = "1 1 25%",
+  hintText = "",
+  styleOfLabels,
+  // LABEL
+  fontFamilyOfLabel = "",
+  fontSizeOfLabel = "",
+  fontWeightOfLabel = "",
+  textColorOfLabel = "",
+  paddingOfLabel = "",
+  bgColorOfLabel = "",
+  borderRadiusOfLabel = "",
+  // CONTAINER
+  paddingOfContainer = "",
+  bgColorOfContainer = "",
+  borderRadiusOfContainer = "",
+  borderSizeOfContainer = "",
+  borderColorOfContainer = "",
+  boxShadowOnFocusOfContainer = "",
+  boxShadowOnFocusOfDropdown = "",
+  // VALUE
+  fontFamilyOfValues = "",
+  fontSizeOfValues = "",
+  fontWeightOfValues = "",
+  textColorOfValues = "",
+  paddingOfValues = "",
+  bgColorOfValues = "",
+  bgColorOnHoverOfValues = "",
+  // UNSELECTED
+  textColorOfUnselected = "",
+  // SELECTED VALUES
+  textColorOfSelected = "",
+  bgColorOfSelected = "",
+}) => {
+  const [values, setValues] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  const multiSelectRef = useRef();
+
+  const toggleOption = (clickedValue) => {
+    setValues((prev) => {
+      const newSelected = prev.includes(clickedValue)
+        ? prev.filter((item) => item !== clickedValue)
+        : [...prev, clickedValue];
+      functionOnChange && functionOnChange(newSelected);
+      return newSelected;
+    });
+  };
+
+  const handleBlur = (e) => {
+    if (!multiSelectRef.current.contains(document.activeElement)) {
+      setIsOpen(false);
+    }
     const value = e.target.value;
     setIsActive(value !== "" && value !== null && value !== undefined);
     functionOnBlur && functionOnBlur(e);
@@ -1004,32 +1142,25 @@ export const FormSelect = ({
 
   return (
     <fieldset
-      className={`${styles.formFieldset}`}
+      className={styles.formFieldset}
+      ref={multiSelectRef}
       style={{
         marginTop: `${styleOfLabels === "floating" ? "1.5rem" : "0"}`,
         minWidth: `${minWidth}`,
         flex: `${flex}`,
       }}
     >
-      {label && styleOfLabels !== "none" && (
+      {label && (
         <label
           htmlFor={`${tag}`}
           style={{
-            fontSize: `${fontSizeLabel ? fontSizeLabel : fontSizeOfLabelsForm}`,
-            fontWeight: `${
-              fontWeightLabel ? fontWeightLabel : fontWeightOfLabelsForm
-            }`,
-            color: `${textColorLabel ? textColorLabel : textColorOfLabelsForm}`,
-            padding: `${paddingLabel ? paddingLabel : paddingOfLabelsForm}`,
-            borderRadius: `${
-              borderRadius ? borderRadius : borderRadiusOfInputsAndBtnsForm
-            }`,
-            fontFamily: `${
-              fontFamily ? fontFamily : fontFamilyOfInputsAndBtnsAndLabelsForm
-            }`,
-            backgroundColor: `${
-              bgColorLabel ? bgColorLabel : bgColorOfLabelsForm
-            }`,
+            "--localFontFamilyOfLabels": `${fontFamilyOfLabel}`,
+            "--localFontSizeOfLabels": `${fontSizeOfLabel}`,
+            "--localFontWeightOfLabels": `${fontWeightOfLabel}`,
+            "--localTextColorOfLabels": `${textColorOfLabel}`,
+            "--localPaddingOfLabels": `${paddingOfLabel}`,
+            "--localBgColorOfLabels": `${bgColorOfLabel}`,
+            "--localBorderRadiusOfLabels": `${borderRadiusOfLabel}`,
           }}
           className={`${styles.formLabel} ${
             isActive ? `${styles.active}` : ""
@@ -1041,64 +1172,258 @@ export const FormSelect = ({
           )}
         </label>
       )}
-      <div className={`${styles.selectContainer}`}>
-        <select
-          name={`${tag}`}
-          className={`${styles.formSelect}`}
-          onChange={handleChange}
+      <div className={`${styles.multiSelectContainer}`}>
+        <input type="hidden" name={tag} value={values} />
+        <div
+          className={`${styles.formMultiSelect} ${isOpen ? styles.open : ""}`}
+          onClick={() => !isDisabled && setIsOpen((prev) => !prev)}
           onBlur={handleBlur}
           onFocus={handleFocus}
           onKeyDown={handleKeyDown}
           required={isRequired}
-          // onInvalid={(e) => {
-          // e.target.setCustomValidity("Vyplňte prosím Váš e-mail.");
-          // }}
-          // onInput={(e) => e.target.setCustomValidity("")}
           disabled={isDisabled}
+          tabIndex={0}
+          role="button"
           style={{
-            fontSize: `${
-              fontSizeInput ? fontSizeInput : fontSizeOfInputsAndBtnsForm
+            // CONTAINERS
+            "--localPaddingOfContainers": `${paddingOfContainer}`,
+            "--localBgColorOfContainers": `${bgColorOfContainer}`,
+            "--localBorderRadiusOfContainers": `${borderRadiusOfContainer}`,
+            "--localBorderSizeOfContainers": `${borderSizeOfContainer}`,
+            "--localBorderColorOfContainers": `${borderColorOfContainer}`,
+            "--localBoxShadowOnFocusOfContainers": `${boxShadowOnFocusOfContainer}`,
+            "--localBoxShadowOnFocusOfDropdowns": `${boxShadowOnFocusOfDropdown}`,
+            // VALUES
+            "--localFontFamilyOfValues": `${fontFamilyOfValues}`,
+            "--localFontSizeOfValues": `${fontSizeOfValues}`,
+            "--localFontWeightOfValues": `${fontWeightOfValues}`,
+            "--localTextColorOfValues": `${
+              values.length === 0
+                ? textColorOfUnselected
+                  ? textColorOfUnselected
+                  : "var(--localTextColorOfUnselected)"
+                : textColorOfValues
             }`,
-            fontWeight: `${
-              fontWeightInput ? fontWeightInput : fontWeightOfInputsAndBtnsForm
-            }`,
-            color: `${
-              value === defaultOption
-                ? "var(--shadow-50)"
-                : textColorInput
-                ? textColorInput
-                : textColorOfInputsAndBtnsForm
-            }`,
-            padding: `${
-              paddingInput ? paddingInput : paddingOfInputsAndBtnsForm
-            }`,
-            borderRadius: `${
-              borderRadius ? borderRadius : borderRadiusOfInputsAndBtnsForm
-            }`,
-            border: `${
-              borderSize ? borderSize : borderSizeOfInputsAndBtnsForm
-            } solid ${
-              borderColor ? borderColor : borderColorOfInputsAndBtnsForm
-            }`,
-            fontFamily: `${
-              fontFamily ? fontFamily : fontFamilyOfInputsAndBtnsAndLabelsForm
-            }`,
-            backgroundColor: `${
-              bgColorInput ? bgColorInput : bgColorOfInputsAndBtnsForm
-            }`,
+            "--localPaddingOfValues": `${paddingOfValues}`,
+            "--localBgColorOfValues": `${bgColorOfValues}`,
+            "--localBgColorOnHoverOfValues": `${bgColorOnHoverOfValues}`,
+            // SELECTED VALUES
+            "--localTextColorOfSelected": `${textColorOfSelected}`,
+            "--localBgColorOfSelected": `${bgColorOfSelected}`,
           }}
         >
-          {defaultOption && (
-            <option value={defaultOption} hidden={!defaultOptionShowInOptions}>
-              {defaultOption}
-            </option>
+          {values.length > 0 ? values.join(", ") : defaultOption}
+          <IconDropdownCircle className={`${styles.dropdownIcon}`} />
+        </div>
+        {isOpen && (
+          <div
+            className={`${styles.optionsList}`}
+            onMouseDown={(e) => e.preventDefault()}
+          >
+            {defaultOption &&
+              defaultOptionShowInOptions &&
+              values.length !== 0 && (
+                <div
+                  key={"default"}
+                  className={`${styles.option}`}
+                  style={{
+                    color: `${
+                      textColorOfUnselected
+                        ? textColorOfUnselected
+                        : "var(--localTextColorOfUnselected)"
+                    }`,
+                  }}
+                  onClick={() => {
+                    !isDisabled && setValues([]);
+                    !isDisabled && setIsOpen(false);
+                    !isDisabled && functionOnChange && functionOnChange([]);
+                  }}
+                >
+                  {defaultOption}
+                </div>
+              )}
+            {options.map((option, index) => (
+              <div
+                key={index}
+                className={`${styles.option} ${
+                  values.includes(option) ? styles.selected : ""
+                }`}
+                onClick={() => !isDisabled && toggleOption(option)}
+              >
+                {option}
+              </div>
+            ))}
+          </div>
+        )}
+        {hintText && (
+          <>
+            <IconInfoCircle className={`${styles.hintIcon}`} />
+            <span className={`${styles.hintText}`}>{hintText}</span>
+          </>
+        )}
+      </div>
+    </fieldset>
+  );
+};
+
+/*
+INPUT MultiCheckbox (Universal - can be used multiple times in one form with different tag)
+#F0F
+*/
+
+/*
+EXEMPLES
+
+*/
+
+/*
+INSTRUCTIONS
+  tag                                     *REQUIRED - its for htmlFor and name of select to make it original (cant be two selects with same name in form)
+  options                                 *REQUIRED - list of options (["Option 1", "Option 2"])
+  defaultOption                           Default option that will be visible on default
+  defaultOptionShowInOptions              If true, default option can be picked from dropdown list of option, false means its not visible in list (default false)
+  label                                   fill either label or placeholder
+  isRequired                              true if required field (can't submit without this field filled)
+  isRequiredStar                          if true, show red start next to label (default true)
+  isDisabled                              true if select is disabled
+  functionOnChange                        function that proceed onChange
+  minWidth                                minWidth of fieldset element (default to 200px) - if space, it take full width
+  flex                                    flex of fieldset (default is "1 1 25%" - if two in same row with this default, it will be 50/50 until wrapped bcs of minWidth)
+*/
+
+export const FormMultiCheckbox = ({
+  tag = "",
+  ref = {},
+  options = ["Option 1", "Option 2", "Other"],
+  label = "",
+  isRequired = false,
+  isRequiredStar = true,
+  isDisabled,
+  functionOnChange,
+  minWidth = "200px",
+  flex = "1 1 25%",
+  hintText = "",
+  styleOfLabels,
+  // LABEL
+  fontFamilyOfLabel = "",
+  fontSizeOfLabel = "",
+  fontWeightOfLabel = "",
+  textColorOfLabel = "",
+  paddingOfLabel = "",
+  bgColorOfLabel = "",
+  borderRadiusOfLabel = "",
+  // CONTAINER
+  paddingOfContainer = "",
+  bgColorOfContainer = "",
+  borderRadiusOfContainer = "",
+  borderSizeOfContainer = "",
+  borderColorOfContainer = "",
+  boxShadowOnFocusOfContainer = "",
+  // VALUE
+  fontFamilyOfValues = "",
+  fontSizeOfValues = "",
+  fontWeightOfValues = "",
+  textColorOfValues = "",
+  paddingOfValues = "",
+  bgColorOfValues = "",
+  bgColorOnHoverOfValues = "",
+  // UNSELECTED
+  textColorOfUnselected = "",
+  // SELECTED VALUES
+  textColorOfSelected = "",
+  bgColorOfSelected = "",
+}) => {
+  const [values, setValues] = useState([]);
+  const multiSelectRef = useRef();
+
+  const toggleOption = (clickedValue) => {
+    setValues((prev) => {
+      const newSelected = prev.includes(clickedValue)
+        ? prev.filter((item) => item !== clickedValue)
+        : [...prev, clickedValue];
+      functionOnChange && functionOnChange(newSelected);
+      return newSelected;
+    });
+  };
+
+  return (
+    <fieldset
+      className={styles.formFieldset}
+      ref={multiSelectRef}
+      style={{
+        marginTop: `${styleOfLabels === "floating" ? "1.5rem" : "0"}`,
+        minWidth: `${minWidth}`,
+        flex: `${flex}`,
+      }}
+    >
+      {label && (
+        <label
+          htmlFor={`${tag}`}
+          style={{
+            "--localFontFamilyOfLabels": `${fontFamilyOfLabel}`,
+            "--localFontSizeOfLabels": `${fontSizeOfLabel}`,
+            "--localFontWeightOfLabels": `${fontWeightOfLabel}`,
+            "--localTextColorOfLabels": `${textColorOfLabel}`,
+            "--localPaddingOfLabels": `${paddingOfLabel}`,
+            "--localBgColorOfLabels": `${bgColorOfLabel}`,
+            "--localBorderRadiusOfLabels": `${borderRadiusOfLabel}`,
+          }}
+          className={`${styles.formLabel} ${styles[styleOfLabels]}`}
+        >
+          {label}
+          {isRequired && isRequiredStar && (
+            <span className={`${styles.requiredStar}`}> *</span>
           )}
+        </label>
+      )}
+      <div className={`${styles.multiCheckboxContainer}`}>
+        <input type="hidden" name={tag} value={values} />
+        <div
+          className={`${styles.formMultiCheckbox}`}
+          onMouseDown={(e) => e.preventDefault()}
+          style={{
+            // CONTAINERS
+            "--localPaddingOfContainers": `${paddingOfContainer}`,
+            "--localBgColorOfContainers": `${bgColorOfContainer}`,
+            "--localBorderRadiusOfContainers": `${borderRadiusOfContainer}`,
+            "--localBorderSizeOfContainers": `${borderSizeOfContainer}`,
+            "--localBorderColorOfContainers": `${borderColorOfContainer}`,
+            "--localBoxShadowOnFocusOfContainers": `${boxShadowOnFocusOfContainer}`,
+            // VALUES
+            "--localFontFamilyOfValues": `${fontFamilyOfValues}`,
+            "--localFontSizeOfValues": `${fontSizeOfValues}`,
+            "--localFontWeightOfValues": `${fontWeightOfValues}`,
+            "--localTextColorOfValues": `${textColorOfValues}`,
+            "--localPaddingOfValues": `${paddingOfValues}`,
+            "--localBgColorOfValues": `${bgColorOfValues}`,
+            "--localBgColorOnHoverOfValues": `${bgColorOnHoverOfValues}`,
+            // UNSELECTED
+            "--localTextColorOfUnselected": `${textColorOfUnselected}`,
+            // SELECTED VALUES
+            "--localTextColorOfSelected": `${textColorOfSelected}`,
+            "--localBgColorOfSelected": `${bgColorOfSelected}`,
+          }}
+        >
           {options.map((option, index) => (
-            <option key={index} value={option}>
+            <div
+              key={index}
+              className={`${styles.option} ${
+                values.includes(option) ? styles.selected : ""
+              }`}
+              onClick={() => !isDisabled && toggleOption(option)}
+            >
+              <span
+                className={`${styles.symbol} ${
+                  values.includes(option) ? styles.checked : ""
+                }`}
+              >
+                <span />
+                <span />
+              </span>
               {option}
-            </option>
+            </div>
           ))}
-        </select>
+        </div>
         {hintText && (
           <>
             <IconInfoCircle className={`${styles.hintIcon}`} />
@@ -1139,21 +1464,7 @@ EXEMPLES
 INSTRUCTIONS
   label                                   fill either label or placeholder
   minWidth                                minWidth of fieldset element (default to 200px) - if space, it take full width
-  flex                                    flex of fieldset (default is "1 1 25%" - if two in same row with this default, it will be 50/50 until wrapped bcs of minWidth) 
-  fontSizeLabel                           style attribute for select that overwrite fontSizeOfLabelsForm  
-  fontWeightLabel                         style attribute for select that overwrite fontWeightOfLabelsForm  
-  textColorLabel                          style attribute for select that overwrite textColorOfLabelsForm  
-  paddingLabel                            style attribute for select that overwrite paddingOfLabelsForm
-  bgColorLabel                            style attribute for select that overwrite bgColorOfLabelsForm
-  fontSizeInput                           style attribute for select that overwrite fontSizeOfInputsAndBtnsForm  
-  fontWeightInput                         style attribute for select that overwrite fontWeightOfInputsAndBtnsForm  
-  textColorInput                          style attribute for select that overwrite textColorOfInputsAndBtnsForm  
-  paddingInput                            style attribute for select that overwrite paddingOfInputsAndBtnsForm  
-  borderRadius                            style attribute for select that overwrite borderRadiusOfInputsAndBtnsForm  
-  borderSize                              style attribute for select that overwrite borderSizeOfInputsAndBtnsForm  
-  borderColor                             style attribute for select that overwrite borderColorOfInputsAndBtnsForm  
-  fontFamily                              style attribute for select that overwrite fontFamilyOfInputsAndBtnsAndLabelsForm  
-  bgColorInput                            style attribute for select that overwrite bgColorOfInputsAndBtnsForm  
+  flex                                    flex of fieldset (default is "1 1 25%" - if two in same row with this default, it will be 50/50 until wrapped bcs of minWidth)  
 */
 
 export const FormPicker = ({
@@ -1161,34 +1472,28 @@ export const FormPicker = ({
   label,
   minWidth = "200px",
   flex = "1 1 25%",
-  fontSizeOfLabelsForm,
-  fontWeightOfLabelsForm,
-  textColorOfLabelsForm,
-  paddingOfLabelsForm,
-  fontSizeOfInputsAndBtnsForm,
-  fontWeightOfInputsAndBtnsForm,
-  textColorOfInputsAndBtnsForm,
-  paddingOfInputsAndBtnsForm,
-  bgColorOfLabelsForm,
-  borderRadiusOfInputsAndBtnsForm,
-  borderSizeOfInputsAndBtnsForm,
-  borderColorOfInputsAndBtnsForm,
-  fontFamilyOfInputsAndBtnsAndLabelsForm,
-  bgColorOfInputsAndBtnsForm,
-  fontSizeLabel = "",
-  fontWeightLabel = "",
-  textColorLabel = "",
-  paddingLabel = "",
-  bgColorLabel = "",
-  fontSizeInput = "",
-  fontWeightInput = "",
-  textColorInput = "",
-  paddingInput = "",
-  bgColorInput = "var(--shadow-10)",
-  borderRadius = "",
-  borderSize = "0",
-  borderColor = "",
-  fontFamily = "",
+  // LABEL
+  fontFamilyOfLabel = "",
+  fontSizeOfLabel = "",
+  fontWeightOfLabel = "",
+  textColorOfLabel = "",
+  paddingOfLabel = "",
+  bgColorOfLabel = "",
+  borderRadiusOfLabel = "",
+  // BTNS
+  fontFamilyOfBtns = "",
+  fontSizeOfBtns = "",
+  fontWeightOfBtns = "",
+  textColorOfPicker = "",
+  textColorOnHoverOfPicker = "",
+  textColorOnPickedOfPicker = "",
+  paddingOfBtns = "",
+  bgColorOfPicker = "",
+  bgColorOnHoverOfPicker = "",
+  bgColorOnPickedOfPicker = "",
+  borderRadiusOfBtns = "",
+  borderSizeOfBtns = "",
+  borderColorOfBtns = "",
 }) => {
   return (
     <div
@@ -1201,21 +1506,13 @@ export const FormPicker = ({
       {label && (
         <span
           style={{
-            fontSize: `${fontSizeLabel ? fontSizeLabel : fontSizeOfLabelsForm}`,
-            fontWeight: `${
-              fontWeightLabel ? fontWeightLabel : fontWeightOfLabelsForm
-            }`,
-            color: `${textColorLabel ? textColorLabel : textColorOfLabelsForm}`,
-            padding: `${paddingLabel ? paddingLabel : paddingOfLabelsForm}`,
-            borderRadius: `${
-              borderRadius ? borderRadius : borderRadiusOfInputsAndBtnsForm
-            }`,
-            fontFamily: `${
-              fontFamily ? fontFamily : fontFamilyOfInputsAndBtnsAndLabelsForm
-            }`,
-            backgroundColor: `${
-              bgColorLabel ? bgColorLabel : bgColorOfLabelsForm
-            }`,
+            "--localFontFamilyOfLabels": `${fontFamilyOfLabel}`,
+            "--localFontSizeOfLabels": `${fontSizeOfLabel}`,
+            "--localFontWeightOfLabels": `${fontWeightOfLabel}`,
+            "--localTextColorOfLabels": `${textColorOfLabel}`,
+            "--localPaddingOfLabels": `${paddingOfLabel}`,
+            "--localBgColorOfLabels": `${bgColorOfLabel}`,
+            "--localBorderRadiusOfLabels": `${borderRadiusOfLabel}`,
           }}
           className={`${styles.formLabel}`}
         >
@@ -1225,33 +1522,19 @@ export const FormPicker = ({
       <div className={`${styles.pickerContainer}`}>
         {Children.map(children, (child) => {
           return cloneElement(child, {
-            fontSize: `${
-              fontSizeInput ? fontSizeInput : fontSizeOfInputsAndBtnsForm
-            }`,
-            fontWeight: `${
-              fontWeightInput ? fontWeightInput : fontWeightOfInputsAndBtnsForm
-            }`,
-            textColor: `${
-              textColorInput ? textColorInput : textColorOfInputsAndBtnsForm
-            }`,
-            padding: `${
-              paddingInput ? paddingInput : paddingOfInputsAndBtnsForm
-            }`,
-            borderRadius: `${
-              borderRadius ? borderRadius : borderRadiusOfInputsAndBtnsForm
-            }`,
-            borderSize: `${
-              borderSize ? borderSize : borderSizeOfInputsAndBtnsForm
-            }`,
-            borderColor: `${
-              borderColor ? borderColor : borderColorOfInputsAndBtnsForm
-            }`,
-            fontFamily: `${
-              fontFamily ? fontFamily : fontFamilyOfInputsAndBtnsAndLabelsForm
-            }`,
-            bgColor: `${
-              bgColorInput ? bgColorInput : bgColorOfInputsAndBtnsForm
-            }`,
+            fontFamilyOfBtns: `${fontFamilyOfBtns}`,
+            fontSizeOfBtns: `${fontSizeOfBtns}`,
+            fontWeightOfBtns: `${fontWeightOfBtns}`,
+            textColorOfPicker: `${textColorOfPicker}`,
+            textColorOnHoverOfPicker: `${textColorOnHoverOfPicker}`,
+            textColorOnPickedOfPicker: `${textColorOnPickedOfPicker}`,
+            paddingOfBtns: `${paddingOfBtns}`,
+            bgColorOfPicker: `${bgColorOfPicker}`,
+            bgColorOnHoverOfPicker: `${bgColorOnHoverOfPicker}`,
+            bgColorOnPickedOfPicker: `${bgColorOnPickedOfPicker}`,
+            borderRadiusOfBtns: `${borderRadiusOfBtns}`,
+            borderSizeOfBtns: `${borderSizeOfBtns}`,
+            borderColorOfBtns: `${borderColorOfBtns}`,
           });
         })}
       </div>
@@ -1267,38 +1550,47 @@ INPUT Picker Option (Universal - can be used multiple times in one form with dif
 /*
 INSTRUCTIONS
   children                  text of btn
-  selected                  true if its selected option
+  picked                    true if its picked option
   functionOnClick           should be (option)=>{setOptionForm(option)}
   value                     value that will be option
 */
 
 export const FormPickerOption = ({
   children = "Option 1",
-  selected = false,
+  picked = false,
   functionOnClick,
   value,
-  fontSize,
-  fontWeight,
-  textColor,
-  padding,
-  borderRadius,
-  borderSize,
-  borderColor,
-  fontFamily,
-  bgColor,
+  fontFamilyOfBtns,
+  fontSizeOfBtns,
+  fontWeightOfBtns,
+  textColorOfPicker,
+  textColorOnHoverOfPicker,
+  textColorOnPickedOfPicker,
+  paddingOfBtns,
+  bgColorOfPicker,
+  bgColorOnHoverOfPicker,
+  bgColorOnPickedOfPicker,
+  borderRadiusOfBtns,
+  borderSizeOfBtns,
+  borderColorOfBtns,
 }) => {
   return (
     <button
-      className={`${styles.formPickerOption} ${selected ? styles.selected : ""}`}
+      className={`${styles.formPickerOption} ${picked ? styles.picked : ""}`}
       style={{
-        fontSize: `${fontSize}`,
-        fontWeight: `${fontWeight}`,
-        color: `${selected ? "var(--color-text-reverse)" : textColor}`,
-        padding: `${padding}`,
-        borderRadius: `${borderRadius}`,
-        border: `${borderSize} solid ${borderColor}`,
-        fontFamily: `${fontFamily}`,
-        backgroundColor: `${selected ? "var(--color-primary)" : bgColor}`,
+        "--localFontFamilyOfBtns": `${fontFamilyOfBtns}`,
+        "--localFontSizeOfBtns": `${fontSizeOfBtns}`,
+        "--localFontWeightOfBtns": `${fontWeightOfBtns}`,
+        "--localTextColorOfPicker": `${textColorOfPicker}`,
+        "--localTextColorOnHoverOfPicker": `${textColorOnHoverOfPicker}`,
+        "--localTextColorOnPickedOfPicker": `${textColorOnPickedOfPicker}`,
+        "--localPaddingOfBtns": `${paddingOfBtns}`,
+        "--localBgColorOfPicker": `${bgColorOfPicker}`,
+        "--localBgColorOnHoverOfPicker": `${bgColorOnHoverOfPicker}`,
+        "--localBgColorOnPickedOfPicker": `${bgColorOnPickedOfPicker}`,
+        "--localBorderRadiusOfBtns": `${borderRadiusOfBtns}`,
+        "--localBorderSizeOfBtns": `${borderSizeOfBtns}`,
+        "--localBorderColorOfBtns": `${borderColorOfBtns}`,
       }}
       onClick={(e) => {
         e.preventDefault();
@@ -1309,3 +1601,8 @@ export const FormPickerOption = ({
     </button>
   );
 };
+
+/*
+  CAN WAIT TODO ---
+  MAKE POSSIBLE TO HANDLE SELECTS AND CHECKBOXS BY KEYBOARD
+*/

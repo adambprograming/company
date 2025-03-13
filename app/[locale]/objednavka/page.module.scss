@@ -1,0 +1,12 @@
+.main {
+    // Main element have defaults styles inside globals.scss
+    .sectionTitle {
+      margin: 0;
+      text-align: left;
+    }
+    section.form {
+        padding: 0 var(--padding-page-sides);
+        display: flex;
+        flex-direction: column;
+    }
+}

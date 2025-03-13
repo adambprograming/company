@@ -7,7 +7,12 @@ $padding-inputs: 10px 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin: auto 0;
     text-align: left;
   }
@@ -27,6 +32,13 @@ $padding-inputs: 10px 20px;
   text-align: left;
 }
 
+.formSpan {
+  margin: auto 0;
+  text-align: left;
+  font-family: var(--font-primary);
+  font-size: var(--fontsize-small);
+}
+
 .formBtnSubmit {
   cursor: pointer;
   overflow: hidden;
@@ -38,8 +50,10 @@ $padding-inputs: 10px 20px;
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
+  border: var(--localBorderSizeOfBtns) solid var(--localBorderColorOfBtns);
+  border-radius: var(--localBorderRadiusOfBtns);
   .btnBg {
-    background-color: var(--localBgColor);
+    background-color: var(--localBgColorOfSubmit);
     backdrop-filter: var(--localBackdropFilter);
     display: block;
     position: absolute;
@@ -49,9 +63,13 @@ $padding-inputs: 10px 20px;
     top: 0;
   }
   .btnText {
-    color: var(--localTextColor);
+    color: var(--localTextColorOfSubmit);
     position: relative;
     display: block;
+    font-family: var(--localFontFamilyOfBtns);
+    font-size: var(--localFontSizeOfBtns);
+    font-weight: var(--localFontWeightOfBtns);
+    padding: var(--localPaddingOfBtns);
   }
   &.bgHover {
     .btnBg::before {
@@ -77,15 +95,15 @@ $padding-inputs: 10px 20px;
       width: 100%;
       height: 100%;
       border-radius: var(--localBgHoverBorderRadius);
-      background-color: var(--localBgHoverColor) !important;
+      background-color: var(--localBgColorOnHoverOfSubmit);
       transform: translateX(-105%);
       transition: transform 0.4s ease;
     }
     .btnText {
       background: linear-gradient(
         to right,
-        var(--localTextHoverColor) 50%,
-        var(--localTextColor) 50%
+        var(--localTextColorOnHoverOfSubmit) 50%,
+        var(--localBgColorOfBtns) 50%
       );
       background-clip: text;
       -webkit-background-clip: text;
@@ -104,15 +122,15 @@ $padding-inputs: 10px 20px;
       width: 100%;
       height: 100%;
       border-radius: var(--localBgHoverBorderRadius);
-      background-color: var(--localBgHoverColor) !important;
+      background-color: var(--localBgColorOnHoverOfSubmit);
       transform: translateX(105%);
       transition: transform 0.4s ease;
     }
     .btnText {
       background: linear-gradient(
         to right,
-        var(--localTextHoverColor) 50%,
-        var(--localTextColor) 50%
+        var(--localTextColorOnHoverOfSubmit) 50%,
+        var(--localBgColorOfBtns) 50%
       );
       background-clip: text;
       -webkit-background-clip: text;
@@ -131,15 +149,15 @@ $padding-inputs: 10px 20px;
       width: 100%;
       height: 100%;
       border-radius: var(--localBgHoverBorderRadius);
-      background-color: var(--localBgHoverColor) !important;
+      background-color: var(--localBgColorOnHoverOfSubmit);
       transform: translateY(105%);
       transition: transform 0.4s ease;
     }
     .btnText {
       background: linear-gradient(
         to bottom,
-        var(--localTextHoverColor) 50%,
-        var(--localTextColor) 50%
+        var(--localTextColorOnHoverOfSubmit) 50%,
+        var(--localBgColorOfBtns) 50%
       );
       background-clip: text;
       -webkit-background-clip: text;
@@ -158,15 +176,15 @@ $padding-inputs: 10px 20px;
       width: 100%;
       height: 100%;
       border-radius: var(--localBgHoverBorderRadius);
-      background-color: var(--localBgHoverColor) !important;
+      background-color: var(--localBgColorOnHoverOfSubmit);
       transform: translateY(-105%);
       transition: transform 0.4s ease;
     }
     .btnText {
       background: linear-gradient(
         to bottom,
-        var(--localTextHoverColor) 50%,
-        var(--localTextColor) 50%
+        var(--localTextColorOnHoverOfSubmit) 50%,
+        var(--localBgColorOfBtns) 50%
       );
       background-clip: text;
       -webkit-background-clip: text;
@@ -207,7 +225,18 @@ $padding-inputs: 10px 20px;
   display: flex;
   flex-direction: column;
   height: min-content;
+  /*
+  LABELS
+  #F0F
+  */
   .formLabel {
+    font-family: var(--localFontFamilyOfLabels);
+    font-size: var(--localFontSizeOfLabels);
+    font-weight: var(--localFontWeightOfLabels);
+    color: var(--localTextColorOfLabels);
+    padding: var(--localPaddingOfLabels);
+    background-color: var(--localBgColorOfLabels);
+    border-radius: var(--localBorderRadiusOfLabels);
     .requiredStar {
       color: var(--color-error);
     }
@@ -215,24 +244,36 @@ $padding-inputs: 10px 20px;
       margin: 0;
       text-align: left;
     }
-    &.floating {
-      left: 5px;
-      position: absolute;
-      z-index: 20;
-      top: 50%;
-      white-space: nowrap;
-      transform: translateY(-50%);
-      transition: top 0.4s ease-in-out, color 0.4s ease-in-out;
-      color: var(--shadow-50);
-      pointer-events: none; // Disable click interaction on label
-      font-family: var(--font-secondary);
-      width: min-content;
-      &.active {
-        top: -10%;
-        // color: var(--color-ascent);
+    &:has(+ .inputContainer),
+    &:has(+ .textAreaContainer) {
+      &.floating {
+        left: 5px;
+        position: absolute;
+        z-index: 20;
+        top: 50%;
+        white-space: nowrap;
+        transform: translateY(-50%);
+        transition: top 0.4s ease-in-out, color 0.4s ease-in-out;
+        pointer-events: none;
+        width: min-content;
+        &.active {
+          top: -10%;
+        }
+      }
+    }
+    &:has(+ .selectContainer),
+    &:has(+ .multiSelectContainer),
+    &:has(+ .multiCheckboxContainer) {
+      &.floating {
+        margin: 0;
+        text-align: left;
       }
     }
   }
+  /*
+  INPUT
+  #F0F
+  */
   .inputContainer {
     position: relative;
     width: 100%;
@@ -242,17 +283,24 @@ $padding-inputs: 10px 20px;
       -webkit-box-sizing: border-box;
       width: 100%;
       outline: none;
-      transition: border-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-      font-family: var(--font-secondary);
-      color: var(--color-text);
-      padding: $padding-inputs;
+      transition: border 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+      font-family: var(--localFontFamilyOfValues);
+      font-size: var(--localFontSizeOfValues);
+      font-weight: var(--localFontWeightOfValues);
+      color: var(--localTextColorOfValues);
+      padding: var(--localPaddingOfContainers);
+      background-color: var(--localBgColorOfContainers);
+      border-radius: var(--localBorderRadiusOfContainers);
+      border: var(--localBorderSizeOfContainers) solid
+        var(--localBorderColorOfContainers);
       &:focus {
-        border-color: var(--color-ascent);
-        box-shadow: 0 0 5px var(--color-boxshadow);
+        box-shadow: var(--localBoxShadowOnFocusOfContainers);
       }
       &::placeholder {
-        color: var(--shadow-50);
-        font-size: var(--fontsize-small);
+        font-family: var(--localFontFamilyOfPlaceholders);
+        font-size: var(--localFontSizeOfPlaceholders);
+        font-weight: var(--localFontWeightOfPlaceholders);
+        color: var(--localTextColorOfPlaceholders);
       }
     }
     .hintIcon {
@@ -260,10 +308,11 @@ $padding-inputs: 10px 20px;
       right: 15px;
       top: 50%;
       transform: translateY(-50%);
+      transition: fill 0.4s ease-in-out;
       fill: var(--shadow-25);
-      // background-color: var(--color-background);
-      padding: 0 0 0 10px;
-      // cursor: pointer;
+      background-color: var(--localBgColorOfContainers);
+      border-radius: 100%;
+      cursor: pointer;
     }
     .hintText {
       position: absolute;
@@ -273,12 +322,14 @@ $padding-inputs: 10px 20px;
       background-color: var(--color-background);
       padding: 10px 10px;
       border-radius: 5px;
-      top: 20%;
-      transform: translateY(-80%);
-      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 30px;
       box-shadow: 0px 0px 5px var(--color-boxshadow);
       z-index: 100;
       display: none;
+      text-align: left;
+      white-space: pre-wrap;
     }
     .hintIcon:hover + .hintText, /* Show hint on hover */
     .hintIcon:focus + .hintText,
@@ -287,28 +338,46 @@ $padding-inputs: 10px 20px;
       display: block; /* Display the hint text when the icon is hovered or clicked */
     }
   }
-
-  .textareaContainer {
+  &.notValid .inputContainer {
+    .formInput {
+      border: var(--localBorderSizeOfContainers) solid var(--color-error);
+    }
+    .hintIcon {
+      fill: var(--color-error);
+    }
+  }
+  /*
+  TEXTAREA
+  #F0F
+  */
+  .textAreaContainer {
     position: relative;
     width: 100%;
-    .formTextarea {
+    .formTextArea {
       resize: vertical;
       box-sizing: border-box;
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       width: 100%;
       outline: none;
-      transition: border-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-      font-family: var(--font-secondary);
-      color: var(--color-text);
-      padding: $padding-inputs;
+      transition: border 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+      font-family: var(--localFontFamilyOfValues);
+      font-size: var(--localFontSizeOfValues);
+      font-weight: var(--localFontWeightOfValues);
+      color: var(--localTextColorOfValues);
+      padding: var(--localPaddingOfContainers);
+      background-color: var(--localBgColorOfContainers);
+      border-radius: var(--localBorderRadiusOfContainers);
+      border: var(--localBorderSizeOfContainers) solid
+        var(--localBorderColorOfContainers);
       &:focus {
-        border-color: var(--color-ascent);
-        box-shadow: 0 0 5px var(--color-boxshadow);
+        box-shadow: var(--localBoxShadowOnFocusOfContainers);
       }
       &::placeholder {
-        color: var(--shadow-50);
-        font-size: var(--fontsize-small);
+        font-family: var(--localFontFamilyOfPlaceholders);
+        font-size: var(--localFontSizeOfPlaceholders);
+        font-weight: var(--localFontWeightOfPlaceholders);
+        color: var(--localTextColorOfPlaceholders);
       }
     }
     .hintIcon {
@@ -316,10 +385,11 @@ $padding-inputs: 10px 20px;
       right: 15px;
       top: 50%;
       transform: translateY(-50%);
+      transition: fill 0.4s ease-in-out;
       fill: var(--shadow-25);
-      // background-color: var(--color-background);
-      padding: 0 0 0 10px;
-      // cursor: pointer;
+      background-color: var(--localBgColorOfContainers);
+      border-radius: 100%;
+      cursor: pointer;
     }
     .hintText {
       position: absolute;
@@ -329,12 +399,14 @@ $padding-inputs: 10px 20px;
       background-color: var(--color-background);
       padding: 10px 10px;
       border-radius: 5px;
-      top: 20%;
-      transform: translateY(-80%);
-      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 30px;
       box-shadow: 0px 0px 5px var(--color-boxshadow);
       z-index: 100;
       display: none;
+      text-align: left;
+      white-space: pre-wrap;
     }
     .hintIcon:hover + .hintText, /* Show hint on hover */
     .hintIcon:focus + .hintText,
@@ -343,38 +415,102 @@ $padding-inputs: 10px 20px;
       display: block; /* Display the hint text when the icon is hovered or clicked */
     }
   }
-
+  &.notValid .textAreaContainer {
+    .formTextArea {
+      border: var(--localBorderSizeOfContainers) solid var(--color-error);
+    }
+    .hintIcon {
+      fill: var(--color-error);
+    }
+  }
+  /*
+  SELECT
+  #F0F
+  */
   .selectContainer {
     position: relative;
     width: 100%;
     .formSelect {
+      overflow: hidden;
       box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
       width: 100%;
       outline: none;
       transition: border-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-      font-family: var(--font-secondary);
-      color: var(--color-text);
-      padding: $padding-inputs;
-      &:focus {
-        border-color: var(--color-ascent);
-        box-shadow: 0 0 5px var(--color-boxshadow);
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      cursor: pointer;
+      position: relative;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      font-family: var(--localFontFamilyOfValues);
+      font-size: var(--localFontSizeOfValues);
+      font-weight: var(--localFontWeightOfValues);
+      color: var(--localTextColorOfValues);
+      padding: var(--localPaddingOfContainers);
+      background-color: var(--localBgColorOfContainers);
+      border-radius: var(--localBorderRadiusOfContainers);
+      border: var(--localBorderSizeOfContainers) solid
+        var(--localBorderColorOfContainers);
+      &:focus,
+      &.open {
+        box-shadow: var(--localBoxShadowOnFocusOfContainers);
       }
-      &::placeholder {
-        color: var(--shadow-50);
-        font-size: var(--fontsize-small);
+      .dropdownIcon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.4s ease-in-out;
+        fill: var(--shadow-25);
+        cursor: pointer;
+      }
+      &.open .dropdownIcon {
+        transform: translateY(-50%) rotateZ(-180deg);
+      }
+    }
+    .optionsList {
+      position: absolute;
+      top: calc(100% + 1px);
+      left: 0;
+      width: 100%;
+      background-color: var(--localBgColorOfContainers);
+      border-radius: var(--localBorderRadiusOfContainers);
+      box-shadow: var(--localBoxShadowOnFocusOfDropdowns);
+      max-height: 350px;
+      overflow-y: auto;
+      z-index: 10;
+      .option {
+        cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        text-align: left;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        font-family: var(--localFontFamilyOfValues);
+        font-size: var(--localFontSizeOfValues);
+        font-weight: var(--localFontWeightOfValues);
+        color: var(--localTextColorOfValues);
+        padding: var(--localPaddingOfValues);
+        background-color: var(--localBgColorOfValues);
+        &.selected {
+          background-color: var(--localBgColorOfSelected);
+          color: var(--localTextColorOfSelected);
+        }
       }
     }
     .hintIcon {
       position: absolute;
-      right: 15px;
+      right: 40px;
       top: 50%;
       transform: translateY(-50%);
       fill: var(--shadow-25);
-      // background-color: var(--color-background);
-      padding: 0 0 0 10px;
-      // cursor: pointer;
+      background-color: var(--localBgColorOfContainers);
+      border-radius: 100%;
+      cursor: pointer;
     }
     .hintText {
       position: absolute;
@@ -384,12 +520,237 @@ $padding-inputs: 10px 20px;
       background-color: var(--color-background);
       padding: 10px 10px;
       border-radius: 5px;
-      top: 20%;
-      transform: translateY(-80%);
-      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 55px;
       box-shadow: 0px 0px 5px var(--color-boxshadow);
       z-index: 100;
       display: none;
+      text-align: left;
+      white-space: pre-wrap;
+    }
+    .hintIcon:hover + .hintText, /* Show hint on hover */
+    .hintIcon:focus + .hintText,
+    .hintText:hover {
+      /* Or on click/focus for accessibility */
+      display: block; /* Display the hint text when the icon is hovered or clicked */
+    }
+  }
+  /*
+  MULTISELECT
+  #F0F
+  */
+  .multiSelectContainer {
+    position: relative;
+    width: 100%;
+    .formMultiSelect {
+      overflow: hidden;
+      box-sizing: border-box;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      cursor: pointer;
+      position: relative;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      font-family: var(--localFontFamilyOfValues);
+      font-size: var(--localFontSizeOfValues);
+      font-weight: var(--localFontWeightOfValues);
+      color: var(--localTextColorOfValues);
+      padding: var(--localPaddingOfContainers);
+      background-color: var(--localBgColorOfContainers);
+      border-radius: var(--localBorderRadiusOfContainers);
+      border: var(--localBorderSizeOfContainers) solid
+        var(--localBorderColorOfContainers);
+      &:focus,
+      &.open {
+        box-shadow: var(--localBoxShadowOnFocusOfContainers);
+      }
+      .dropdownIcon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.4s ease-in-out;
+        fill: var(--shadow-25);
+        cursor: pointer;
+      }
+      &.open .dropdownIcon {
+        transform: translateY(-50%) rotateZ(-180deg);
+      }
+    }
+    .optionsList {
+      position: absolute;
+      top: calc(100% + 1px);
+      left: 0;
+      width: 100%;
+      background-color: var(--localBgColorOfContainers);
+      border-radius: var(--localBorderRadiusOfContainers);
+      box-shadow: var(--localBoxShadowOnFocusOfDropdowns);
+      max-height: 350px;
+      overflow-y: auto;
+      z-index: 10;
+      .option {
+        cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        text-align: left;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        font-family: var(--localFontFamilyOfValues);
+        font-size: var(--localFontSizeOfValues);
+        font-weight: var(--localFontWeightOfValues);
+        color: var(--localTextColorOfValues);
+        padding: var(--localPaddingOfValues);
+        background-color: var(--localBgColorOfValues);
+        &.selected {
+          background-color: var(--localBgColorOfSelected);
+          color: var(--localTextColorOfSelected);
+        }
+      }
+    }
+    .hintIcon {
+      position: absolute;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      fill: var(--shadow-25);
+      background-color: var(--localBgColorOfContainers);
+      border-radius: 100%;
+      cursor: pointer;
+    }
+    .hintText {
+      position: absolute;
+      font-family: var(--font-secondary);
+      color: var(--color-text);
+      font-size: var(--fontsize-small);
+      background-color: var(--color-background);
+      padding: 10px 10px;
+      border-radius: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 55px;
+      box-shadow: 0px 0px 5px var(--color-boxshadow);
+      z-index: 100;
+      display: none;
+      text-align: left;
+      white-space: pre-wrap;
+    }
+    .hintIcon:hover + .hintText, /* Show hint on hover */
+    .hintIcon:focus + .hintText,
+    .hintText:hover {
+      /* Or on click/focus for accessibility */
+      display: block; /* Display the hint text when the icon is hovered or clicked */
+    }
+  }
+  /*
+  MULTICHECKBOX
+  #F0F
+  */
+  .multiCheckboxContainer {
+    position: relative;
+    width: 100%;
+    .formMultiCheckbox {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-height: 350px;
+      overflow-y: auto;
+      z-index: 10;
+      font-family: var(--localFontFamilyOfValues);
+      font-size: var(--localFontSizeOfValues);
+      font-weight: var(--localFontWeightOfValues);
+      color: var(--localTextColorOfValues);
+      padding: var(--localPaddingOfContainers);
+      background-color: var(--localBgColorOfContainers);
+      border-radius: var(--localBorderRadiusOfContainers);
+      border: var(--localBorderSizeOfContainers) solid
+        var(--localBorderColorOfContainers);
+      .option {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 0;
+        cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        text-align: left;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        font-family: var(--localFontFamilyOfValues);
+        font-size: var(--localFontSizeOfValues);
+        font-weight: var(--localFontWeightOfValues);
+        padding: var(--localPaddingOfValues);
+        background-color: var(--localBgColorOfValues);
+        border-radius: var(--localBorderRadiusOfContainers);
+        &:not(.selected) {
+          color: var(--localTextColorOfUnselected);
+        }
+        &.selected {
+          background-color: var(--localBgColorOfSelected);
+          color: var(--localTextColorOfSelected);
+        }
+        .symbol {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 10px;
+          height: 10px;
+          position: relative;
+          /* Horizontal line (always visible) */
+          span:first-child {
+            width: 10px;
+            height: 2px;
+            background-color: var(--color-ascent);
+            position: absolute;
+          }
+          /* Vertical line (rotates behind the horizontal) */
+          span:last-child {
+            width: 2px;
+            height: 10px;
+            background-color: var(--color-ascent);
+            position: absolute;
+            transition: transform 0.3s ease-in-out;
+          }
+          &.checked span:last-child {
+            transform: rotateZ(-90deg);
+          }
+        }
+      }
+    }
+    .hintIcon {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      fill: var(--shadow-25);
+      background-color: var(--localBgColorOfContainers);
+      border-radius: 100%;
+      cursor: pointer;
+    }
+    .hintText {
+      position: absolute;
+      font-family: var(--font-secondary);
+      color: var(--color-text);
+      font-size: var(--fontsize-small);
+      background-color: var(--color-background);
+      padding: 10px 10px;
+      border-radius: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 30px;
+      box-shadow: 0px 0px 5px var(--color-boxshadow);
+      z-index: 100;
+      display: none;
+      text-align: left;
+      white-space: pre-wrap;
     }
     .hintIcon:hover + .hintText, /* Show hint on hover */
     .hintIcon:focus + .hintText,
@@ -399,7 +760,10 @@ $padding-inputs: 10px 20px;
     }
   }
 }
-
+/*
+  PICKER
+  #F0F
+  */
 .formPicker {
   flex: 1 1 25%;
   width: 100%;
@@ -410,6 +774,13 @@ $padding-inputs: 10px 20px;
   .formLabel {
     margin: 0;
     text-align: left;
+    font-family: var(--localFontFamilyOfLabels);
+    font-size: var(--localFontSizeOfLabels);
+    font-weight: var(--localFontWeightOfLabels);
+    color: var(--localTextColorOfLabels);
+    padding: var(--localPaddingOfLabels);
+    background-color: var(--localBgColorOfLabels);
+    border-radius: var(--localBorderRadiusOfLabels);
   }
   .pickerContainer {
     position: relative;
@@ -421,22 +792,58 @@ $padding-inputs: 10px 20px;
     .formPickerOption {
       flex: 1 1 10%;
       cursor: pointer;
+      font-family: var(--localFontFamilyOfBtns);
+      font-size: var(--localFontSizeOfBtns);
+      font-weight: var(--localFontWeightOfBtns);
+      color: var(--localTextColorOfPicker);
+      padding: var(--localPaddingOfBtns);
+      background-color: var(--localBgColorOfPicker);
+      border-radius: var(--localBorderRadiusOfBtns);
+      border: var(--localBorderSizeOfBtns) solid var(--localBorderColorOfBtns);
+      &.picked {
+        color: var(--localTextColorOnPickedOfPicker);
+        background-color: var(--localBgColorOnPickedOfPicker);
+      }
     }
   }
 }
 
-
+/*
+  MEDIA
+  #F0F
+  */
 @media only screen and (pointer: fine) {
+  .selectContainer {
+    .optionsList {
+      .option:hover {
+        background-color: var(--localBgColorOnHoverOfValues);
+      }
+    }
+  }
+  .multiSelectContainer {
+    .optionsList {
+      .option:hover {
+        background-color: var(--localBgColorOnHoverOfValues);
+      }
+    }
+  }
+  .multiCheckboxContainer {
+    .formMultiCheckbox {
+      .option:hover {
+        background-color: var(--localBgColorOnHoverOfValues);
+      }
+    }
+  }
   .formBtnSubmit {
     &:hover {
       filter: var(--localFilter);
     }
     &.bgHover:hover {
       .btnBg::before {
-        background-color: var(--localBgHoverColor) !important;
+        background-color: var(--localBgColorOnHoverOfSubmit);
       }
       .btnText {
-        color: var(--localTextHoverColor) !important;
+        color: var(--localTextColorOnHoverOfSubmit);
       }
     }
     &.cfLeft:hover {
@@ -472,12 +879,12 @@ $padding-inputs: 10px 20px;
       }
     }
     &.brc:hover {
-      border-radius: var(--localBorderHoverRadius) !important;
+      border-radius: var(--localBorderHoverRadius);
       .btnBg::before {
-        background-color: var(--localBgHoverColor) !important;
+        background-color: var(--localBgColorOnHoverOfSubmit);
       }
       .btnText {
-        color: var(--localTextHoverColor);
+        color: var(--localTextColorOnHoverOfSubmit);
       }
     }
     &.scaleForward:hover {
@@ -489,8 +896,9 @@ $padding-inputs: 10px 20px;
   }
   .formPicker {
     .pickerContainer {
-      .formPickerOption:not(.selected):hover {
-        background-color: var(--shadow-15) !important;
+      .formPickerOption:not(.picked):hover {
+        color: var(--localTextColorOnHoverOfPicker);
+        background-color: var(--localBgColorOnHoverOfPicker);
       }
     }
   }

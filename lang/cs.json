@@ -260,6 +260,75 @@
       "error": ["Povinná pole musí být vyplněna", "Odeslání se nepovedlo."]
     }
   },
+  "orderPage": {
+    "title": "Specifikace objednávky",
+    "formSection": {
+      "title": ["Vyplňte", " kontaktní formulář"],
+      "subtitle": "FORMULÁŘ",
+      "text": "Sledujte mě",
+      "field": [
+        {
+          "label": "Jméno:",
+          "placeholder": "Uveďte Vaše jméno",
+          "hintText": "Jméno musí obsahovat 2 až 30 znaků a může obsahovat pouze písmena, mezery a pomlčky."
+        },
+        {
+          "label": "Příjmení:",
+          "placeholder": "Uveďte Vaše příjmení",
+          "hintText": "Příjmení musí obsahovat 2 až 35 znaků a může obsahovat pouze písmena, mezery a pomlčky."
+        },
+        {
+          "label": "Telefonní číslo:",
+          "placeholder": "Uveďte Vaše telefonní číslo",
+          "hintText": "Telefonní číslo musí obsahovat 7 až 15 číslic."
+        },
+        {
+          "label": "E-mail:",
+          "placeholder": "Uveďte Váš e-mail",
+          "hintText": "Zadejte platnou e-mailovou adresu ve formátu např. uzivatel@email.com."
+        },
+        {
+          "label": "Dokážete konkrétně specifikovat Vaši poptávku?",
+          "option": ["Ne", "Ano"]
+        },
+        {
+          "label": "Rozsah zakázky:",
+          "placeholder": "Uveďte, na jaké podstránky chcete mít zakázku rozdělenou, případně i strukturu zakázky."
+        },
+        {
+          "label": "Funkce zakázky:",
+          "placeholder": "Uveďte funkce, které chcete mít v zakázce. (Např. vícejazyčnost, tmavý/světlý režim, platební bránu, databázi, nebo cokoliv co Vás napadne)."
+        },
+        {
+          "label": "Web, který se Vám líbí:",
+          "placeholder": "Uveďte odkaz na web v případě, že znáte web ,který se Vám graficky líbí."
+        },
+        {
+          "label": "Váš rozpočet:",
+          "placeholder": "Uveďte Vaši představu o ceně zakázky."
+        },
+        {
+          "label": "Ideální datum dodání:",
+          "placeholder": "Uveďte v případě, že na zakázku opravdu spěcháte."
+        },
+        {
+          "label": "Ostatní specifikace:",
+          "placeholder": "Uveďte dodatečné informace, či požadavky, k zakázce."
+        },
+        {
+          "label": "Popište Vaší poptávku / dotaz:",
+          "placeholder": "Popište, co potřebujete, jak to jen půjde. Ideálně zaklikněte možnost 'Ano' výše a pokuste se vyplnit konkrétní formulář."
+        }
+      ],
+      "btn": [
+        {
+          "aria": "Odeslání formuláře",
+          "content": "Odeslat"
+        }
+      ],
+      "error": ["Povinná pole musí být vyplněna", "Odeslání se nepovedlo."]
+    }
+  },
   "header": {
     "menu": ["O mně", "Služby", "Kontakt"],
     "img": [

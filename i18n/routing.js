@@ -26,6 +26,10 @@ export const routing = defineRouting({
       en: '/contact',
       cs: '/kontakt'
     },
+    '/objednavka': {
+      en: '/order',
+      cs: '/objednavka'
+    },
   },
   fallbackLocale: 'en',
 });

@@ -104,7 +104,7 @@ const Page = () => {
           <FormTitle css={{ padding: "1.5rem 0" }}>Obecné informace</FormTitle>
           <FormRow>
             <FormInput
-              minWidth="300px"
+              minWidth="230px"
               tag="name"
               label={lang("formSection.field.0.label")}
               placeholder={lang("formSection.field.0.placeholder")}
@@ -117,7 +117,7 @@ const Page = () => {
               hintVisibleOnlyOnInvalid={true}
             />
             <FormInput
-              minWidth="300px"
+              minWidth="230px"
               tag="surname"
               label={lang("formSection.field.1.label")}
               placeholder={lang("formSection.field.1.placeholder")}
@@ -132,7 +132,7 @@ const Page = () => {
           </FormRow>
           <FormRow>
             <FormInput
-              minWidth="300px"
+              minWidth="230px"
               tag="phone"
               label={lang("formSection.field.2.label")}
               placeholder={lang("formSection.field.2.placeholder")}
@@ -143,7 +143,7 @@ const Page = () => {
               hintVisibleOnlyOnInvalid={true}
             />
             <FormInput
-              minWidth="300px"
+              minWidth="230px"
               tag="email"
               label={lang("formSection.field.3.label")}
               placeholder={lang("formSection.field.3.placeholder")}
@@ -339,14 +339,14 @@ const Page = () => {
           </FormTitle>
           <FormRow>
             <FormInput
-              minWidth="450px"
+              minWidth="230px"
               tag="deadline"
               label="Ideální termín dokončení"
               placeholder="Vyberte datum, pokud na web spěcháte"
               hintText="Vyplňte v případě, že na web spěcháte, nebo máte datum do kdy byste potřebovali mít web online"
             />
             <FormInput
-              minWidth="450px"
+              minWidth="230px"
               tag="budget"
               label="Rozpočet na web"
               placeholder="Např. 15 000 Kč"

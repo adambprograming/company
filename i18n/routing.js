@@ -30,6 +30,10 @@ export const routing = defineRouting({
       en: '/order',
       cs: '/objednavka'
     },
+    '/cenik': {
+      en: '/price',
+      cs: '/cenik'
+    },
   },
   fallbackLocale: 'en',
 });

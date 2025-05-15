@@ -1,15 +1,20 @@
+"use client";
 // Styles
 import styles from "./page.module.scss";
 // Public & Assets
 
 // React/Next Functions
-
+import { useState } from "react";
 // Context & Actions
 
 // Componenets
 import Btn from "@/components/btn/btn.component";
 
 const Page = () => {
+  const [perYear, setPerYear] = useState(false);
+  const togglePrices = () => {
+    setPerYear((prev) => !prev);
+  };
   return (
     <main className={styles.main}>
       <section className={styles.price}>
@@ -62,7 +67,7 @@ const Page = () => {
         <h1>Z čeho se skládá cena</h1>
 
         <p className={styles.intro}>
-          Výsledná cena se odvíjí od konkrétních požadavků. Níže najdeš
+          Výsledná cena se odvíjí od konkrétních požadavků. Níže najdete
           orientační přehled částí, které cenu ovlivňují.
         </p>
         <p>Práce zahrnuje vlastní design, kódování a testování.</p>
@@ -92,49 +97,70 @@ const Page = () => {
               <li>
                 Nafocení fotografií <strong>individuálně</strong>
               </li>
-              <span>* Můžu zajistit nafocení potřebných fotografií pro web</span>
+              <span>
+                * Můžu zajistit nafocení potřebných fotografií pro web
+              </span>
             </ul>
           </div>
           <div className={styles.item}>
             <h4>Správa & hosting</h4>
+            <button onClick={togglePrices} className={styles.toggleBtn}>
+              Přepnout na ceny za {perYear ? "měsíc" : "rok"}
+            </button>
             <ul>
               <li>
-                Pravidelné aktualizace knihoven <strong>79 Kč / měsíc</strong>
+                Pravidelné aktualizace knihoven{" "}
+                <strong>{perYear ? "948 Kč / rok" : "79 Kč / měsíc"}</strong>
               </li>
               <span>* Udržení webu na aktuálních verzích technologií</span>
               <li>
-                Měsíční přehled návštěvnosti <strong>79 Kč / měsíc</strong>
+                Měsíční přehled návštěvnosti{" "}
+                <strong>{perYear ? "948 Kč / rok" : "79 Kč / měsíc"}</strong>
               </li>
               <span>* Každý měsíc Vám budu zasílat zprávu o návštěvnosti</span>
               <li>
-                Webhosting <strong>od 45 do 210 Kč / měsíc</strong>
+                Webhosting{" "}
+                <strong>
+                  {perYear
+                    ? "od 540 do 2520 Kč / rok"
+                    : "od 45 do 210 Kč / měsíc"}
+                </strong>
               </li>
-              <span>* Odvíjí se od funkcí na webu a předpokládané návštěvnosti webu</span>
+              <span>
+                * Odvíjí se od funkcí na webu a předpokládané návštěvnosti webu
+              </span>
               <li>
-                Doména <strong>400 Kč / rok</strong>
+                Doména <strong>~ 290 Kč / rok</strong>
               </li>
               <span>* Odvíjí se podle aktuální nabídky u prodejců domén</span>
               <li>
                 E-mail na vlastní doméně <strong>zdarma</strong>
               </li>
               <li>
-                Monitoring výpadků <strong>39 Kč / měsíc</strong>
+                Monitoring výpadků{" "}
+                <strong>{perYear ? "468 Kč / rok" : "39 Kč / měsíc"}</strong>
               </li>
-              <span>* V případě výpadku vám dám okamžitě vědět (nestane se, že web bude mimo týden a nezjistíte to)</span>
+              <span>
+                * V případě výpadku vám dám okamžitě vědět (nestane se, že web
+                bude mimo týden a nezjistíte to)
+              </span>
               <li>
-                Prioritní technická podpora <strong>290 Kč / měsíc</strong>
+                Prioritní technická podpora{" "}
+                <strong>{perYear ? "3480 Kč / rok" : "290 Kč / měsíc"}</strong>
               </li>
-              <span>* V případě potřeby se Vám budu věnovat prioritně i o víkendech (max. 4 klienti s prioritním přístupem)</span>
+              <span>
+                * V případě potřeby se Vám budu věnovat prioritně i o víkendech
+                (max. 4 klienti s prioritním přístupem)
+              </span>
             </ul>
           </div>
         </div>
-        <p className={styles.note}>
-          Úpravy a budoucí změny na webu (např. úprava údajů, přidání obrázků)
-          budou naceněny hodinovou sazbou.
-        </p>
-        <p className={styles.note}>
-          Úpravy a budoucí změny na webu (např. úprava údajů, přidání obrázků)
-          budou naceněny hodinovou sazbou.
+        <p className={styles.postLaunch}>
+          <strong>Úpravy a servis po spuštění:</strong> Úpravy a budoucí změny
+          na webu (např. úprava údajů, přidání obrázků) budou naceněny hodinovou
+          sazbou (~ 500 Kč / hod) a fakturovány 1× za čtvrtletí, nebo se můžeme
+          domluvit podle potřeby na nějaké měsíční částce, která bude zahrnovat
+          drobné rychlé opravy a úpravy.
         </p>
       </section>
     </main>

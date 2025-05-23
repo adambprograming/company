@@ -39,6 +39,7 @@ const Header = ({
   const headerRef = useRef();
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
+  const menuRef = useRef();
 
   useEffect(() => {
     if ([1, 2].includes(headerOption)) {
@@ -75,6 +76,7 @@ const Header = ({
         headerOption={headerOption}
         paddingOfEachLinkBlock="10px 20px"
         headerOriginalBgColor={bgColor}
+        ref={menuRef}
       >
         {/* <MenuItem content="‎ TEST ‎">
           <MenuItem content="TEST" hr"/MenuItem>
@@ -104,7 +106,13 @@ const Header = ({
 
   const renderLogo = () => {
     return (
-      <Link href="/" aria-label={lang("link.0.aria")}>
+      <Link
+        href="/"
+        aria-label={lang("link.0.aria")}
+        onClick={() => {
+          menuRef.current?.handleLogoClick();
+        }}
+      >
         <Logo
           alt={lang("img.0.alt")}
           id="logo-header"

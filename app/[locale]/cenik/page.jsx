@@ -80,7 +80,7 @@ const Page = () => {
                 Úvodní konzultace <strong>zdarma</strong>
               </li>
               <li>
-                Každá sekce <strong>~ 1.500 Kč</strong>
+                Každá sekce <strong>~ 1.000 Kč</strong>
               </li>
               <li>
                 Responzivita + SEO <strong>~ 2.000 Kč</strong>
@@ -88,11 +88,14 @@ const Page = () => {
               <li>
                 CMS (úprava obsahu) <strong>+ 5.000 Kč</strong>
               </li>
+              <span>
+                * Odvíjí se od množství editovatelných položek
+              </span>
               <li>
-                Vícejazyčnost <strong>+ 3.000 Kč / jazyk</strong>
+                Vícejazyčnost <strong>+ 4.000 Kč / jazyk</strong>
               </li>
               <li>
-                Denní / noční režim <strong>+ 2.500 Kč</strong>
+                Denní / noční režim <strong>+ 3.500 Kč</strong>
               </li>
               <li>
                 Nafocení fotografií <strong>individuálně</strong>
@@ -110,20 +113,20 @@ const Page = () => {
             <ul>
               <li>
                 Pravidelné aktualizace knihoven{" "}
-                <strong>{perYear ? "948 Kč / rok" : "79 Kč / měsíc"}</strong>
+                <strong>{perYear ? "1980 Kč / rok" : "160 Kč / měsíc"}</strong>
               </li>
               <span>* Udržení webu na aktuálních verzích technologií</span>
               <li>
                 Měsíční přehled návštěvnosti{" "}
-                <strong>{perYear ? "948 Kč / rok" : "79 Kč / měsíc"}</strong>
+                <strong>{perYear ? "1980 Kč / rok" : "160 Kč / měsíc"}</strong>
               </li>
               <span>* Každý měsíc Vám budu zasílat zprávu o návštěvnosti</span>
               <li>
                 Webhosting{" "}
                 <strong>
                   {perYear
-                    ? "od 540 do 2520 Kč / rok"
-                    : "od 45 do 210 Kč / měsíc"}
+                    ? "od 540 do + 2520 Kč / rok"
+                    : "od 45 do + 210 Kč / měsíc"}
                 </strong>
               </li>
               <span>
@@ -138,7 +141,7 @@ const Page = () => {
               </li>
               <li>
                 Monitoring výpadků{" "}
-                <strong>{perYear ? "468 Kč / rok" : "39 Kč / měsíc"}</strong>
+                <strong>{perYear ? "1200 Kč / rok" : "100 Kč / měsíc"}</strong>
               </li>
               <span>
                 * V případě výpadku vám dám okamžitě vědět (nestane se, že web
@@ -146,19 +149,20 @@ const Page = () => {
               </span>
               <li>
                 Prioritní technická podpora{" "}
-                <strong>{perYear ? "3480 Kč / rok" : "290 Kč / měsíc"}</strong>
+                <strong>{perYear ? "6000 Kč / rok" : "500 Kč / měsíc"}</strong>
               </li>
               <span>
                 * V případě potřeby se Vám budu věnovat prioritně i o víkendech
-                (max. 4 klienti s prioritním přístupem)
+                (max. 2 klienti s prioritním přístupem)
               </span>
             </ul>
           </div>
         </div>
+        <p className={`${styles.note}`}>Poslední změna ceníku k 15. 11. 2024</p>
         <p className={styles.postLaunch}>
           <strong>Úpravy a servis po spuštění:</strong> Úpravy a budoucí změny
           na webu (např. úprava údajů, přidání obrázků) budou naceněny hodinovou
-          sazbou (~ 500 Kč / hod) a fakturovány 1× za čtvrtletí, nebo se můžeme
+          sazbou (~ 500 Kč / hod) a fakturovány 1× za čtvrtletí (součtem času za období), nebo se můžeme
           domluvit podle potřeby na nějaké měsíční částce, která bude zahrnovat
           drobné rychlé opravy a úpravy.
         </p>

@@ -154,11 +154,16 @@ html {
     font-size: 62.5%;
 }
 
+html, body {
+  min-width: 100%;
+  overflow-x: hidden;
+}
+
 body{
     background: var(--color-background);
     color: var(--color-text);
     text-align: center;
-    overflow-x: hidden;
+    // overflow-x: hidden;
     min-height: 100svh;
     display: flex;
     flex-direction: column;

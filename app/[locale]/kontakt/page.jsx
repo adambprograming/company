@@ -9,10 +9,9 @@ import IconInstagram from "@/components/svgs/footer-icons/icon-instagram.compone
 import IconLinkedin from "@/components/svgs/footer-icons/icon-linkedin.component";
 import IconGithub from "@/components/svgs/footer-icons/icon-github.component";
 import IconInvoice from "@/components/svgs/footer-icons/icon-invoice.component";
-import MeImg from "@/public/me/contact.png";
-import HeroImg from "@/public/hero.png";
+import MeImg from "@/public/me/business_cards.avif";
 // React/Next Functions
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";

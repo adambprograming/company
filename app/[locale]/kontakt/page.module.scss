@@ -169,7 +169,6 @@
         gap: 1rem;
       }
     }
-
     .imgContainer {
       flex: 1 1 40%;
       display: flex;
@@ -180,21 +179,21 @@
       &::before {
         position: absolute;
         left: 50%;
-        transform: translateX(-50%);
-        bottom: 0px;
+        top: 50%;
+        transform: translate(-50%, -50%);
         content: "";
-        width: 80%;
-        height: 83%;
+        width: 78%;
+        height: 78%;
         background-color: rgb(from var(--color-secondary) r g b / 0.2);
         border-radius: 15px;
         z-index: -15;
       }
       img {
-        width: 75%;
+        width: 60%;
         height: auto;
+        border-radius: 15px;
       }
     }
-
     .iconContainer {
       margin: auto 0;
       background-color: var(--color-primary);

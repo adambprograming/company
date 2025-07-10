@@ -2,11 +2,14 @@
 import styles from "./page.module.scss";
 // Public & Assets
 import MeImg from "@/public/me/homepage.avif";
-import HeroImg from "@/public/hero.png"
+import Project1 from "@/public/projects/project1.avif";
+import Project2 from "@/public/projects/project2.avif";
+import HeroImg from "@/public/hero.png";
 // React/Next Functions
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 // Context
 
 // Componenets
@@ -18,6 +21,17 @@ const LazyPortfolioRotatedGrid = dynamic(
   { ssr: false }
 );
 import Btn from "@/components/btn/btn.component";
+
+const projects = [
+  {
+    image: Project1,
+    url: "https://www.beautystudionatali.cz/",
+  },
+  {
+    image: Project2,
+    url: "https://www.aurea-socials.cz/cs",
+  },
+];
 
 export default function Home() {
   const lang = useTranslations("homePage");
@@ -43,19 +57,28 @@ export default function Home() {
               textColor="var(--color-text-reverse)"
               borderSize="none"
               hoverEffect="scaleForward"
-              ariaLabel={lang('heroSection.btn.0.aria')}
+              ariaLabel={lang("heroSection.btn.0.aria")}
             >
               {lang("heroSection.btn.0.content")}
             </Btn>
           </div>
         </div>
         <div className={`${styles.imgContainer}`}>
-          <Image src={MeImg} alt={lang('heroSection.img.0.alt')} aria-label={lang('heroSection.img.0.alt')} priority={true} />
+          <Image
+            src={MeImg}
+            alt={lang("heroSection.img.0.alt")}
+            aria-label={lang("heroSection.img.0.alt")}
+            priority={true}
+          />
         </div>
       </section>
       <section className={`${styles.services}`}>
         <div className={`${styles.imgContainer}`}>
-          <Image src={HeroImg} alt={lang('servicesSection.img.0.alt')} aria-label={lang('servicesSection.img.0.alt')} />
+          <Image
+            src={HeroImg}
+            alt={lang("servicesSection.img.0.alt")}
+            aria-label={lang("servicesSection.img.0.alt")}
+          />
         </div>
         <div className={`${styles.contentContainer}`}>
           <div className={`${styles.titleContainer}`}>
@@ -81,13 +104,13 @@ export default function Home() {
             textColor="var(--color-text-reverse)"
             borderSize="none"
             hoverEffect="scaleForward"
-            ariaLabel={lang('servicesSection.btn.0.aria')}
+            ariaLabel={lang("servicesSection.btn.0.aria")}
           >
             {lang("servicesSection.btn.0.content")}
           </Btn>
         </div>
       </section>
-      {/* <section className={`${styles.portfolio}`}>
+      <section className={`${styles.portfolio}`}>
         <div className={`${styles.contentContainer}`}>
           <div className={`${styles.titleContainer}`}>
             <span>{lang("portfolioSection.subtitle")}</span>
@@ -102,8 +125,21 @@ export default function Home() {
             <p>{lang("portfolioSection.text")}</p>
           </div>
         </div>
-        <LazyPortfolioRotatedGrid />
-      </section> */}
+        <div className={styles.grid}>
+          {projects.map((project, i) => (
+            <Link href={project.url} key={i} target="_blank">
+              <div className={styles.project}>
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  className={styles.image}
+                />
+              </div>
+            </Link>
+          ))}
+        </div>
+        {/* <LazyPortfolioRotatedGrid /> */}
+      </section>
       {/* <section className={`${styles.testimonials}`}>
         TODO TESTIMONIALS
       </section> */}

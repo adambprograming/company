@@ -3,6 +3,7 @@
   background-color: var(--black-75);
   color: var(--color-text-light-still);
   width: 100vw;
+  overflow: hidden;
   .footer-container {
     width: 100%;
     max-width: var(--breakpoint-1440);

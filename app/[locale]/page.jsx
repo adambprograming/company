@@ -1,7 +1,7 @@
 // Styles
 import styles from "./page.module.scss";
 // Public & Assets
-import MeImg from "@/public/me/homepage.png";
+import MeImg from "@/public/me/homepage.avif";
 import HeroImg from "@/public/hero.png"
 // React/Next Functions
 import Image from "next/image";

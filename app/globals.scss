@@ -128,27 +128,6 @@ body{
     --gap-section: clamp(3rem, 4vw, 6rem);
 }
 
-.dark-theme {
-    --color-primary: #80bfff; /* Light Blue */
-    --color-secondary: #4073A6; /* Pastel Blue */
-    --color-ascent: #ffcc00; /* Golden Yellow */
-    --color-background: #00264d; /* Dark Navy */
-    --color-text: #f0f5ff; /* Very Light Blue */
-    --color-text-reverse: #00264d; /* Dark Navy */
-    --color-text-light-still: #f0f5ff; /* Very Light Blue */
-    --color-text-dark-still: #00264d; /* Dark Navy */
-    --color-border: rgba(222, 222, 217, 0.25);
-    --color-boxshadow: rgba(255, 255, 255, 0.5);
-    --shadow-100: #DEDED9;
-    --shadow-75: rgba(222, 222, 217, 0.75);
-    --shadow-50: rgba(222, 222, 217, 0.50);
-    --shadow-35: rgba(222, 222, 217, 0.35);
-    --shadow-25: rgba(222, 222, 217, 0.25);
-    --shadow-15: rgba(222, 222, 217, 0.15);
-    --shadow-10: rgba(222, 222, 217, 0.10);
-    --shadow-5: rgba(222, 222, 217, 0.05);
-}
-
 html {
     scroll-behavior: smooth;
     font-size: 62.5%;

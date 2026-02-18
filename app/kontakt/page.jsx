@@ -15,7 +15,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useTranslations } from "next-intl";
 // Context & Actions
 import { sendEmail } from "@/actions/nodemailer";
 // Componenets
@@ -45,8 +44,7 @@ function getInitialValuesFromSessionStorage() {
 }
 
 const Page = () => {
-  const lang = useTranslations("contactPage");
-  const [phoneNumberCopied, setPhoneNumberCopied] = useState(false);
+    const [phoneNumberCopied, setPhoneNumberCopied] = useState(false);
   const [emailAddressCopied, setEmailAddressCopied] = useState(false);
   const [icoCopied, setIcoCopied] = useState(false);
   const phoneNumber = "+420 778 033 073";
@@ -132,7 +130,7 @@ const Page = () => {
   };
 
   const handleEmailOrCopy = () => {
-    const mailtoLink = `mailto:${emailAddress}?subject=Hello%20there&body=Dear%20Adam%2C%0D%0A%0D%0AI'm%20interested%20in%20your%20services.%0D%0A%0D%0ABest%20regards%2C%0D%0A[Your%20Name]`;
+    const mailtoLink = `mailto:${emailAddress}?subject=Nez%C3%A1vazn%C3%A1%20popt%C3%A1vka%20nov%C3%A9ho%20webu%20pro%20%C5%A1kolu&body=Dobr%C3%BD%20den%2C%0D%0A%0D%0Am%C3%A1m%20z%C3%A1jem%20o%20nov%C3%BD%20web%20pro%20%C5%A1kolu.%0D%0A%0D%0AS%20pozdravem%2C%0D%0A[Va%C5%A1e%20jm%C3%A9no]`;
     // Copy the email address to clipboard regardless of mailto success
     navigator.clipboard.writeText(emailAddress).then(
       () => {
@@ -182,7 +180,7 @@ const Page = () => {
       setLoaderProps({
         isLoading: false,
         status: "error",
-        message: `${lang(`formSection.error.${error.message}`)}`,
+        message: `${error.message}` === "0" ? "Povinná pole musí být vyplněna" : "Odeslání se nepovedlo",
       });
     } finally {
       setTimeout(
@@ -197,10 +195,10 @@ const Page = () => {
       <section className={`${styles.contacts}`}>
         <div className={`${styles.contentContainer}`}>
           <div className={`${styles.titleContainer}`}>
-            <span>{lang("contactsSection.subtitle")}</span>
+            <span>{"KONTAKT"}</span>
             <h1>
-              {lang("contactsSection.title.0")}
-              <strong>{lang("contactsSection.title.1")}</strong>
+              {"Pojďme probrat "}
+              <strong>{"nový web školy"}</strong>
             </h1>
             <hr />
           </div>
@@ -211,9 +209,9 @@ const Page = () => {
               </div>
               <div className={`${styles.specContainer}`}>
                 <span className={`${styles.contactTitle}`}>
-                  {lang("contactsSection.btn.0.content")}
+                  {"Telefon"}
                   {phoneNumberCopied && (
-                    <span>{lang("contactsSection.popup")}</span>
+                    <span>{"Zkopírováno!"}</span>
                   )}
                 </span>
                 <span className={`${styles.contactValue}`}>{phoneNumber}</span>
@@ -225,9 +223,9 @@ const Page = () => {
               </div>
               <div className={`${styles.specContainer}`}>
                 <span className={`${styles.contactTitle}`}>
-                  {lang("contactsSection.btn.1.content")}
+                  {"E-mail"}
                   {emailAddressCopied && (
-                    <span>{lang("contactsSection.popup")}</span>
+                    <span>{"Zkopírováno!"}</span>
                   )}
                 </span>
                 <span className={`${styles.contactValue}`}>{emailAddress}</span>
@@ -238,14 +236,14 @@ const Page = () => {
               target="_blank"
               rel="noopener noreferrer"
               className={`${styles.address}`}
-              aria-label={lang("contactsSection.btn.2.aria")}
+              aria-label={"Navigovat na mapu lokace"}
             >
               <div className={`${styles.iconContainer}`}>
                 <IconLocation />
               </div>
               <div className={`${styles.specContainer}`}>
                 <span className={`${styles.contactTitle}`}>
-                  {lang("contactsSection.btn.2.content")}
+                  {"Město"}
                 </span>
                 <span className={`${styles.contactValue}`}>Pardubice (CZ)</span>
               </div>
@@ -256,8 +254,8 @@ const Page = () => {
               </div>
               <div className={`${styles.specContainer}`}>
                 <span className={`${styles.contactTitle}`}>
-                  {lang("contactsSection.btn.3.content")}
-                  {icoCopied && <span>{lang("contactsSection.popup")}</span>}
+                  {"IČO"}
+                  {icoCopied && <span>{"Zkopírováno!"}</span>}
                 </span>
                 <span className={`${styles.contactValue}`}>
                   {ico}
@@ -267,14 +265,14 @@ const Page = () => {
             </div>
           </div>
           <hr style={{ width: "100%" }} />
-          <h2>{lang("contactsSection.text")}</h2>
+          <h2>{"Sledujte nás"}</h2>
           <div className={`${styles.additionalContacts}`}>
             <Btn
               href="https://www.instagram.com/_adaamb/"
               borderSize="none"
               paddingOfBtn="0"
               hoverEffect="scaleForward"
-              ariaLabel={lang("contactsSection.btn.4.aria")}
+              ariaLabel={"Navigovat na Instagram"}
             >
               <div className={`${styles.iconContainer}`}>
                 <IconInstagram />
@@ -285,10 +283,10 @@ const Page = () => {
               borderSize="none"
               paddingOfBtn="0"
               hoverEffect="scaleForward"
-              ariaLabel={lang("contactsSection.btn.5.aria")}
+              ariaLabel={"Navigovat na GitHub"}
             >
               <div className={`${styles.iconContainer}`}>
-                <IconLinkedin />
+                <IconGithub />
               </div>
             </Btn>
             <Btn
@@ -296,10 +294,10 @@ const Page = () => {
               borderSize="none"
               paddingOfBtn="0"
               hoverEffect="scaleForward"
-              ariaLabel={lang("contactsSection.btn.6.aria")}
+              ariaLabel={"Navigovat na LinkedIn"}
             >
               <div className={`${styles.iconContainer}`}>
-                <IconGithub />
+                <IconLinkedin />
               </div>
             </Btn>
           </div>
@@ -307,18 +305,18 @@ const Page = () => {
         <div className={`${styles.imgContainer}`}>
           <Image
             src={MeImg}
-            alt={lang("contactsSection.img.0.alt")}
-            aria-label={lang("contactsSection.img.0.aria")}
+            alt={"Obrázek"}
+            aria-label={"Obrázek této sekce"}
             priority
           />
         </div>
       </section>
       <section className={`${styles.form}`} id="form">
         <div className={`${styles.titleContainer}`}>
-          <span>{lang("formSection.subtitle")}</span>
+          <span>{"FORMULÁŘ"}</span>
           <h1>
-            <strong>{lang("formSection.title.0")}</strong>
-            {lang("formSection.title.1")}
+            <strong>{"Nezávazná"}</strong>
+            {" poptávka"}
           </h1>
           <hr />
         </div>
@@ -336,52 +334,52 @@ const Page = () => {
           <FormRow>
             <FormInput
               tag="name"
-              label={lang("formSection.field.0.label")}
-              placeholder={lang("formSection.field.0.placeholder")}
+              label={"Jméno:"}
+              placeholder={"Uveďte vaše jméno"}
               validationPattern={
                 /^[a-zA-ZěščřžýáíéúůóďťňĚŠČŘŽÝÁÍÉÚŮÓĎŤŇ\s'-]{2,30}$/
               }
               maxLength={30}
-              hintText={lang("formSection.field.0.hintText")}
+              hintText={"Jméno musí obsahovat 2 až 30 znaků a může obsahovat pouze písmena, mezery a pomlčky."}
               isRequired={true}
             />
             <FormInput
               tag="surname"
-              label={lang("formSection.field.1.label")}
-              placeholder={lang("formSection.field.1.placeholder")}
+              label={"Příjmení:"}
+              placeholder={"Uveďte vaše příjmení"}
               validationPattern={
                 /^[a-zA-ZěščřžýáíéúůóďťňĚŠČŘŽÝÁÍÉÚŮÓĎŤŇ\s'-]{2,35}$/
               }
               maxLength={35}
-              hintText={lang("formSection.field.1.hintText")}
+              hintText={"Příjmení musí obsahovat 2 až 35 znaků a může obsahovat pouze písmena, mezery a pomlčky."}
               isRequired={true}
             />
           </FormRow>
           <FormRow>
             <FormInput
               tag="phone"
-              label={lang("formSection.field.2.label")}
-              placeholder={lang("formSection.field.2.placeholder")}
+              label={"Telefonní číslo:"}
+              placeholder={"Uveďte Vaše telefonní číslo"}
               validationPattern={/^\+?[0-9]{7,15}$/}
               maxLength={15}
-              hintText={lang("formSection.field.2.hintText")}
+              hintText={"Telefonní číslo musí obsahovat 7 až 15 číslic."}
               isRequired={true}
             />
             <FormInput
               tag="email"
-              label={lang("formSection.field.3.label")}
-              placeholder={lang("formSection.field.3.placeholder")}
+              label={"E-mail:"}
+              placeholder={"Uveďte Váš e-mail"}
               validationPattern={
                 /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,320}$/
               }
               maxLength={320}
-              hintText={lang("formSection.field.3.hintText")}
+              hintText={"Zadejte platnou e-mailovou adresu ve formátu např. uzivatel@email.com."}
               isRequired={true}
             />
           </FormRow>
           <FormPicker
             fontWeightOfBtns="500"
-            label={lang("formSection.field.4.label")}
+            label={"Máte představu o rozsahu nového webu?"}
           >
             <FormPickerOption
               functionOnClick={() => {
@@ -389,7 +387,7 @@ const Page = () => {
               }}
               picked={choosedOptionForm === 0}
             >
-              {lang("formSection.field.4.option.0")}
+              {"Ne"}
             </FormPickerOption>
             <FormPickerOption
               functionOnClick={() => {
@@ -397,14 +395,14 @@ const Page = () => {
               }}
               picked={choosedOptionForm === 1}
             >
-              {lang("formSection.field.4.option.1")}
+              {"Ano"}
             </FormPickerOption>
           </FormPicker>
           {choosedOptionForm === 1 && (
             <FormTextarea
               tag="scope"
-              label={lang("formSection.field.5.label")}
-              placeholder={lang("formSection.field.5.placeholder")}
+              label={"Rozsah zakázky:"}
+              placeholder={"Uveďte, na jaké podstránky chcete mít zakázku rozdělenou, případně i strukturu zakázky."}
               maxLength={500}
               rows={4}
             />
@@ -412,8 +410,8 @@ const Page = () => {
           {choosedOptionForm === 1 && (
             <FormTextarea
               tag="functions"
-              label={lang("formSection.field.6.label")}
-              placeholder={lang("formSection.field.6.placeholder")}
+              label={"Funkce zakázky:"}
+              placeholder={"Uveďte funkce, které chcete mít v zakázce. (Např. vícejazyčnost, tmavý/světlý režim, platební bránu, databázi, nebo cokoliv co Vás napadne)."}
               maxLength={500}
               rows={4}
             />
@@ -421,32 +419,32 @@ const Page = () => {
           {choosedOptionForm === 1 && (
             <FormInput
               tag="exemple-url"
-              label={lang("formSection.field.7.label")}
-              placeholder={lang("formSection.field.7.placeholder")}
+              label={"Web, který se Vám líbí:"}
+              placeholder={"Uveďte odkaz na web v případě, že znáte web ,který se Vám graficky líbí."}
               maxLength={60}
             />
           )}
           {choosedOptionForm === 1 && (
             <FormInput
               tag="price"
-              label={lang("formSection.field.8.label")}
-              placeholder={lang("formSection.field.8.placeholder")}
+              label={"Váš rozpočet:"}
+              placeholder={"Uveďte Vaši představu o ceně zakázky."}
               maxLength={50}
             />
           )}
           {choosedOptionForm === 1 && (
             <FormInput
               tag="deadline"
-              label={lang("formSection.field.9.label")}
-              placeholder={lang("formSection.field.9.placeholder")}
+              label={"Ideální datum dodání:"}
+              placeholder={"Uveďte v případě, že na zakázku opravdu spěcháte."}
               maxLength={50}
             />
           )}
           {choosedOptionForm === 1 && (
             <FormTextarea
               tag="other-specs"
-              label={lang("formSection.field.10.label")}
-              placeholder={lang("formSection.field.10.placeholder")}
+              label={"Ostatní specifikace:"}
+              placeholder={"Uveďte dodatečné informace, či požadavky, k zakázce."}
               maxLength={1000}
               rows={4}
             />
@@ -454,17 +452,17 @@ const Page = () => {
           {choosedOptionForm === 0 && (
             <FormTextarea
               tag="general-specs"
-              label={lang("formSection.field.11.label")}
-              placeholder={lang("formSection.field.11.placeholder")}
+              label={"Popište vaši poptávku:"}
+              placeholder={"Popište, co potřebujete, jak to jen půjde. Ideálně zaklikněte možnost 'Ano' výše a pokuste se vyplnit konkrétní formulář."}
               maxLength={1000}
               rows={6}
             />
           )}
           <FormBtnSubmit
-            ariaLabel={lang("formSection.btn.0.aria")}
+            ariaLabel={"Odeslání formuláře"}
             textHoverColor="var(--color-text-reverse)"
           >
-            {lang("formSection.btn.0.content")}
+            {"Odeslat"}
           </FormBtnSubmit>
           <LoaderForResponse
             isLoading={loaderProps.isLoading}

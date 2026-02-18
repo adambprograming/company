@@ -15,7 +15,6 @@ import IconPython from "@/public/techstack/python.svg";
 import IconFigma from "@/public/techstack/figma.svg";
 // React/Next Functions
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 // Context & Actions
 
 // Componenets
@@ -26,34 +25,32 @@ import {
 } from "@/components/showcase/showcase.component";
 
 const Page = () => {
-  const lang = useTranslations("aboutPage");
-  const showcaseLang = useTranslations("components.showcase");
-  return (
+      return (
     <main className={styles.main}>
       <section className={`${styles.introduction}`}>
         <div className={`${styles.imgContainer}`}>
           <Image
             src={MeImg}
-            alt={lang("introductionSection.img.0.alt")}
-            aria-label={lang("introductionSection.img.0.aria")}
+            alt={"Obrázek"}
+            aria-label={"Obrázek této sekce"}
             priority
           />
         </div>
         <div className={`${styles.contentContainer}`}>
           <div className={`${styles.titleContainer}`}>
-            <span>{lang("introductionSection.subtitle")}</span>
+            <span>{"O NÁS"}</span>
             <h1>
-              {lang("introductionSection.title.0")}
+              {"Jsme"}
               <br />
-              {lang("introductionSection.title.1")}
-              <strong>{lang("introductionSection.title.2")}</strong>
+              {" tým "}
+              <strong>{"NewAgeWeb"}</strong>
             </h1>
             <hr />
           </div>
           <div className={`${styles.textContainer}`}>
-            <p>{lang("introductionSection.text.0")}</p>
+            <p>{"Tvoříme moderní weby vlastním kódem v Next.js. Zaměřujeme se na školy, které potřebují důvěryhodný a aktuální web odpovídající dnešním očekáváním rodičů."}</p>
             <br />
-            <p>{lang("introductionSection.text.1")}</p>
+            <p>{"Jsme mladý tým s citem pro současný design a uživatelskou orientaci. Kombinujeme rychlou komunikaci, férovou cenu a technickou kvalitu bez kompromisů."}</p>
           </div>
         </div>
       </section>
@@ -62,71 +59,71 @@ const Page = () => {
           <ShowcaseItem>
             <Image
               src={IconHtml}
-              alt={showcaseLang("img.0.alt")}
-              aria-label={showcaseLang("img.0.aria")}
+              alt={"HTML"}
+              aria-label={"Ikonka HTML"}
             />
           </ShowcaseItem>
           <ShowcaseItem>
             <Image
               src={IconCss}
-              alt={showcaseLang("img.1.alt")}
-              aria-label={showcaseLang("img.1.aria")}
+              alt={"CSS"}
+              aria-label={"Ikonka CSS"}
             />
           </ShowcaseItem>
           <ShowcaseItem>
             <Image
               src={IconSass}
-              alt={showcaseLang("img.2.alt")}
-              aria-label={showcaseLang("img.2.aria")}
+              alt={"Sass"}
+              aria-label={"Ikonka Sass"}
             />
           </ShowcaseItem>
           <ShowcaseItem>
             <Image
               src={IconJs}
-              alt={showcaseLang("img.3.alt")}
-              aria-label={showcaseLang("img.3.aria")}
+              alt={"JS"}
+              aria-label={"Ikonka JS"}
             />
           </ShowcaseItem>
           <ShowcaseItem>
             <Image
               src={IconReact}
-              alt={showcaseLang("img.4.alt")}
-              aria-label={showcaseLang("img.4.aria")}
+              alt={"React"}
+              aria-label={"Ikonka React"}
             />
           </ShowcaseItem>
           <ShowcaseItem>
             <Image
               src={IconNextjs}
-              alt={showcaseLang("img.5.alt")}
-              aria-label={showcaseLang("img.5.aria")}
+              alt={"NextJs"}
+              aria-label={"Ikonka NextJs"}
             />
           </ShowcaseItem>
           <ShowcaseItem>
             <Image
               src={IconGit}
-              alt={showcaseLang("img.6.alt")}
-              aria-label={showcaseLang("img.6.aria")}
+              alt={"Git"}
+              aria-label={"Ikonka Git"}
             />
           </ShowcaseItem>
           <ShowcaseItem>
             <Image
               src={IconGithub}
-              alt={showcaseLang("img.7.alt")}
-              aria-label={showcaseLang("img.7.aria")}
+              alt={"GitHub"}
+              aria-label={"Ikonka GitHub"}
             />
           </ShowcaseItem>
           <ShowcaseItem>
             <Image
               src={IconPython}
-              alt={showcaseLang("img.8.alt")}
-              aria-label={showcaseLang("img.8.aria")}
+              alt={"Python"}
+              aria-label={"Ikonka Python"}
             />
           </ShowcaseItem>
           <ShowcaseItem>
             <Image
               src={IconFigma}
-              alt={showcaseLang("img.9.alt")}
-              aria-label={showcaseLang("img.9.aria")}
+              alt={"Figma"}
+              aria-label={"Ikonka Figma"}
             />
           </ShowcaseItem>
         </Showcase>
@@ -134,70 +131,70 @@ const Page = () => {
       <section className={`${styles.experience}`}>
         <div className={`${styles.contentContainer}`}>
           <div className={`${styles.titleContainer}`}>
-            <span>{lang("experienceSection.subtitle")}</span>
+            <span>{"PRAXE"}</span>
             <h1>
-              {lang("experienceSection.title.0")}
-              <strong>{lang("experienceSection.title.1")}</strong>
-              {lang("experienceSection.title.2")}
+              {"Máme zkušenosti z "}
+              <strong>{"reálných"}</strong>
+              {" projektů"}
             </h1>
             <hr />
           </div>
         </div>
         <div className={`${styles.boxContainer}`}>
           <div className={`${styles.box}`}>
-            <h6>{lang("experienceSection.box.0.date")}</h6>
+            <h6>{"2022"}</h6>
             <hr />
-            <p>{lang("experienceSection.box.0.text")}</p>
+            <p>{"Začali jsme profesionálně vyvíjet webové projekty a budovat vlastní vývojový přístup bez šablon."}</p>
           </div>
           <div className={`${styles.box}`}>
-            <h6>{lang("experienceSection.box.1.date")}</h6>
+            <h6>{"2024"}</h6>
             <hr />
-            <p>{lang("experienceSection.box.1.text")}</p>
+            <p>{"Dodali jsme weby pro lokální firmy, například kosmetický salon a social media agenturu."}</p>
           </div>
           <div className={`${styles.box}`}>
-            <h6>{lang("experienceSection.box.2.date")}</h6>
+            <h6>{"2026"}</h6>
             <hr />
-            <p>{lang("experienceSection.box.2.text")}</p>
+            <p>{"Rozšiřujeme zaměření na základní školy v Česku a stavíme jim nové weby připravené na současné požadavky."}</p>
           </div>
         </div>
       </section>
       <section className={`${styles.specialization}`}>
         <div className={`${styles.contentContainer}`}>
           <div className={`${styles.titleContainer}`}>
-            <span>{lang("specializationSection.subtitle")}</span>
+            <span>{"PROČ MY"}</span>
             <h1>
-              {lang("specializationSection.title.0")}
-              <strong>{lang("specializationSection.title.1")}</strong>
-              {lang("specializationSection.title.2")}
+              {"Dáváme školám "}
+              <strong>{"silnou"}</strong>
+              {" online prezentaci"}
             </h1>
             <hr />
           </div>
           <div className={`${styles.textContainer}`}>
-            <p>{lang("specializationSection.text.0")}</p>
+            <p>{"Naším cílem je, aby web školy působil profesionálně, byl rychlý, přehledný a přístupný na všech zařízeních. Každý projekt navrhujeme podle reálných potřeb vedení školy i rodičů."}</p>
             <br />
-            <p>{lang("specializationSection.text.1")}</p>
+            <p>{"Odlišení stavíme na třech pilířích: vlastní vývoj bez šablon, vysoký důraz na kvalitu a výkon, a cenově dostupné řešení pro školský rozpočet."}</p>
           </div>
         </div>
         <div className={`${styles.imgContainer}`}>
           <Image
             src={VisionImg}
-            alt={lang("specializationSection.img.0.alt")}
-            aria-label={lang("specializationSection.img.0.aria")}
+            alt={"Obrázek"}
+            aria-label={"Obrázek této sekce"}
           />
         </div>
       </section>
       <section className={`${styles.cta}`}>
         <div className={`${styles.titleContainer}`}>
-          <span>{lang("ctaSection.subtitle")}</span>
+          <span>{"SPOLUPRÁCE"}</span>
           <h1>
-            {lang("ctaSection.title.0")}
-            <strong>{lang("ctaSection.title.1")}</strong>
-            {lang("ctaSection.title.2")}
+            {"Chcete nový web "}
+            <strong>{"pro"}</strong>
+            {" vaši školu?"}
           </h1>
           <hr />
         </div>
         <div className={`${styles.textContainer}`}>
-          <p>{lang("ctaSection.text")}</p>
+          <p>{"Napište nám a připravíme návrh řešení i orientační rozsah realizace. Úvodní konzultace je nezávazná a zdarma."}</p>
         </div>
         <Btn
           href="/kontakt"
@@ -205,9 +202,9 @@ const Page = () => {
           textColor="var(--color-text-reverse)"
           borderSize="none"
           hoverEffect="scaleForward"
-          ariaLabel={lang("ctaSection.btn.0.aria")}
+          ariaLabel={"Navigovat do sekce kontakt"}
         >
-          {lang("ctaSection.btn.0.content")}
+          {"Poptat web"}
         </Btn>
       </section>
     </main>

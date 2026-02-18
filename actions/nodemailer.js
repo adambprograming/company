@@ -22,8 +22,8 @@ export async function sendEmail({ name, surname, email, phoneNumber, message }) 
       from: `"${name} ${surname} - ${email}" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
       replyTo: email,
-      subject: `AB WEB FORMULÁŘ - ${name}, ${surname}`,
-      text: `Nový kontakt skrze formulář:\n\nJméno: ${name}\nPříjmení: ${surname}\nE-mail: ${email}\nTel. číslo: ${phoneNumber}\n\nZpráva: ${message}`,
+      subject: `NewAgeWeb - nová poptávka (${name} ${surname})`,
+      text: `Nová poptávka z webového formuláře NewAgeWeb:\n\nJméno: ${name}\nPříjmení: ${surname}\nE-mail: ${email}\nTel. číslo: ${phoneNumber}\n\nZpráva: ${message}`,
     };
 
     // Send the email

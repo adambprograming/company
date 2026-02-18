@@ -4,7 +4,6 @@ import styles from "./page.module.scss";
 // Public & Assets
 
 // React/Next Functions
-import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 // Context & Actions
 import { sendEmail } from "@/actions/nodemailer";
@@ -24,8 +23,7 @@ import {
 import LoaderForResponse from "@/components/loader-for-response/loader-for-response.component";
 
 const Page = () => {
-  const lang = useTranslations("orderPage");
-  // 0 is No, 1 is Yes
+    // 0 is No, 1 is Yes
   const [choosedOptionFormInspiration, setChoosedOptionFormInspiration] =
     useState(0);
   const [choosedOptionFormEditable, setChoosedOptionFormEditable] = useState(0);
@@ -70,7 +68,7 @@ const Page = () => {
       setLoaderProps({
         isLoading: false,
         status: "error",
-        message: `${lang(`formSection.error.${error.message}`)}`,
+        message: `${error.message}` === "0" ? "Povinná pole musí být vyplněna" : "Odeslání se nepovedlo",
       });
     } finally {
       setTimeout(
@@ -106,26 +104,26 @@ const Page = () => {
             <FormInput
               minWidth="230px"
               tag="name"
-              label={lang("formSection.field.0.label")}
-              placeholder={lang("formSection.field.0.placeholder")}
+              label={"Jméno:"}
+              placeholder={"Uveďte Vaše jméno"}
               validationPattern={
                 /^[a-zA-ZěščřžýáíéúůóďťňĚŠČŘŽÝÁÍÉÚŮÓĎŤŇ\s'-]{2,30}$/
               }
               maxLength={30}
-              hintText={lang("formSection.field.0.hintText")}
+              hintText={"Jméno musí obsahovat 2 až 30 znaků a může obsahovat pouze písmena, mezery a pomlčky."}
               isRequired={true}
               hintVisibleOnlyOnInvalid={true}
             />
             <FormInput
               minWidth="230px"
               tag="surname"
-              label={lang("formSection.field.1.label")}
-              placeholder={lang("formSection.field.1.placeholder")}
+              label={"Příjmení:"}
+              placeholder={"Uveďte Vaše příjmení"}
               validationPattern={
                 /^[a-zA-ZěščřžýáíéúůóďťňĚŠČŘŽÝÁÍÉÚŮÓĎŤŇ\s'-]{2,35}$/
               }
               maxLength={35}
-              hintText={lang("formSection.field.1.hintText")}
+              hintText={"Příjmení musí obsahovat 2 až 35 znaků a může obsahovat pouze písmena, mezery a pomlčky."}
               isRequired={true}
               hintVisibleOnlyOnInvalid={true}
             />
@@ -134,24 +132,24 @@ const Page = () => {
             <FormInput
               minWidth="230px"
               tag="phone"
-              label={lang("formSection.field.2.label")}
-              placeholder={lang("formSection.field.2.placeholder")}
+              label={"Telefonní číslo:"}
+              placeholder={"Uveďte Vaše telefonní číslo"}
               validationPattern={/^\+?[0-9]{7,15}$/}
               maxLength={15}
-              hintText={lang("formSection.field.2.hintText")}
+              hintText={"Telefonní číslo musí obsahovat 7 až 15 číslic."}
               isRequired={true}
               hintVisibleOnlyOnInvalid={true}
             />
             <FormInput
               minWidth="230px"
               tag="email"
-              label={lang("formSection.field.3.label")}
-              placeholder={lang("formSection.field.3.placeholder")}
+              label={"E-mail:"}
+              placeholder={"Uveďte Váš e-mail"}
               validationPattern={
                 /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,320}$/
               }
               maxLength={320}
-              hintText={lang("formSection.field.3.hintText")}
+              hintText={"Zadejte platnou e-mailovou adresu ve formátu např. uzivatel@email.com."}
               isRequired={true}
               hintVisibleOnlyOnInvalid={true}
             />
@@ -364,10 +362,10 @@ const Page = () => {
             />
           </FormRow>
           <FormBtnSubmit
-            ariaLabel={lang("formSection.btn.0.aria")}
+            ariaLabel={"Odeslání formuláře"}
             textHoverColor="var(--color-text-reverse)"
           >
-            {lang("formSection.btn.0.content")}
+            {"Odeslat"}
           </FormBtnSubmit>
           <LoaderForResponse
             isLoading={loaderProps.isLoading}

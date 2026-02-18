@@ -7,7 +7,6 @@ import Portfolio1Img from "@/public/portfolio/comarr.png"
 // React/Next Functions
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 // Context & Actions
 
 // Componenets
@@ -19,7 +18,6 @@ INSTRUCTIONS
 */
 
 const PortfolioRotatedGrid = () => {
-  // const lang = useTranslations("portfolioRotatedGrid");
   const [widthOfWindow, setWidthOfWindow] = useState(1440);
   useEffect(() => {
     const getAndSetInnerWidthOfWindow = () => {

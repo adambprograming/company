@@ -3,36 +3,30 @@
 import "./footer.styles.scss";
 // Public & Assets
 import IconEmail from "../../components/svgs/footer-icons/icon-email.component";
-import IconFacebook from "../../components/svgs/footer-icons/icon-facebook.component";
 import IconInstagram from "../../components/svgs/footer-icons/icon-instagram.component";
 import IconLinkedin from "../../components/svgs/footer-icons/icon-linkedin.component";
 import IconLocation from "../../components/svgs/footer-icons/icon-location.component";
 import IconPhone from "../../components/svgs/footer-icons/icon-phone.component";
-import IconTiktok from "../../components/svgs/footer-icons/icon-tiktok.component";
-import IconX from "../../components/svgs/footer-icons/icon-x.component";
 import IconGithub from "@/components/svgs/footer-icons/icon-github.component";
 // React/Next Functions
-import { Link } from "@/i18n/routing";
-import { useState, useEffect, useRef } from "react";
-import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useState } from "react";
 // Context & Actions
 
 // Components
 import Popup from "../../components/popup/popup.component";
 
 const Footer = () => {
-  const lang = useTranslations("footer")
-  const phoneNumber = "+420778033073";
+    const phoneNumber = "+420778033073";
   const emailAddress = "ab@adam-bartusek.cz";
   const [popupPhone, setPopupPhone] = useState(false);
   const [popupEmail, setPopupEmail] = useState(false);
-  const footerRef = useRef(null);
 
   const copyToClipboard = (toClipboard, popup) => {
     navigator.clipboard.writeText(toClipboard);
     switch (popup) {
       case "email":
-        const mailtoLink = `mailto:${emailAddress}?subject=Hello%20there&body=Dear%20Adam%2C%0D%0A%0D%0AI'm%20interested%20in%20your%20services.%0D%0A%0D%0ABest%20regards%2C%0D%0A[Your%20Name]`;
+        const mailtoLink = `mailto:${emailAddress}?subject=Nez%C3%A1vazn%C3%A1%20popt%C3%A1vka%20nov%C3%A9ho%20webu%20pro%20%C5%A1kolu&body=Dobr%C3%BD%20den%2C%0D%0A%0D%0Am%C3%A1m%20z%C3%A1jem%20o%20nov%C3%BD%20web%20pro%20%C5%A1kolu.%0D%0A%0D%0AS%20pozdravem%2C%0D%0A[Va%C5%A1e%20jm%C3%A9no]`;
         // Copy the email address to clipboard regardless of mailto success
         navigator.clipboard.writeText(emailAddress).then(
           () => {
@@ -74,28 +68,41 @@ const Footer = () => {
   };
 
   return (
-    <footer id="article-footer" ref={footerRef}>
+    <footer id="article-footer">
       <div className="footer-container">
         <div className="footer-container-info">
           <div className="footer-nav">
-            <span>{lang('nav.title')}</span>
+            <span>{"Menu"}</span>
             <ul>
               <li>
-                <Link href="/" aria-label={lang('nav.list.0.aria')}>{lang('nav.list.0.content')}</Link>
+                <Link href="/" aria-label={"Navigovat na domovskou stránku"}>
+                  {"Domovská stránka"}
+                </Link>
               </li>
               <li>
-                <Link href="/o-mne" aria-label={lang('nav.list.1.aria')}>{lang('nav.list.1.content')}</Link>
+                <Link href="/o-mne" aria-label={"Navigovat do sekce o nás"}>
+                  {"O nás"}
+                </Link>
               </li>
               <li>
-                <Link href="/sluzby" aria-label={lang('nav.list.2.aria')}>{lang('nav.list.2.content')}</Link>
+                <Link href="/sluzby" aria-label={"Navigovat do sekce služby"}>
+                  {"Služby"}
+                </Link>
               </li>
               <li>
-                <Link href="/kontakt" aria-label={lang('nav.list.3.aria')}>{lang('nav.list.3.content')}</Link>
+                <Link href="/kontakt" aria-label={"Navigovat do sekce kontakt"}>
+                  {"Kontakt"}
+                </Link>
+              </li>
+              <li>
+                <Link href="/pravni" aria-label={"Navigovat na stránku právních informací"}>
+                  {"Právní informace"}
+                </Link>
               </li>
             </ul>
           </div>
           <div className="footer-contacts">
-            <span>{lang('contacts.title')}</span>
+            <span>{"Kontakty"}</span>
             <div className="footer-icons">
               <span
                 className="footer-phone"
@@ -104,7 +111,7 @@ const Footer = () => {
                 }}
               >
                 <IconPhone />
-                <Popup state={popupPhone}>{lang('contacts.popup')}</Popup>
+                <Popup state={popupPhone}>{"Zkopírováno!"}</Popup>
               </span>
               <span
                 className="footer-email"
@@ -113,13 +120,13 @@ const Footer = () => {
                 }}
               >
                 <IconEmail />
-                <Popup state={popupEmail}>{lang('contacts.popup')}</Popup>
+                <Popup state={popupEmail}>{"Zkopírováno!"}</Popup>
               </span>
               <Link
                 href="https://www.google.com/maps/place/Pardubice/@50.0342266,15.4292331,10z/data=!3m1!4b1!4m6!3m5!1s0x470dc94b239307b5:0x12d59894ccf624ae!8m2!3d50.0343092!4d15.7811994!16zL20vMGNoNTQ?entry=ttu"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={lang('contacts.link.0.aria')}
+                aria-label={"Odkaz na naši lokaci."}
               >
                 <IconLocation />
               </Link>
@@ -127,7 +134,7 @@ const Footer = () => {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={lang('contacts.link.1.aria')}
+                aria-label={"Odkaz na náš Facebook profil."}
               >
                 <IconFacebook />
               </Link> */}
@@ -135,7 +142,7 @@ const Footer = () => {
                 href="https://www.instagram.com/_adaamb/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={lang('contacts.link.2.aria')}
+                aria-label={"Odkaz na náš Instagram profil."}
               >
                 <IconInstagram />
               </Link>
@@ -143,7 +150,7 @@ const Footer = () => {
                 href="https://www.tiktok.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={lang('contacts.link.3.aria')}
+                aria-label={"Odkaz na náš TikTok profil."}
               >
                 <IconTiktok />
               </Link> */}
@@ -151,7 +158,7 @@ const Footer = () => {
                 href={`https://www.linkedin.com/in/adam-bart%C5%AF%C5%A1ek-251107286/?locale=cs_CZ`}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={lang('contacts.link.4.aria')}
+                aria-label={"Odkaz na náš LinkedIn profil."}
               >
                 <IconLinkedin />
               </Link>
@@ -159,7 +166,7 @@ const Footer = () => {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={lang('contacts.link.5.aria')}
+                aria-label={"Odkaz na náš X profil."}
               >
                 <IconX />
               </Link> */}
@@ -167,7 +174,7 @@ const Footer = () => {
                 href="https://github.com/adambprograming"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={lang('contacts.link.6.aria')}
+                aria-label={"Odkaz na náš GitHub profil."}
               >
                 <IconGithub />
               </Link>
@@ -175,19 +182,11 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-container-copyright">
-          <p>{lang('copyright.0')}&copy;{lang('copyright.1')}</p>
           <p>
-            {/*<span>{lang('createdBy.0')}</span>
-            <Link
-              href="https://www.adam-bartusek.cz/"
-              target="_blank"
-              rel="noopener"
-              aria-label={lang('link.0.aria')}
-            >
-              {lang('link.0.content')}
-            </Link>
-            <span>.</span>*/}
-            <span>{lang('createdBy.1')}</span>
+            {"NewAgeWeb "}&copy;{" 2026."}
+          </p>
+          <p>
+            <span>{"Všechna práva vyhrazena."}</span>
           </p>
         </div>
       </div>

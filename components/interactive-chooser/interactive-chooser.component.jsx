@@ -17,9 +17,8 @@ import IconShop from "../svgs/interactive-picker-icons/icon-shop.component";
 import IconWarehouse from "../svgs/interactive-picker-icons/icon-warehouse.component";
 // React/Next Functions
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
-import { useRouter } from "@/i18n/routing";
 // Context & Actions
 
 // Componenets
@@ -28,55 +27,54 @@ import Btn from "@/components/btn/btn.component";
 import { Carousel, CarouselItem } from "../carousel/carousel.component";
 import Popup from "../popup/popup.component";
 
-function setInitialValuesToSessionStorage(option, lang) {
+function setInitialValuesToSessionStorage(option) {
   var initialValues;
   switch (option) {
     case "web1":
       initialValues = {
-        scope: lang("web1.scope"),
-        functions: lang("web1.functions"),
-        // price: lang("web1.price"),
+        scope: "Jednostránkový web (one-page prezentace školy)",
+        functions: "Kontaktní formulář, responzivita, základní SEO",
       };
       break;
     case "web2":
       initialValues = {
-        scope: lang("web2.scope"),
-        functions: lang("web2.functions"),
-        // price: lang("web2.price"),
+        scope: "Vícestránkový školní web (1-5 podstránek)",
+        functions:
+          "Správa obsahu, responzivita, SEO, světlý/tmavý režim",
       };
       break;
     case "web3":
       initialValues = {
-        scope: lang("web3.scope"),
-        functions: lang("web3.functions"),
-        // price: lang("web3.price"),
+        scope: "Rozsáhlý školní web (5+ podstránek)",
+        functions:
+          "Správa obsahu, vícejazyčnost, UX prvky, pokročilé SEO",
       };
       break;
     case "eshop1":
       initialValues = {
-        scope: lang("eshop1.scope"),
-        functions: lang("eshop1.functions"),
-        // price: lang("eshop1.price"),
+        scope: "Menší e-shop (desítky produktů)",
+        functions: "Produktové stránky, košík, základní analytika, SEO",
       };
       break;
     case "eshop2":
       initialValues = {
-        scope: lang("eshop2.scope"),
-        functions: lang("eshop2.functions"),
-        // price: lang("eshop2.price"),
+        scope: "Střední e-shop (stovky produktů)",
+        functions:
+          "Kategorie, filtrace, napojení plateb a dopravy, SEO",
       };
       break;
     case "eshop3":
       initialValues = {
-        scope: lang("eshop3.scope"),
-        functions: lang("eshop3.functions"),
-        // price: lang("eshop3.price"),
+        scope: "Velký e-shop (pokročilá struktura a integrace)",
+        functions:
+          "Napojení na sklad/ERP, automatizace, pokročilé reporty, SEO",
       };
       break;
     case "webapp":
       initialValues = {
-        scope: lang("webapp.scope"),
-        functions: lang("webapp.functions"),
+        scope: "Webová aplikace na míru",
+        functions:
+          "Specifická funkcionalita podle procesu školy nebo organizace",
       };
       break;
     default:
@@ -93,11 +91,7 @@ INSTRUCTIONS
 */
 
 const InteractiveChooser = () => {
-  const lang = useTranslations("components.interactiveChooser");
-  const langForFillFormData = useTranslations(
-    "components.interactiveChooser.fillFormData"
-  );
-  const router = useRouter();
+      const router = useRouter();
   const phoneNumber = "+420778033073";
   const [popupPhone, setPopupPhone] = useState(false);
   const [widthOfWindow, setWidthOfWindow] = useState(1440);
@@ -199,7 +193,7 @@ const InteractiveChooser = () => {
   };
 
   const handleFillForm = (option) => {
-    setInitialValuesToSessionStorage(option, langForFillFormData);
+    setInitialValuesToSessionStorage(option);
     router.push("/kontakt#form", { scroll: true });
   };
 
@@ -218,7 +212,7 @@ const InteractiveChooser = () => {
             bgColor="none"
             borderSize="0"
             hoverEffect="scaleBackward"
-            ariaLabel={lang("btn.0.aria")}
+            ariaLabel={"Jít zpátky."}
           >
             <IconArrowBack width={25} height={25} />
           </Btn>
@@ -234,9 +228,9 @@ const InteractiveChooser = () => {
             borderSize="0"
             hoverEffect="scaleBackward"
             paddingOfBtn="10px"
-            ariaLabel={lang("btn.1.aria")}
+            ariaLabel={"Jít zpátky k výběru služby."}
           >
-            {lang("btn.1.content")}
+            {"/ Výběr služby"}
           </Btn>
         </div>
         <div
@@ -250,12 +244,12 @@ const InteractiveChooser = () => {
             borderSize="0"
             hoverEffect="scaleBackward"
             paddingOfBtn="10px"
-            ariaLabel={lang("btn.2.aria")}
+            ariaLabel={"Jít zpátky ke konkrétnímu výběru podslužby."}
           >{`/ ${
             firstCardPick === 1
-              ? lang("btn.2.content.0")
+              ? "Výběr typu webových stránek"
               : firstCardPick === 2
-              ? lang("btn.2.content.1")
+              ? "Výběr typu e-shopu"
               : ""
           }`}</Btn>
         </div>
@@ -291,11 +285,11 @@ const InteractiveChooser = () => {
             borderRadius="15px"
           >
             <div className={`${styles.titleContainer}`}>
-              <span>{lang("card.0.subtitle")}</span>
+              <span>{"VÝBĚR SLUŽBY"}</span>
               <h1>
-                {lang("card.0.title.0")}
-                <strong>{lang("card.0.title.1")}</strong>
-                {lang("card.0.title.2")}
+                {"O jaké "}
+                <strong>{"služby"}</strong>
+                {" máte zájem?"}
               </h1>
               <hr />
             </div>
@@ -319,14 +313,14 @@ const InteractiveChooser = () => {
                       borderRadius="10px"
                       bgHoverColor="var(--black-10)"
                       hoverEffect="bgHover"
-                      ariaLabel={lang("card.0.btn.0.aria")}
+                      ariaLabel={"Vybrat službu webové stránky"}
                     >
                       <div className={`${styles.imgContainer}`}>
                         <IconGlobe height={75} />
                       </div>
                       <div className={`${styles.descriptionContainer}`}>
                         <span className={`${styles.btnTitle}`}>
-                          {lang("card.0.btn.0.content.title")}
+                          {"Webové stránky"}
                         </span>
                         <div>
                           <span>
@@ -334,7 +328,7 @@ const InteractiveChooser = () => {
                               style={{ color: "var(--color-success)" }}
                             />
                           </span>
-                          <p>{lang("card.0.btn.0.content.list.0")}</p>
+                          <p>{"Osobní či firemní prezentace"}</p>
                         </div>
                         <div>
                           <span>
@@ -342,7 +336,7 @@ const InteractiveChooser = () => {
                               style={{ color: "var(--color-success)" }}
                             />
                           </span>
-                          <p>{lang("card.0.btn.0.content.list.1")}</p>
+                          <p>{"Vícejazyčnost"}</p>
                         </div>
                         <div>
                           <span>
@@ -350,7 +344,7 @@ const InteractiveChooser = () => {
                               style={{ color: "var(--color-success)" }}
                             />
                           </span>
-                          <p>{lang("card.0.btn.0.content.list.2")}</p>
+                          <p>{"Denní a noční režim"}</p>
                         </div>
                         <div>
                           <span>
@@ -358,7 +352,7 @@ const InteractiveChooser = () => {
                               style={{ color: "var(--color-success)" }}
                             />
                           </span>
-                          <p>{lang("card.0.btn.0.content.list.3")}</p>
+                          <p>{"Systém úpravy obsahu"}</p>
                         </div>
                         <div>
                           <span>
@@ -366,7 +360,7 @@ const InteractiveChooser = () => {
                               style={{ color: "var(--color-success)" }}
                             />
                           </span>
-                          <p>{lang("card.0.btn.0.content.list.4")}</p>
+                          <p>{"Rychlá navigace"}</p>
                         </div>
                       </div>
                     </Btn>
@@ -380,14 +374,14 @@ const InteractiveChooser = () => {
                       borderRadius="10px"
                       bgHoverColor="var(--black-10)"
                       hoverEffect="bgHover"
-                      ariaLabel={lang("card.0.btn.1.aria")}
+                      ariaLabel={"Vybrat službu e-shopu"}
                     >
                       <div className={`${styles.imgContainer}`}>
                         <IconEshop height={75} />
                       </div>
                       <div className={`${styles.descriptionContainer}`}>
                         <span className={`${styles.btnTitle}`}>
-                          {lang("card.0.btn.1.content.title")}
+                          {"E-shop"}
                         </span>
                         <div>
                           <span>
@@ -395,7 +389,7 @@ const InteractiveChooser = () => {
                               style={{ color: "var(--color-success)" }}
                             />
                           </span>
-                          <p>{lang("card.0.btn.1.content.list.0")}</p>
+                          <p>{"Platební brána"}</p>
                         </div>
                         <div>
                           <span>
@@ -403,7 +397,7 @@ const InteractiveChooser = () => {
                               style={{ color: "var(--color-success)" }}
                             />
                           </span>
-                          <p>{lang("card.0.btn.1.content.list.1")}</p>
+                          <p>{"Uživatelské rozhraní"}</p>
                         </div>
                         <div>
                           <span>
@@ -412,11 +406,11 @@ const InteractiveChooser = () => {
                             />
                           </span>
                           <p>
-                            {lang("card.0.btn.1.content.list.2.0")}
+                            {"Vlastní řešení pro malé"}
                             <br />
-                            {lang("card.0.btn.1.content.list.2.1")}
+                            {"podnikatele bez zbytečných"}
                             <br />
-                            {lang("card.0.btn.1.content.list.2.2")}
+                            {"poplatků"}
                           </p>
                         </div>
                       </div>
@@ -431,14 +425,14 @@ const InteractiveChooser = () => {
                       borderRadius="10px"
                       bgHoverColor="var(--black-10)"
                       hoverEffect="bgHover"
-                      ariaLabel={lang("card.0.btn.2.aria")}
+                      ariaLabel={"Vybrat službu webové aplikace"}
                     >
                       <div className={`${styles.imgContainer}`}>
                         <IconGears height={75} />
                       </div>
                       <div className={`${styles.descriptionContainer}`}>
                         <span className={`${styles.btnTitle}`}>
-                          {lang("card.0.btn.2.content.title")}
+                          {"Webová aplikace"}
                         </span>
                         <div>
                           <span>
@@ -446,7 +440,7 @@ const InteractiveChooser = () => {
                               style={{ color: "var(--color-success)" }}
                             />
                           </span>
-                          <p>{lang("card.0.btn.2.content.list.0")}</p>
+                          <p>{"Indiviální řešení na míru"}</p>
                         </div>
                         <div>
                           <span>
@@ -454,7 +448,7 @@ const InteractiveChooser = () => {
                               style={{ color: "var(--color-success)" }}
                             />
                           </span>
-                          <p>{lang("card.0.btn.2.content.list.1")}</p>
+                          <p>{"Interní firemní aplikace"}</p>
                         </div>
                         <div>
                           <span>
@@ -463,9 +457,9 @@ const InteractiveChooser = () => {
                             />
                           </span>
                           <p>
-                            {lang("card.0.btn.2.content.list.2.0")}
+                            {"Spolupráce na vytváření"}
                             <br />
-                            {lang("card.0.btn.2.content.list.2.1")}
+                            {"webových softwarů"}
                           </p>
                         </div>
                       </div>
@@ -482,14 +476,14 @@ const InteractiveChooser = () => {
                     borderRadius="10px"
                     bgHoverColor="var(--black-10)"
                     hoverEffect="bgHover"
-                    ariaLabel={lang("card.0.btn.0.aria")}
+                    ariaLabel={"Vybrat službu webové stránky"}
                   >
                     <div className={`${styles.imgContainer}`}>
                       <IconGlobe height={75} />
                     </div>
                     <div className={`${styles.descriptionContainer}`}>
                       <span className={`${styles.btnTitle}`}>
-                        {lang("card.0.btn.0.content.title")}
+                        {"Webové stránky"}
                       </span>
                       <div>
                         <span>
@@ -497,7 +491,7 @@ const InteractiveChooser = () => {
                             style={{ color: "var(--color-success)" }}
                           />
                         </span>
-                        <p>{lang("card.0.btn.0.content.list.0")}</p>
+                        <p>{"Osobní či firemní prezentace"}</p>
                       </div>
                       <div>
                         <span>
@@ -505,7 +499,7 @@ const InteractiveChooser = () => {
                             style={{ color: "var(--color-success)" }}
                           />
                         </span>
-                        <p>{lang("card.0.btn.0.content.list.1")}</p>
+                        <p>{"Vícejazyčnost"}</p>
                       </div>
                       <div>
                         <span>
@@ -513,7 +507,7 @@ const InteractiveChooser = () => {
                             style={{ color: "var(--color-success)" }}
                           />
                         </span>
-                        <p>{lang("card.0.btn.0.content.list.2")}</p>
+                        <p>{"Denní a noční režim"}</p>
                       </div>
                       <div>
                         <span>
@@ -521,7 +515,7 @@ const InteractiveChooser = () => {
                             style={{ color: "var(--color-success)" }}
                           />
                         </span>
-                        <p>{lang("card.0.btn.0.content.list.3")}</p>
+                        <p>{"Systém úpravy obsahu"}</p>
                       </div>
                       <div>
                         <span>
@@ -529,7 +523,7 @@ const InteractiveChooser = () => {
                             style={{ color: "var(--color-success)" }}
                           />
                         </span>
-                        <p>{lang("card.0.btn.0.content.list.4")}</p>
+                        <p>{"Rychlá navigace"}</p>
                       </div>
                     </div>
                   </Btn>
@@ -541,14 +535,14 @@ const InteractiveChooser = () => {
                     borderRadius="10px"
                     bgHoverColor="var(--black-10)"
                     hoverEffect="bgHover"
-                    ariaLabel={lang("card.0.btn.1.aria")}
+                    ariaLabel={"Vybrat službu e-shopu"}
                   >
                     <div className={`${styles.imgContainer}`}>
                       <IconEshop height={75} />
                     </div>
                     <div className={`${styles.descriptionContainer}`}>
                       <span className={`${styles.btnTitle}`}>
-                        {lang("card.0.btn.1.content.title")}
+                        {"E-shop"}
                       </span>
                       <div>
                         <span>
@@ -556,7 +550,7 @@ const InteractiveChooser = () => {
                             style={{ color: "var(--color-success)" }}
                           />
                         </span>
-                        <p>{lang("card.0.btn.1.content.list.0")}</p>
+                        <p>{"Platební brána"}</p>
                       </div>
                       <div>
                         <span>
@@ -564,7 +558,7 @@ const InteractiveChooser = () => {
                             style={{ color: "var(--color-success)" }}
                           />
                         </span>
-                        <p>{lang("card.0.btn.1.content.list.1")}</p>
+                        <p>{"Uživatelské rozhraní"}</p>
                       </div>
                       <div>
                         <span>
@@ -573,11 +567,11 @@ const InteractiveChooser = () => {
                           />
                         </span>
                         <p>
-                          {lang("card.0.btn.1.content.list.2.0")}
+                          {"Vlastní řešení pro malé"}
                           <br />
-                          {lang("card.0.btn.1.content.list.2.1")}
+                          {"podnikatele bez zbytečných"}
                           <br />
-                          {lang("card.0.btn.1.content.list.2.2")}
+                          {"poplatků"}
                         </p>
                       </div>
                     </div>
@@ -590,14 +584,14 @@ const InteractiveChooser = () => {
                     borderRadius="10px"
                     bgHoverColor="var(--black-10)"
                     hoverEffect="bgHover"
-                    ariaLabel={lang("card.0.btn.2.aria")}
+                    ariaLabel={"Vybrat službu webové aplikace"}
                   >
                     <div className={`${styles.imgContainer}`}>
                       <IconGears height={75} />
                     </div>
                     <div className={`${styles.descriptionContainer}`}>
                       <span className={`${styles.btnTitle}`}>
-                        {lang("card.0.btn.2.content.title")}
+                        {"Webová aplikace"}
                       </span>
                       <div>
                         <span>
@@ -605,7 +599,7 @@ const InteractiveChooser = () => {
                             style={{ color: "var(--color-success)" }}
                           />
                         </span>
-                        <p>{lang("card.0.btn.2.content.list.0")}</p>
+                        <p>{"Indiviální řešení na míru"}</p>
                       </div>
                       <div>
                         <span>
@@ -613,7 +607,7 @@ const InteractiveChooser = () => {
                             style={{ color: "var(--color-success)" }}
                           />
                         </span>
-                        <p>{lang("card.0.btn.2.content.list.1")}</p>
+                        <p>{"Interní firemní aplikace"}</p>
                       </div>
                       <div>
                         <span>
@@ -622,9 +616,9 @@ const InteractiveChooser = () => {
                           />
                         </span>
                         <p>
-                          {lang("card.0.btn.2.content.list.2.0")}
+                          {"Spolupráce na vytváření"}
                           <br />
-                          {lang("card.0.btn.2.content.list.2.1")}
+                          {"webových softwarů"}
                         </p>
                       </div>
                     </div>
@@ -651,11 +645,11 @@ const InteractiveChooser = () => {
             {firstCardPick === 1 ? (
               <>
                 <div className={`${styles.titleContainer}`}>
-                  <span>{lang("card.1.subtitle")}</span>
+                  <span>{"WEBY"}</span>
                   <h1>
-                    {lang("card.1.title.0")}
-                    <strong>{lang("card.1.title.1")}</strong>
-                    {lang("card.1.title.2")}
+                    {"O jaké "}
+                    <strong>{"webové"}</strong>
+                    {" stránky máte zájem?"}
                   </h1>
                   <hr />
                 </div>
@@ -678,14 +672,14 @@ const InteractiveChooser = () => {
                           borderRadius="15px"
                           bgHoverColor="var(--black-10)"
                           hoverEffect="bgHover"
-                          ariaLabel={lang("card.1.btn.0.aria")}
+                          ariaLabel={"Vybrat jednoduché webové stránky"}
                         >
                           <div className={`${styles.imgContainer}`}>
                             <IconCheck height={75} />
                           </div>
                           <div className={`${styles.descriptionContainer}`}>
                             <span className={`${styles.btnTitle}`}>
-                              {lang("card.1.btn.0.content.title")}
+                              {"Jednoduché"}
                             </span>
                             <div>
                               <span>
@@ -693,7 +687,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.1.btn.0.content.list.0")}</p>
+                              <p>{"1 stránka"}</p>
                             </div>
                             <div>
                               <span>
@@ -701,7 +695,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.1.btn.0.content.list.1")}</p>
+                              <p>{"Optimalizavané"}</p>
                             </div>
                             <div>
                               <span>
@@ -709,7 +703,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-error)" }}
                                 />
                               </span>
-                              <p>{lang("card.1.btn.0.content.list.2")}</p>
+                              <p>{"Denní a noční režim"}</p>
                             </div>
                             <div>
                               <span>
@@ -717,7 +711,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-error)" }}
                                 />
                               </span>
-                              <p>{lang("card.1.btn.0.content.list.3")}</p>
+                              <p>{"Vícejazyčné"}</p>
                             </div>
                             <div>
                               <span>
@@ -725,7 +719,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-error)" }}
                                 />
                               </span>
-                              <p>{lang("card.1.btn.0.content.list.4")}</p>
+                              <p>{"Systém úpravy obsahu"}</p>
                             </div>
                           </div>
                         </Btn>
@@ -738,14 +732,14 @@ const InteractiveChooser = () => {
                           borderRadius="15px"
                           bgHoverColor="var(--black-10)"
                           hoverEffect="bgHover"
-                          ariaLabel={lang("card.1.btn.1.aria")}
+                          ariaLabel={"Vybrat komplexní webové stránky"}
                         >
                           <div className={`${styles.imgContainer}`}>
                             <IconTarget height={75} />
                           </div>
                           <div className={`${styles.descriptionContainer}`}>
                             <span className={`${styles.btnTitle}`}>
-                              {lang("card.1.btn.1.content.title")}
+                              {"Komplexní"}
                             </span>
                             <div>
                               <span>
@@ -753,7 +747,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.1.btn.1.content.list.0")}</p>
+                              <p>{"1-5 stránek"}</p>
                             </div>
                             <div>
                               <span>
@@ -761,7 +755,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.1.btn.1.content.list.1")}</p>
+                              <p>{"Rychlá navigace"}</p>
                             </div>
                             <div>
                               <span>
@@ -769,7 +763,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.1.btn.1.content.list.2")}</p>
+                              <p>{"Denní a noční režim"}</p>
                             </div>
                             <div>
                               <span>
@@ -777,7 +771,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-error)" }}
                                 />
                               </span>
-                              <p>{lang("card.1.btn.1.content.list.3")}</p>
+                              <p>{"Vícejazyčné"}</p>
                             </div>
                             <div>
                               <span>
@@ -785,7 +779,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-error)" }}
                                 />
                               </span>
-                              <p>{lang("card.1.btn.1.content.list.4")}</p>
+                              <p>{"Systém úpravy obsahu"}</p>
                             </div>
                           </div>
                         </Btn>
@@ -798,14 +792,14 @@ const InteractiveChooser = () => {
                           borderRadius="15px"
                           bgHoverColor="var(--black-10)"
                           hoverEffect="bgHover"
-                          ariaLabel={lang("card.1.btn.2.aria")}
+                          ariaLabel={"Vybrat profesionální webové stránky"}
                         >
                           <div className={`${styles.imgContainer}`}>
                             <IconRocket height={75} />
                           </div>
                           <div className={`${styles.descriptionContainer}`}>
                             <span className={`${styles.btnTitle}`}>
-                              {lang("card.1.btn.2.content.title")}
+                              {"Profesionální"}
                             </span>
                             <div>
                               <span>
@@ -813,7 +807,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.1.btn.2.content.list.0")}</p>
+                              <p>{"5+ stránek"}</p>
                             </div>
                             <div>
                               <span>
@@ -821,7 +815,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.1.btn.2.content.list.1")}</p>
+                              <p>{"Interaktivní"}</p>
                             </div>
                             <div>
                               <span>
@@ -829,7 +823,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.1.btn.2.content.list.2")}</p>
+                              <p>{"Denní a noční režim"}</p>
                             </div>
                             <div>
                               <span>
@@ -837,7 +831,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.1.btn.2.content.list.3")}</p>
+                              <p>{"Vícejazyčné"}</p>
                             </div>
                             <div>
                               <span>
@@ -845,7 +839,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.1.btn.2.content.list.4")}</p>
+                              <p>{"Systém úpravy obsahu"}</p>
                             </div>
                           </div>
                         </Btn>
@@ -860,14 +854,14 @@ const InteractiveChooser = () => {
                         borderRadius="15px"
                         bgHoverColor="var(--black-10)"
                         hoverEffect="bgHover"
-                        ariaLabel={lang("card.1.btn.0.aria")}
+                        ariaLabel={"Vybrat jednoduché webové stránky"}
                       >
                         <div className={`${styles.imgContainer}`}>
                           <IconCheck height={75} />
                         </div>
                         <div className={`${styles.descriptionContainer}`}>
                           <span className={`${styles.btnTitle}`}>
-                            {lang("card.1.btn.0.content.title")}
+                            {"Jednoduché"}
                           </span>
                           <div>
                             <span>
@@ -875,7 +869,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.1.btn.0.content.list.0")}</p>
+                            <p>{"1 stránka"}</p>
                           </div>
                           <div>
                             <span>
@@ -883,7 +877,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.1.btn.0.content.list.1")}</p>
+                            <p>{"Optimalizavané"}</p>
                           </div>
                           <div>
                             <span>
@@ -891,7 +885,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-error)" }}
                               />
                             </span>
-                            <p>{lang("card.1.btn.0.content.list.2")}</p>
+                            <p>{"Denní a noční režim"}</p>
                           </div>
                           <div>
                             <span>
@@ -899,7 +893,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-error)" }}
                               />
                             </span>
-                            <p>{lang("card.1.btn.0.content.list.3")}</p>
+                            <p>{"Vícejazyčné"}</p>
                           </div>
                           <div>
                             <span>
@@ -907,7 +901,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-error)" }}
                               />
                             </span>
-                            <p>{lang("card.1.btn.0.content.list.4")}</p>
+                            <p>{"Systém úpravy obsahu"}</p>
                           </div>
                         </div>
                       </Btn>
@@ -918,14 +912,14 @@ const InteractiveChooser = () => {
                         borderRadius="15px"
                         bgHoverColor="var(--black-10)"
                         hoverEffect="bgHover"
-                        ariaLabel={lang("card.1.btn.1.aria")}
+                        ariaLabel={"Vybrat komplexní webové stránky"}
                       >
                         <div className={`${styles.imgContainer}`}>
                           <IconTarget height={75} />
                         </div>
                         <div className={`${styles.descriptionContainer}`}>
                           <span className={`${styles.btnTitle}`}>
-                            {lang("card.1.btn.1.content.title")}
+                            {"Komplexní"}
                           </span>
                           <div>
                             <span>
@@ -933,7 +927,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.1.btn.1.content.list.0")}</p>
+                            <p>{"1-5 stránek"}</p>
                           </div>
                           <div>
                             <span>
@@ -941,7 +935,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.1.btn.1.content.list.1")}</p>
+                            <p>{"Rychlá navigace"}</p>
                           </div>
                           <div>
                             <span>
@@ -949,7 +943,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.1.btn.1.content.list.2")}</p>
+                            <p>{"Denní a noční režim"}</p>
                           </div>
                           <div>
                             <span>
@@ -957,7 +951,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-error)" }}
                               />
                             </span>
-                            <p>{lang("card.1.btn.1.content.list.3")}</p>
+                            <p>{"Vícejazyčné"}</p>
                           </div>
                           <div>
                             <span>
@@ -965,7 +959,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-error)" }}
                               />
                             </span>
-                            <p>{lang("card.1.btn.1.content.list.4")}</p>
+                            <p>{"Systém úpravy obsahu"}</p>
                           </div>
                         </div>
                       </Btn>
@@ -976,14 +970,14 @@ const InteractiveChooser = () => {
                         borderRadius="15px"
                         bgHoverColor="var(--black-10)"
                         hoverEffect="bgHover"
-                        ariaLabel={lang("card.1.btn.2.aria")}
+                        ariaLabel={"Vybrat profesionální webové stránky"}
                       >
                         <div className={`${styles.imgContainer}`}>
                           <IconRocket height={75} />
                         </div>
                         <div className={`${styles.descriptionContainer}`}>
                           <span className={`${styles.btnTitle}`}>
-                            {lang("card.1.btn.2.content.title")}
+                            {"Profesionální"}
                           </span>
                           <div>
                             <span>
@@ -991,7 +985,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.1.btn.2.content.list.0")}</p>
+                            <p>{"5+ stránek"}</p>
                           </div>
                           <div>
                             <span>
@@ -999,7 +993,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.1.btn.2.content.list.1")}</p>
+                            <p>{"Interaktivní"}</p>
                           </div>
                           <div>
                             <span>
@@ -1007,7 +1001,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.1.btn.2.content.list.2")}</p>
+                            <p>{"Denní a noční režim"}</p>
                           </div>
                           <div>
                             <span>
@@ -1015,7 +1009,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.1.btn.2.content.list.3")}</p>
+                            <p>{"Vícejazyčné"}</p>
                           </div>
                           <div>
                             <span>
@@ -1023,7 +1017,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.1.btn.2.content.list.4")}</p>
+                            <p>{"Systém úpravy obsahu"}</p>
                           </div>
                         </div>
                       </Btn>
@@ -1035,24 +1029,24 @@ const InteractiveChooser = () => {
                     <span>
                       <IconInfoCircle style={{ fill: "var(--shadow-25)" }} />
                     </span>
-                    <p>{lang("info.0")}</p>
+                    <p>{"Rozdělení je pouze orientační, vždy se můžeme domluvit na individuálním řešení."}</p>
                   </div>
                   <div>
                     <span>
                       <IconInfoCircle style={{ fill: "var(--shadow-25)" }} />
                     </span>
-                    <p>{lang("info.1")}</p>
+                    <p>{"V případě, že již máte webové stránky, můžeme společně domluvit lepší podmínky pro vedení stránek, nebo je zmodernizovat."}</p>
                   </div>
                 </div>
               </>
             ) : firstCardPick === 2 ? (
               <>
                 <div className={`${styles.titleContainer}`}>
-                  <span>{lang("card.2.subtitle")}</span>
+                  <span>{"E-SHOPY"}</span>
                   <h1>
-                    {lang("card.2.title.0")}
-                    <strong>{lang("card.2.title.1")}</strong>
-                    {lang("card.2.title.2")}
+                    {"Jaký typ "}
+                    <strong>{"podnikání"}</strong>
+                    {" vlastníte?"}
                   </h1>
                   <hr />
                 </div>
@@ -1075,14 +1069,14 @@ const InteractiveChooser = () => {
                           borderRadius="15px"
                           bgHoverColor="var(--black-10)"
                           hoverEffect="bgHover"
-                          ariaLabel={lang("card.2.btn.0.aria")}
+                          ariaLabel={"Vybrat e-shop pro jedince"}
                         >
                           <div className={`${styles.imgContainer}`}>
                             <IconPerson height={75} />
                           </div>
                           <div className={`${styles.descriptionContainer}`}>
                             <span className={`${styles.btnTitle}`}>
-                              {lang("card.2.btn.0.content.title")}
+                              {"Jedinec"}
                             </span>
                             <div>
                               <span>
@@ -1090,7 +1084,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.2.btn.0.content.list.0")}</p>
+                              <p>{"1-3 produkty"}</p>
                             </div>
                             <div>
                               <span>
@@ -1098,7 +1092,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.2.btn.0.content.list.1")}</p>
+                              <p>{"Řešení prodeje bez platební brány"}</p>
                             </div>
                             <div>
                               <span>
@@ -1106,7 +1100,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.2.btn.0.content.list.2")}</p>
+                              <p>{"Systém úpravy obsahu"}</p>
                             </div>
                             <div>
                               <span>
@@ -1114,7 +1108,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-error)" }}
                                 />
                               </span>
-                              <p>{lang("card.2.btn.0.content.list.3")}</p>
+                              <p>{"Vícejazyčné"}</p>
                             </div>
                             <div>
                               <span>
@@ -1122,7 +1116,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-error)" }}
                                 />
                               </span>
-                              <p>{lang("card.2.btn.0.content.list.4")}</p>
+                              <p>{"Uživatelské rozhraní"}</p>
                             </div>
                           </div>
                         </Btn>
@@ -1135,14 +1129,14 @@ const InteractiveChooser = () => {
                           borderRadius="15px"
                           bgHoverColor="var(--black-10)"
                           hoverEffect="bgHover"
-                          ariaLabel={lang("card.2.btn.1.aria")}
+                          ariaLabel={"Vybrat e-shop pro maloobchod"}
                         >
                           <div className={`${styles.imgContainer}`}>
                             <IconShop height={75} />
                           </div>
                           <div className={`${styles.descriptionContainer}`}>
                             <span className={`${styles.btnTitle}`}>
-                              {lang("card.2.btn.1.content.title")}
+                              {"Maloobchod"}
                             </span>
                             <div>
                               <span>
@@ -1150,7 +1144,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.2.btn.1.content.list.0")}</p>
+                              <p>{"Do 10 produktů"}</p>
                             </div>
                             <div>
                               <span>
@@ -1158,7 +1152,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.2.btn.1.content.list.1")}</p>
+                              <p>{"Platební brána"}</p>
                             </div>
                             <div>
                               <span>
@@ -1166,7 +1160,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.2.btn.1.content.list.2")}</p>
+                              <p>{"Systém úpravy obsahu"}</p>
                             </div>
                             <div>
                               <span>
@@ -1174,7 +1168,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.2.btn.1.content.list.3")}</p>
+                              <p>{"Vícejazyčné"}</p>
                             </div>
                             <div>
                               <span>
@@ -1182,7 +1176,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-error)" }}
                                 />
                               </span>
-                              <p>{lang("card.2.btn.1.content.list.4")}</p>
+                              <p>{"Uživatelské rozhraní"}</p>
                             </div>
                           </div>
                         </Btn>
@@ -1195,14 +1189,14 @@ const InteractiveChooser = () => {
                           borderRadius="15px"
                           bgHoverColor="var(--black-10)"
                           hoverEffect="bgHover"
-                          ariaLabel={lang("card.2.btn.2.aria")}
+                          ariaLabel={"Vybrat e-shop pro velkoobchod"}
                         >
                           <div className={`${styles.imgContainer}`}>
                             <IconWarehouse height={75} />
                           </div>
                           <div className={`${styles.descriptionContainer}`}>
                             <span className={`${styles.btnTitle}`}>
-                              {lang("card.2.btn.2.content.title")}
+                              {"Velkoobchod"}
                             </span>
                             <div>
                               <span>
@@ -1210,7 +1204,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.2.btn.2.content.list.0")}</p>
+                              <p>{"10+ produktů"}</p>
                             </div>
                             <div>
                               <span>
@@ -1218,7 +1212,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.2.btn.2.content.list.1")}</p>
+                              <p>{"Platební brána"}</p>
                             </div>
                             <div>
                               <span>
@@ -1226,7 +1220,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.2.btn.2.content.list.2")}</p>
+                              <p>{"Systém úpravy obsahu"}</p>
                             </div>
                             <div>
                               <span>
@@ -1234,7 +1228,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.2.btn.2.content.list.3")}</p>
+                              <p>{"Vícejazyčné"}</p>
                             </div>
                             <div>
                               <span>
@@ -1242,7 +1236,7 @@ const InteractiveChooser = () => {
                                   style={{ color: "var(--color-success)" }}
                                 />
                               </span>
-                              <p>{lang("card.2.btn.2.content.list.4")}</p>
+                              <p>{"Uživatelské rozhraní"}</p>
                             </div>
                           </div>
                         </Btn>
@@ -1257,14 +1251,14 @@ const InteractiveChooser = () => {
                         borderRadius="15px"
                         bgHoverColor="var(--black-10)"
                         hoverEffect="bgHover"
-                        ariaLabel={lang("card.2.btn.0.aria")}
+                        ariaLabel={"Vybrat e-shop pro jedince"}
                       >
                         <div className={`${styles.imgContainer}`}>
                           <IconPerson height={75} />
                         </div>
                         <div className={`${styles.descriptionContainer}`}>
                           <span className={`${styles.btnTitle}`}>
-                            {lang("card.2.btn.0.content.title")}
+                            {"Jedinec"}
                           </span>
                           <div>
                             <span>
@@ -1272,7 +1266,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.2.btn.0.content.list.0")}</p>
+                            <p>{"1-3 produkty"}</p>
                           </div>
                           <div>
                             <span>
@@ -1280,7 +1274,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.2.btn.0.content.list.1")}</p>
+                            <p>{"Řešení prodeje bez platební brány"}</p>
                           </div>
                           <div>
                             <span>
@@ -1288,7 +1282,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.2.btn.0.content.list.2")}</p>
+                            <p>{"Systém úpravy obsahu"}</p>
                           </div>
                           <div>
                             <span>
@@ -1296,7 +1290,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-error)" }}
                               />
                             </span>
-                            <p>{lang("card.2.btn.0.content.list.3")}</p>
+                            <p>{"Vícejazyčné"}</p>
                           </div>
                           <div>
                             <span>
@@ -1304,7 +1298,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-error)" }}
                               />
                             </span>
-                            <p>{lang("card.2.btn.0.content.list.4")}</p>
+                            <p>{"Uživatelské rozhraní"}</p>
                           </div>
                         </div>
                       </Btn>
@@ -1315,14 +1309,14 @@ const InteractiveChooser = () => {
                         borderRadius="15px"
                         bgHoverColor="var(--black-10)"
                         hoverEffect="bgHover"
-                        ariaLabel={lang("card.2.btn.1.aria")}
+                        ariaLabel={"Vybrat e-shop pro maloobchod"}
                       >
                         <div className={`${styles.imgContainer}`}>
                           <IconShop height={75} />
                         </div>
                         <div className={`${styles.descriptionContainer}`}>
                           <span className={`${styles.btnTitle}`}>
-                            {lang("card.2.btn.1.content.title")}
+                            {"Maloobchod"}
                           </span>
                           <div>
                             <span>
@@ -1330,7 +1324,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.2.btn.1.content.list.0")}</p>
+                            <p>{"Do 10 produktů"}</p>
                           </div>
                           <div>
                             <span>
@@ -1338,7 +1332,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.2.btn.1.content.list.1")}</p>
+                            <p>{"Platební brána"}</p>
                           </div>
                           <div>
                             <span>
@@ -1346,7 +1340,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.2.btn.1.content.list.2")}</p>
+                            <p>{"Systém úpravy obsahu"}</p>
                           </div>
                           <div>
                             <span>
@@ -1354,7 +1348,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.2.btn.1.content.list.3")}</p>
+                            <p>{"Vícejazyčné"}</p>
                           </div>
                           <div>
                             <span>
@@ -1362,7 +1356,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-error)" }}
                               />
                             </span>
-                            <p>{lang("card.2.btn.1.content.list.4")}</p>
+                            <p>{"Uživatelské rozhraní"}</p>
                           </div>
                         </div>
                       </Btn>
@@ -1373,14 +1367,14 @@ const InteractiveChooser = () => {
                         borderRadius="15px"
                         bgHoverColor="var(--black-10)"
                         hoverEffect="bgHover"
-                        ariaLabel={lang("card.2.btn.2.aria")}
+                        ariaLabel={"Vybrat e-shop pro velkoobchod"}
                       >
                         <div className={`${styles.imgContainer}`}>
                           <IconWarehouse height={75} />
                         </div>
                         <div className={`${styles.descriptionContainer}`}>
                           <span className={`${styles.btnTitle}`}>
-                            {lang("card.2.btn.2.content.title")}
+                            {"Velkoobchod"}
                           </span>
                           <div>
                             <span>
@@ -1388,7 +1382,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.2.btn.2.content.list.0")}</p>
+                            <p>{"10+ produktů"}</p>
                           </div>
                           <div>
                             <span>
@@ -1396,7 +1390,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.2.btn.2.content.list.1")}</p>
+                            <p>{"Platební brána"}</p>
                           </div>
                           <div>
                             <span>
@@ -1404,7 +1398,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.2.btn.2.content.list.2")}</p>
+                            <p>{"Systém úpravy obsahu"}</p>
                           </div>
                           <div>
                             <span>
@@ -1412,7 +1406,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.2.btn.2.content.list.3")}</p>
+                            <p>{"Vícejazyčné"}</p>
                           </div>
                           <div>
                             <span>
@@ -1420,7 +1414,7 @@ const InteractiveChooser = () => {
                                 style={{ color: "var(--color-success)" }}
                               />
                             </span>
-                            <p>{lang("card.2.btn.2.content.list.4")}</p>
+                            <p>{"Uživatelské rozhraní"}</p>
                           </div>
                         </div>
                       </Btn>
@@ -1432,23 +1426,23 @@ const InteractiveChooser = () => {
                     <span>
                       <IconInfoCircle style={{ fill: "var(--shadow-25)" }} />
                     </span>
-                    <p>{lang("info.0")}</p>
+                    <p>{"Rozdělení je pouze orientační, vždy se můžeme domluvit na individuálním řešení."}</p>
                   </div>
                 </div>
               </>
             ) : (
               <>
                 <div className={`${styles.titleContainer}`}>
-                  <span>{lang("card.3.subtitle")}</span>
+                  <span>{"VÝVOJ"}</span>
                   <h1>
-                    {lang("card.3.title.0")}
-                    <strong>{lang("card.3.title.1")}</strong>
+                    {"Webová aplikace "}
+                    <strong>{"na míru"}</strong>
                   </h1>
                   <hr />
                 </div>
                 <div className={`${styles.contentContainer}`}>
                   <div className={`${styles.categoryDescription}`}>
-                    <p>{lang("card.3.text")}</p>
+                    <p>{"V případě, že potřebujete specifickou webovou aplikaci, nebo máte nápad a potřebujete pomoc s jeho realizací v podobě webové aplikace, neváhejte mě kontaktovat. V následujících bodech jsou příklady kategorií webových aplikací."}</p>
                   </div>
                   <div className={`${styles.checkboxDescription}`}>
                     <div>
@@ -1457,7 +1451,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.3.list.0")}</p>
+                      <p>{"Blog"}</p>
                     </div>
                     <div>
                       <span>
@@ -1465,7 +1459,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.3.list.1")}</p>
+                      <p>{"Finanční nástroje"}</p>
                     </div>
                     <div>
                       <span>
@@ -1473,7 +1467,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.3.list.2")}</p>
+                      <p>{"Interní firemní aplikace"}</p>
                     </div>
                     <div>
                       <span>
@@ -1481,7 +1475,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.3.list.3")}</p>
+                      <p>{"Webový software"}</p>
                     </div>
                     <div>
                       <span>
@@ -1489,7 +1483,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.3.list.4")}</p>
+                      <p>{"Systém správy"}</p>
                     </div>
                   </div>
                   <div className={`${styles.ctaBtns}`}>
@@ -1504,9 +1498,9 @@ const InteractiveChooser = () => {
                       borderRadius="15px"
                       fontWeight="600"
                       hoverEffect="scaleForward"
-                      ariaLabel={lang("btn.3.aria")}
+                      ariaLabel={"Navigovat do sekce kontakt a předvyplnit formulář"}
                     >
-                      {lang("btn.3.content")}
+                      {"Vyplnit formulář"}
                     </Btn>
                     <Btn
                       functionOnClick={handleCallOrCopyNumber}
@@ -1518,20 +1512,20 @@ const InteractiveChooser = () => {
                       textHoverColor="var(--color-text-reverse)"
                       fontWeight="600"
                       hoverEffect="cfLeft"
-                      ariaLabel={lang("btn.4.aria")}
+                      ariaLabel={"Zkopírovat číslo"}
                     >
-                      {lang("btn.4.content")}
+                      {"Zavolejte mi"}
                     </Btn>
                     <Popup
                       top="105%"
                       left="calc(50% + clamp(50px, 50%, 125px))"
                       state={popupPhone}
                     >
-                      {lang("popup")}
+                      {"Zkopírováno!"}
                     </Popup>
                   </div>
                   {/* <div className={`${styles.infoContainer}`}>
-                    <div><span><IconInfoCircle style={{fill: "var(--shadow-25)"}}/></span><p>{lang('info.2')}</p></div>
+                    <div><span><IconInfoCircle style={{fill: "var(--shadow-25)"}}/></span><p>{'Rozdělení je pouze orientační, vždy se můžeme domluvit na individuálním řešení.'}</p></div>
                   </div> */}
                 </div>
               </>
@@ -1555,16 +1549,16 @@ const InteractiveChooser = () => {
             {firstCardPick === 1 && secondCardPick === 1 ? (
               <>
                 <div className={`${styles.titleContainer}`}>
-                  <span>{lang("card.4.subtitle")}</span>
+                  <span>{"PREZENTACE"}</span>
                   <h1>
-                    <strong>{lang("card.4.title.0")}</strong>
-                    {lang("card.4.title.1")}
+                    <strong>{"Jednoduché"}</strong>
+                    {" webové stránky"}
                   </h1>
                   <hr />
                 </div>
                 <div className={`${styles.contentContainer}`}>
                   <div className={`${styles.categoryDescription}`}>
-                    <p>{lang("card.4.text")}</p>
+                    <p>{"Jednoduché webové stránky jsou ideální pro jednotlivce nebo malé firmy, které potřebují online prezentaci s minimálním obsahem. Tato varianta nabízí jednu stránku s důrazem na jednoduchost."}</p>
                   </div>
                   <div className={`${styles.checkboxDescription}`}>
                     <div>
@@ -1573,7 +1567,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.4.list.0")}</p>
+                      <p>{"1 stránka"}</p>
                     </div>
                     <div>
                       <span>
@@ -1581,7 +1575,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.4.list.1")}</p>
+                      <p>{"Responzivita webu"}</p>
                     </div>
                     <div>
                       <span>
@@ -1589,7 +1583,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.4.list.2")}</p>
+                      <p>{"Optimalizace SEO"}</p>
                     </div>
                     <div>
                       <span>
@@ -1597,7 +1591,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.4.list.3")}</p>
+                      <p>{"Vlastní doména včetně možnosti firemního e-mailu"}</p>
                     </div>
                     <div>
                       <span>
@@ -1605,13 +1599,13 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.4.list.4")}</p>
+                      <p>{"Rychlá navigace na stránce"}</p>
                     </div>
                     <div>
                       <span>
                         <IconInfoCircle style={{ fill: "var(--shadow-25)" }} />
                       </span>
-                      <p>{lang("card.4.list.5")}</p>
+                      <p>{"Možnost rozšíření - denní a noční režim, vícejazyčnost a Systém úpravy obsahu"}</p>
                     </div>
                   </div>
                   <div className={`${styles.ctaBtns}`}>
@@ -1626,9 +1620,9 @@ const InteractiveChooser = () => {
                       borderRadius="15px"
                       fontWeight="600"
                       hoverEffect="scaleForward"
-                      ariaLabel={lang("btn.3.aria")}
+                      ariaLabel={"Navigovat do sekce kontakt a předvyplnit formulář"}
                     >
-                      {lang("btn.3.content")}
+                      {"Vyplnit formulář"}
                     </Btn>
                     <Btn
                       functionOnClick={handleCallOrCopyNumber}
@@ -1640,37 +1634,37 @@ const InteractiveChooser = () => {
                       textHoverColor="var(--color-text-reverse)"
                       fontWeight="600"
                       hoverEffect="cfLeft"
-                      ariaLabel={lang("btn.4.aria")}
+                      ariaLabel={"Zkopírovat číslo"}
                     >
-                      {lang("btn.4.content")}
+                      {"Zavolejte mi"}
                     </Btn>
                     <Popup
                       top="105%"
                       left="calc(50% + clamp(50px, 50%, 125px))"
                       state={popupPhone}
                     >
-                      {lang("popup")}
+                      {"Zkopírováno!"}
                     </Popup>
                   </div>
                   {/* <div className={`${styles.infoContainer}`}>
-                    <h4>{lang('card.4.price')}</h4>
-                    <div><span><IconInfoCircle style={{fill: "var(--shadow-25)"}}/></span><p>{lang('info.3')}</p></div>
+                    <h4>{'Cena dle rozsahu'}</h4>
+                    <div><span><IconInfoCircle style={{fill: "var(--shadow-25)"}}/></span><p>{'Cena se odvíjí od rozsahu a konkrétních požadavků.'}</p></div>
                   </div> */}
                 </div>
               </>
             ) : firstCardPick === 1 && secondCardPick === 2 ? (
               <>
                 <div className={`${styles.titleContainer}`}>
-                  <span>{lang("card.5.subtitle")}</span>
+                  <span>{"PREZENTACE"}</span>
                   <h1>
-                    <strong>{lang("card.5.title.0")}</strong>
-                    {lang("card.5.title.1")}
+                    <strong>{"Komplexní"}</strong>
+                    {" webové stránky"}
                   </h1>
                   <hr />
                 </div>
                 <div className={`${styles.contentContainer}`}>
                   <div className={`${styles.categoryDescription}`}>
-                    <p>{lang("card.5.text")}</p>
+                    <p>{"Komplexní webové stránky jsou vhodné pro firmy, které potřebují více obsahu a rychlou navigaci mezi 1-5 stránkami. Tento typ webu zahrnuje také změnu režimu mezi denním a nočním pro příjmenější návštěvu webu."}</p>
                   </div>
                   <div className={`${styles.checkboxDescription}`}>
                     <div>
@@ -1679,7 +1673,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.5.list.0")}</p>
+                      <p>{"1-5 stránek"}</p>
                     </div>
                     <div>
                       <span>
@@ -1687,7 +1681,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.5.list.1")}</p>
+                      <p>{"Responzivita webu"}</p>
                     </div>
                     <div>
                       <span>
@@ -1695,7 +1689,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.5.list.2")}</p>
+                      <p>{"Optimalizace SEO"}</p>
                     </div>
                     <div>
                       <span>
@@ -1703,7 +1697,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.5.list.3")}</p>
+                      <p>{"Vlastní doména včetně možnosti firemního e-mailu."}</p>
                     </div>
                     <div>
                       <span>
@@ -1711,7 +1705,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.5.list.4")}</p>
+                      <p>{"Rychlá navigace na stránce"}</p>
                     </div>
                     <div>
                       <span>
@@ -1719,13 +1713,13 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.5.list.5")}</p>
+                      <p>{"Denní a noční režim"}</p>
                     </div>
                     <div>
                       <span>
                         <IconInfoCircle style={{ fill: "var(--shadow-25)" }} />
                       </span>
-                      <p>{lang("card.5.list.6")}</p>
+                      <p>{"Možnost rozšíření - vícejazyčnost a Systém úpravy obsahu"}</p>
                     </div>
                   </div>
                   <div className={`${styles.ctaBtns}`}>
@@ -1740,9 +1734,9 @@ const InteractiveChooser = () => {
                       borderRadius="15px"
                       fontWeight="600"
                       hoverEffect="scaleForward"
-                      ariaLabel={lang("btn.3.aria")}
+                      ariaLabel={"Navigovat do sekce kontakt a předvyplnit formulář"}
                     >
-                      {lang("btn.3.content")}
+                      {"Vyplnit formulář"}
                     </Btn>
                     <Btn
                       functionOnClick={handleCallOrCopyNumber}
@@ -1754,37 +1748,37 @@ const InteractiveChooser = () => {
                       textHoverColor="var(--color-text-reverse)"
                       fontWeight="600"
                       hoverEffect="cfLeft"
-                      ariaLabel={lang("btn.4.aria")}
+                      ariaLabel={"Zkopírovat číslo"}
                     >
-                      {lang("btn.4.content")}
+                      {"Zavolejte mi"}
                     </Btn>
                     <Popup
                       top="105%"
                       left="calc(50% + clamp(50px, 50%, 125px))"
                       state={popupPhone}
                     >
-                      {lang("popup")}
+                      {"Zkopírováno!"}
                     </Popup>
                   </div>
                   {/* <div className={`${styles.infoContainer}`}>
-                    <h4>{lang('card.5.price')}</h4>
-                    <div><span><IconInfoCircle style={{fill: "var(--shadow-25)"}}/></span><p>{lang('info.3')}</p></div>
+                    <h4>{'Cena dle rozsahu'}</h4>
+                    <div><span><IconInfoCircle style={{fill: "var(--shadow-25)"}}/></span><p>{'Cena se odvíjí od rozsahu a konkrétních požadavků.'}</p></div>
                   </div> */}
                 </div>
               </>
             ) : firstCardPick === 1 && secondCardPick === 3 ? (
               <>
                 <div className={`${styles.titleContainer}`}>
-                  <span>{lang("card.6.subtitle")}</span>
+                  <span>{"PREZENTACE"}</span>
                   <h1>
-                    <strong>{lang("card.6.title.0")}</strong>
-                    {lang("card.6.title.1")}
+                    <strong>{"Profesionální"}</strong>
+                    {" webové stránky"}
                   </h1>
                   <hr />
                 </div>
                 <div className={`${styles.contentContainer}`}>
                   <div className={`${styles.categoryDescription}`}>
-                    <p>{lang("card.6.text")}</p>
+                    <p>{"Profesionální webové stránky jsou ideální pro firmy, které potřebují rozsáhlý a interaktivní web s více než 5 stránkami. Tento typ webu zahrnuje Systém úpravy obsahu, vícejazyčnou podporu a denní/noční režim."}</p>
                   </div>
                   <div className={`${styles.checkboxDescription}`}>
                     <div>
@@ -1793,7 +1787,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.6.list.0")}</p>
+                      <p>{"5+ stránek"}</p>
                     </div>
                     <div>
                       <span>
@@ -1801,7 +1795,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.6.list.1")}</p>
+                      <p>{"Responzivita webu"}</p>
                     </div>
                     <div>
                       <span>
@@ -1809,7 +1803,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.6.list.2")}</p>
+                      <p>{"Optimalizace SEO"}</p>
                     </div>
                     <div>
                       <span>
@@ -1817,7 +1811,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.6.list.3")}</p>
+                      <p>{"Vlastní doména včetně možnosti firemního e-mailu"}</p>
                     </div>
                     <div>
                       <span>
@@ -1825,7 +1819,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.6.list.4")}</p>
+                      <p>{"Rychlá navigace na stránce"}</p>
                     </div>
                     <div>
                       <span>
@@ -1833,7 +1827,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.6.list.5")}</p>
+                      <p>{"Denní a noční režim"}</p>
                     </div>
                     <div>
                       <span>
@@ -1841,7 +1835,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.6.list.6")}</p>
+                      <p>{"Vícejazyčnost"}</p>
                     </div>
                     <div>
                       <span>
@@ -1849,7 +1843,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.6.list.7")}</p>
+                      <p>{"Systém úpravy obsahu"}</p>
                     </div>
                   </div>
                   <div className={`${styles.ctaBtns}`}>
@@ -1864,9 +1858,9 @@ const InteractiveChooser = () => {
                       borderRadius="15px"
                       fontWeight="600"
                       hoverEffect="scaleForward"
-                      ariaLabel={lang("btn.3.aria")}
+                      ariaLabel={"Navigovat do sekce kontakt a předvyplnit formulář"}
                     >
-                      {lang("btn.3.content")}
+                      {"Vyplnit formulář"}
                     </Btn>
                     <Btn
                       functionOnClick={handleCallOrCopyNumber}
@@ -1878,37 +1872,37 @@ const InteractiveChooser = () => {
                       textHoverColor="var(--color-text-reverse)"
                       fontWeight="600"
                       hoverEffect="cfLeft"
-                      ariaLabel={lang("btn.4.aria")}
+                      ariaLabel={"Zkopírovat číslo"}
                     >
-                      {lang("btn.4.content")}
+                      {"Zavolejte mi"}
                     </Btn>
                     <Popup
                       top="105%"
                       left="calc(50% + clamp(50px, 50%, 125px))"
                       state={popupPhone}
                     >
-                      {lang("popup")}
+                      {"Zkopírováno!"}
                     </Popup>
                   </div>
                   {/* <div className={`${styles.infoContainer}`}>
-                    <h4>{lang('card.6.price')}</h4>
-                    <div><span><IconInfoCircle style={{fill: "var(--shadow-25)"}}/></span><p>{lang('info.3')}</p></div>
+                    <h4>{'Cena dle rozsahu'}</h4>
+                    <div><span><IconInfoCircle style={{fill: "var(--shadow-25)"}}/></span><p>{'Cena se odvíjí od rozsahu a konkrétních požadavků.'}</p></div>
                   </div> */}
                 </div>
               </>
             ) : firstCardPick === 2 && secondCardPick === 1 ? (
               <>
                 <div className={`${styles.titleContainer}`}>
-                  <span>{lang("card.7.subtitle")}</span>
+                  <span>{"PRODEJ"}</span>
                   <h1>
-                    {lang("card.7.title.0")}
-                    <strong>{lang("card.7.title.1")}</strong>
+                    {"E-shop pro "}
+                    <strong>{"jedince"}</strong>
                   </h1>
                   <hr />
                 </div>
                 <div className={`${styles.contentContainer}`}>
                   <div className={`${styles.categoryDescription}`}>
-                    <p>{lang("card.7.text")}</p>
+                    <p>{"E-shop je ideální pro jedince, kteří chtějí začít prodávat své produkty online, ale nechtějí platit poplatky platební bráně. V případě, že si produkty vyrábíte a chcete svým zákazníkům umožnit jejich koupi za co nejnižší cenu, je tento typ e-shopu přesně pro Vás."}</p>
                   </div>
                   <div className={`${styles.checkboxDescription}`}>
                     <div>
@@ -1917,7 +1911,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.7.list.0")}</p>
+                      <p>{"5+ stránek"}</p>
                     </div>
                     <div>
                       <span>
@@ -1925,7 +1919,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.7.list.1")}</p>
+                      <p>{"Responzivita webu"}</p>
                     </div>
                     <div>
                       <span>
@@ -1933,7 +1927,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.7.list.2")}</p>
+                      <p>{"Optimalizace SEO"}</p>
                     </div>
                     <div>
                       <span>
@@ -1941,7 +1935,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.7.list.3")}</p>
+                      <p>{"Vlastní doména včetně možnosti firemního e-mailu"}</p>
                     </div>
                     <div>
                       <span>
@@ -1949,7 +1943,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.7.list.4")}</p>
+                      <p>{"Rychlá navigace na stránce"}</p>
                     </div>
                     <div>
                       <span>
@@ -1957,7 +1951,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.7.list.5")}</p>
+                      <p>{"Systém úpravy obsahu"}</p>
                     </div>
                     <div>
                       <span>
@@ -1965,13 +1959,13 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.7.list.6")}</p>
+                      <p>{"Správa objednávek"}</p>
                     </div>
                     <div>
                       <span>
                         <IconInfoCircle style={{ fill: "var(--shadow-25)" }} />
                       </span>
-                      <p>{lang("card.7.list.7")}</p>
+                      <p>{"Možnost rozšíření - denní a noční režim, vícejazyčnost, databáze produktů a uživatelské rozhraní"}</p>
                     </div>
                   </div>
                   <div className={`${styles.ctaBtns}`}>
@@ -1986,9 +1980,9 @@ const InteractiveChooser = () => {
                       borderRadius="15px"
                       fontWeight="600"
                       hoverEffect="scaleForward"
-                      ariaLabel={lang("btn.3.aria")}
+                      ariaLabel={"Navigovat do sekce kontakt a předvyplnit formulář"}
                     >
-                      {lang("btn.3.content")}
+                      {"Vyplnit formulář"}
                     </Btn>
                     <Btn
                       functionOnClick={handleCallOrCopyNumber}
@@ -2000,37 +1994,37 @@ const InteractiveChooser = () => {
                       textHoverColor="var(--color-text-reverse)"
                       fontWeight="600"
                       hoverEffect="cfLeft"
-                      ariaLabel={lang("btn.4.aria")}
+                      ariaLabel={"Zkopírovat číslo"}
                     >
-                      {lang("btn.4.content")}
+                      {"Zavolejte mi"}
                     </Btn>
                     <Popup
                       top="105%"
                       left="calc(50% + clamp(50px, 50%, 125px))"
                       state={popupPhone}
                     >
-                      {lang("popup")}
+                      {"Zkopírováno!"}
                     </Popup>
                   </div>
                   {/* <div className={`${styles.infoContainer}`}>
-                    <h4>{lang('card.7.price')}</h4>
-                    <div><span><IconInfoCircle style={{fill: "var(--shadow-25)"}}/></span><p>{lang('info.3')}</p></div>
+                    <h4>{'Cena dle rozsahu'}</h4>
+                    <div><span><IconInfoCircle style={{fill: "var(--shadow-25)"}}/></span><p>{'Cena se odvíjí od rozsahu a konkrétních požadavků.'}</p></div>
                   </div> */}
                 </div>
               </>
             ) : firstCardPick === 2 && secondCardPick === 2 ? (
               <>
                 <div className={`${styles.titleContainer}`}>
-                  <span>{lang("card.8.subtitle")}</span>
+                  <span>{"PRODEJ"}</span>
                   <h1>
-                    {lang("card.8.title.0")}
-                    <strong>{lang("card.8.title.1")}</strong>
+                    {"E-shop pro "}
+                    <strong>{"maloobchod"}</strong>
                   </h1>
                   <hr />
                 </div>
                 <div className={`${styles.contentContainer}`}>
                   <div className={`${styles.categoryDescription}`}>
-                    <p>{lang("card.8.text")}</p>
+                    <p>{"E-Shop pro maloobchod je navržen pro firmy, které potřebují robustní online prodejní platformu a mají více produktů. Tento typ e-shopu zahrnuje napojení na platební bránu, což oceníte v případě většího počtu zákazníků."}</p>
                   </div>
                   <div className={`${styles.checkboxDescription}`}>
                     <div>
@@ -2039,7 +2033,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.8.list.0")}</p>
+                      <p>{"5+ stránek"}</p>
                     </div>
                     <div>
                       <span>
@@ -2047,7 +2041,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.8.list.1")}</p>
+                      <p>{"Responzivita webu"}</p>
                     </div>
                     <div>
                       <span>
@@ -2055,7 +2049,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.8.list.2")}</p>
+                      <p>{"Optimalizace SEO"}</p>
                     </div>
                     <div>
                       <span>
@@ -2063,7 +2057,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.8.list.3")}</p>
+                      <p>{"Vlastní doména včetně možnosti firemního e-mailu"}</p>
                     </div>
                     <div>
                       <span>
@@ -2071,7 +2065,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.8.list.4")}</p>
+                      <p>{"Rychlá navigace na stránce"}</p>
                     </div>
                     <div>
                       <span>
@@ -2079,7 +2073,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.8.list.5")}</p>
+                      <p>{"Systém úpravy obsahu"}</p>
                     </div>
                     <div>
                       <span>
@@ -2087,7 +2081,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.8.list.6")}</p>
+                      <p>{"Správa objednávek"}</p>
                     </div>
                     <div>
                       <span>
@@ -2095,7 +2089,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.8.list.7")}</p>
+                      <p>{"Denní a noční režim"}</p>
                     </div>
                     <div>
                       <span>
@@ -2103,13 +2097,13 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.8.list.8")}</p>
+                      <p>{"Vícejazyčnost"}</p>
                     </div>
                     <div>
                       <span>
                         <IconInfoCircle style={{ fill: "var(--shadow-25)" }} />
                       </span>
-                      <p>{lang("card.8.list.9")}</p>
+                      <p>{"Možnost rozšíření - databáze produktů a uživatelské rozhraní"}</p>
                     </div>
                   </div>
                   <div className={`${styles.ctaBtns}`}>
@@ -2124,9 +2118,9 @@ const InteractiveChooser = () => {
                       borderRadius="15px"
                       fontWeight="600"
                       hoverEffect="scaleForward"
-                      ariaLabel={lang("btn.3.aria")}
+                      ariaLabel={"Navigovat do sekce kontakt a předvyplnit formulář"}
                     >
-                      {lang("btn.3.content")}
+                      {"Vyplnit formulář"}
                     </Btn>
                     <Btn
                       functionOnClick={handleCallOrCopyNumber}
@@ -2138,37 +2132,37 @@ const InteractiveChooser = () => {
                       textHoverColor="var(--color-text-reverse)"
                       fontWeight="600"
                       hoverEffect="cfLeft"
-                      ariaLabel={lang("btn.4.aria")}
+                      ariaLabel={"Zkopírovat číslo"}
                     >
-                      {lang("btn.4.content")}
+                      {"Zavolejte mi"}
                     </Btn>
                     <Popup
                       top="105%"
                       left="calc(50% + clamp(50px, 50%, 125px))"
                       state={popupPhone}
                     >
-                      {lang("popup")}
+                      {"Zkopírováno!"}
                     </Popup>
                   </div>
                   {/* <div className={`${styles.infoContainer}`}>
-                    <h4>{lang('card.8.price')}</h4>
-                    <div><span><IconInfoCircle style={{fill: "var(--shadow-25)"}}/></span><p>{lang('info.3')}</p></div>
+                    <h4>{'Cena dle rozsahu'}</h4>
+                    <div><span><IconInfoCircle style={{fill: "var(--shadow-25)"}}/></span><p>{'Cena se odvíjí od rozsahu a konkrétních požadavků.'}</p></div>
                   </div> */}
                 </div>
               </>
             ) : (
               <>
                 <div className={`${styles.titleContainer}`}>
-                  <span>{lang("card.9.subtitle")}</span>
+                  <span>{"PRODEJ"}</span>
                   <h1>
-                    {lang("card.9.title.0")}
-                    <strong>{lang("card.9.title.1")}</strong>
+                    {"E-shop pro "}
+                    <strong>{"velkoobchod"}</strong>
                   </h1>
                   <hr />
                 </div>
                 <div className={`${styles.contentContainer}`}>
                   <div className={`${styles.categoryDescription}`}>
-                    <p>{lang("card.9.text")}</p>
+                    <p>{"E-Shop pro velkoobchod je určen pro společnosti, které potřebují komplexní a rozsáhlé e-shopové řešení s vlastním rozhraním pro uživatele a přístupem do vlastní databáze produktů. Tento typ e-shopu podporuje velké množství produktů."}</p>
                   </div>
                   <div className={`${styles.checkboxDescription}`}>
                     <div>
@@ -2177,7 +2171,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.9.list.0")}</p>
+                      <p>{"Responzivita webu"}</p>
                     </div>
                     <div>
                       <span>
@@ -2185,7 +2179,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.9.list.1")}</p>
+                      <p>{"Optimalizace SEO"}</p>
                     </div>
                     <div>
                       <span>
@@ -2193,7 +2187,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.9.list.2")}</p>
+                      <p>{"Vlastní doména včetně možnosti firemního e-mailu"}</p>
                     </div>
                     <div>
                       <span>
@@ -2201,7 +2195,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.9.list.3")}</p>
+                      <p>{"Rychlá navigace na stránce"}</p>
                     </div>
                     <div>
                       <span>
@@ -2209,7 +2203,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.9.list.4")}</p>
+                      <p>{"Systém úpravy obsahu"}</p>
                     </div>
                     <div>
                       <span>
@@ -2217,7 +2211,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.9.list.5")}</p>
+                      <p>{"Správa objednávek"}</p>
                     </div>
                     <div>
                       <span>
@@ -2225,7 +2219,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.9.list.6")}</p>
+                      <p>{"Denní a noční režim"}</p>
                     </div>
                     <div>
                       <span>
@@ -2233,7 +2227,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.9.list.7")}</p>
+                      <p>{"Vícejazyčnost"}</p>
                     </div>
                     <div>
                       <span>
@@ -2241,7 +2235,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.9.list.8")}</p>
+                      <p>{"Databáze produktů"}</p>
                     </div>
                     <div>
                       <span>
@@ -2249,7 +2243,7 @@ const InteractiveChooser = () => {
                           style={{ color: "var(--color-success)" }}
                         />
                       </span>
-                      <p>{lang("card.9.list.9")}</p>
+                      <p>{"Uživatelské rozhraní"}</p>
                     </div>
                   </div>
                   <div className={`${styles.ctaBtns}`}>
@@ -2264,9 +2258,9 @@ const InteractiveChooser = () => {
                       borderRadius="15px"
                       fontWeight="600"
                       hoverEffect="scaleForward"
-                      ariaLabel={lang("btn.3.aria")}
+                      ariaLabel={"Navigovat do sekce kontakt a předvyplnit formulář"}
                     >
-                      {lang("btn.3.content")}
+                      {"Vyplnit formulář"}
                     </Btn>
                     <Btn
                       functionOnClick={handleCallOrCopyNumber}
@@ -2278,21 +2272,21 @@ const InteractiveChooser = () => {
                       textHoverColor="var(--color-text-reverse)"
                       fontWeight="600"
                       hoverEffect="cfLeft"
-                      ariaLabel={lang("btn.4.aria")}
+                      ariaLabel={"Zkopírovat číslo"}
                     >
-                      {lang("btn.4.content")}
+                      {"Zavolejte mi"}
                     </Btn>
                     <Popup
                       top="105%"
                       left="calc(50% + clamp(50px, 50%, 125px))"
                       state={popupPhone}
                     >
-                      {lang("popup")}
+                      {"Zkopírováno!"}
                     </Popup>
                   </div>
                   {/* <div className={`${styles.infoContainer}`}>
-                    <h4>{lang('card.9.price')}</h4>
-                    <div><span><IconInfoCircle style={{fill: "var(--shadow-25)"}}/></span><p>{lang('info.3')}</p></div>
+                    <h4>{'Cena dle rozsahu'}</h4>
+                    <div><span><IconInfoCircle style={{fill: "var(--shadow-25)"}}/></span><p>{'Cena se odvíjí od rozsahu a konkrétních požadavků.'}</p></div>
                   </div> */}
                 </div>
               </>

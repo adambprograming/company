@@ -4,15 +4,12 @@ import "./header.styles.scss";
 // Public & Assets
 import Logo from "@/components/svgs/logo.component.jsx";
 // React/Next Functions
-import { Link } from "@/i18n/routing";
-import { useTranslations } from "next-intl";
+import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 // Context & Actions
 
 // Components
 import { Menu, MenuItem } from "@/components/menu/menu.component.jsx";
-import ColorThemeSwitch from "@/components/color-theme-switch/color-theme-switch.component";
-import MenuLanguage from "@/components/menu-language/menu-language.component";
 
 /*
 INSTRUCTIONS
@@ -35,8 +32,7 @@ const Header = ({
   backdropFilter = "blur(4px)",
   stylesForHeader = {},
 }) => {
-  const lang = useTranslations("header");
-  const headerRef = useRef();
+    const headerRef = useRef();
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
   const menuRef = useRef();
@@ -84,23 +80,10 @@ const Header = ({
           <MenuItem content="TEST" href="/test"></MenuItem>
         </MenuItem> */}
         {/* <MenuItem content="Portfolio" href="/portfolio" /> */}
-        <MenuItem content={lang("menu.0")} href="/o-mne" />
-        <MenuItem content={lang("menu.1")} href="/sluzby" />
-        <MenuItem content={lang("menu.2")} href="/kontakt" />
+        <MenuItem content={"O nás"} href="/o-mne" />
+        <MenuItem content={"Služby"} href="/sluzby" />
+        <MenuItem content={"Kontakt"} href="/kontakt" />
       </Menu>
-    );
-  };
-
-  const renderSettings = () => {
-    return (
-      <div className="header-settings">
-        <ColorThemeSwitch variant="third" />
-        <MenuLanguage
-          languages={["cs", "en"]}
-          variant="second"
-          iconOnly={false}
-        />
-      </div>
     );
   };
 
@@ -108,15 +91,15 @@ const Header = ({
     return (
       <Link
         href="/"
-        aria-label={lang("link.0.aria")}
+        aria-label={"Navigovat na domovskou stránku"}
         onClick={() => {
           menuRef.current?.handleLogoClick();
         }}
       >
         <Logo
-          alt={lang("img.0.alt")}
+          alt={"Logo"}
           id="logo-header"
-          aria-label={lang("img.0.aria")}
+          aria-label={"Logo"}
         />
       </Link>
     );
@@ -143,9 +126,7 @@ const Header = ({
           ...stylesForHeader,
         }}
       >
-        <div className="header-container-settings">
-          {renderSettings("left")}
-        </div>
+        <div className="header-container-settings"></div>
         <div className="header-container-logo">{renderLogo()}</div>
         <div id="header-container-menu">{renderMenu("right")}</div>
       </header>
@@ -172,9 +153,6 @@ const Header = ({
       >
         <div className="header-container-logo">{renderLogo()}</div>
         <div id="header-container-menu">{renderMenu("right")}</div>
-        <div className="header-container-settings">
-          {renderSettings("right")}
-        </div>
       </header>
     );
   } else if (variant === "leftmenu-centerlogo-rightsettings") {
@@ -199,9 +177,7 @@ const Header = ({
       >
         <div id="header-container-menu">{renderMenu("left")}</div>
         <div className="header-container-logo">{renderLogo()}</div>
-        <div className="header-container-settings">
-          {renderSettings("right")}
-        </div>
+        <div className="header-container-settings"></div>
       </header>
     );
   } else {

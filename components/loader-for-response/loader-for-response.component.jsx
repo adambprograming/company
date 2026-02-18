@@ -2,7 +2,6 @@ import Btn from "../btn/btn.component";
 import Loader from "../loader/loader.component";
 import IconCheckCircle from "@/components/svgs/icon-check-circle.component";
 import IconXCircle from "../svgs/icon-x-circle.component";
-import { useTranslations } from "next-intl";
 
 export default function LoaderForResponse({
   isLoading,
@@ -12,8 +11,7 @@ export default function LoaderForResponse({
   fullscreen = false,
   backdropFilter = "blur(4px)",
 }) {
-  const lang = useTranslations("components.loader");
-  return (
+    return (
     <>
       {isLoading && (
         <div
@@ -72,12 +70,12 @@ export default function LoaderForResponse({
             {status === "success" ? (
               <>
                 <IconCheckCircle width={36} height={36} style={{color: "var(--color-success)"}} />
-                <h4 style={{textAlign: "center", maxWidth: "fit-content"}}>{message || lang("defaultMessage.success")}</h4>
+                <h4 style={{textAlign: "center", maxWidth: "fit-content"}}>{message || "Úspěšně odesláno!"}</h4>
               </>
             ) : (
               <>
                 <IconXCircle width={36} height={36} style={{color: "var(--color-error)"}} />
-                <h4 style={{textAlign: "center", maxWidth: "fit-content"}}>{message || lang("defaultMessage.error")}</h4>
+                <h4 style={{textAlign: "center", maxWidth: "fit-content"}}>{message || "Něco se nepovedlo, zkuste to prosím znovu později."}</h4>
               </>
             )}
             <Btn
@@ -87,9 +85,9 @@ export default function LoaderForResponse({
               textColor="var(--color-text-reverse)"
               fontSize="var(--fontsize-p)"
               hoverEffect="scaleForward"
-              ariaLabel={lang("btn.0.aria")}
+              ariaLabel={"Tlačítko pro zavření zprávy."}
             >
-              {lang("btn.0.content")}
+              {"Zavřít"}
             </Btn>
           </div>
         </div>

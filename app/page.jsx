@@ -4,51 +4,48 @@ import styles from "./page.module.scss";
 import MeImg from "@/public/me/homepage.avif";
 import Project1 from "@/public/projects/project1.avif";
 import Project2 from "@/public/projects/project2.avif";
+import Project3 from "@/public/portfolio/comarr.png";
 import HeroImg from "@/public/hero.png";
 // React/Next Functions
 import Image from "next/image";
-import dynamic from "next/dynamic";
-import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/routing";
+import Link from "next/link";
 // Context
 
-// Componenets
-const LazyPortfolioRotatedGrid = dynamic(
-  () =>
-    import(
-      "@/components/portfolio-rotated-grid/portfolio-rotated-grid.component"
-    ),
-  { ssr: false }
-);
 import Btn from "@/components/btn/btn.component";
 
 const projects = [
   {
+    title: "Beauty Studio Natali",
     image: Project1,
     url: "https://www.beautystudionatali.cz/",
   },
   {
+    title: "Aurea Socials",
     image: Project2,
     url: "https://www.aurea-socials.cz/cs",
+  },
+  {
+    title: "ComArr",
+    image: Project3,
+    url: "https://www.comarr.cz/",
   },
 ];
 
 export default function Home() {
-  const lang = useTranslations("homePage");
-  return (
+    return (
     <main className={`${styles.main}`}>
       <section className={`${styles.hero}`}>
         <div className={`${styles.contentContainer}`}>
           <div className={`${styles.titleContainer}`}>
             <h1>
-              {lang("heroSection.title.0")}
-              <strong>{lang("heroSection.title.1")}</strong>
-              {lang("heroSection.title.2")}
+              {"Tvoříme "}
+              <strong>{"moderní weby"}</strong>
+              {" pro základní školy"}
             </h1>
             <hr />
           </div>
           <div className={`${styles.textContainer}`}>
-            <p>{lang("heroSection.text")}</p>
+            <p>{"Jsme NewAgeWeb, dvoučlenný tým vývojářů. Pro školy se zastaralým webem navrhujeme a programujeme nové stránky od nuly, bez šablon, s důrazem na přehlednost, rychlost a legislativní požadavky v Česku."}</p>
           </div>
           <div className={`${styles.btnsContainer}`}>
             <Btn
@@ -57,17 +54,17 @@ export default function Home() {
               textColor="var(--color-text-reverse)"
               borderSize="none"
               hoverEffect="scaleForward"
-              ariaLabel={lang("heroSection.btn.0.aria")}
+              ariaLabel={"Navigovat do sekce kontakt"}
             >
-              {lang("heroSection.btn.0.content")}
+              {"Nezávazná konzultace"}
             </Btn>
           </div>
         </div>
         <div className={`${styles.imgContainer}`}>
           <Image
             src={MeImg}
-            alt={lang("heroSection.img.0.alt")}
-            aria-label={lang("heroSection.img.0.alt")}
+            alt={"Obrázek"}
+            aria-label={"Obrázek"}
             priority={true}
           />
         </div>
@@ -76,26 +73,26 @@ export default function Home() {
         <div className={`${styles.imgContainer}`}>
           <Image
             src={HeroImg}
-            alt={lang("servicesSection.img.0.alt")}
-            aria-label={lang("servicesSection.img.0.alt")}
+            alt={"Obrázek"}
+            aria-label={"Obrázek"}
           />
         </div>
         <div className={`${styles.contentContainer}`}>
           <div className={`${styles.titleContainer}`}>
-            <span>{lang("servicesSection.subtitle")}</span>
+            <span>{"PRO ŠKOLY"}</span>
             <h1>
-              {lang("servicesSection.title.0")}
-              <strong>{lang("servicesSection.title.1")}</strong>
-              {lang("servicesSection.title.2")}
+              {"Navrhujeme "}
+              <strong>{"nové"}</strong>
+              {" školní weby na míru"}
             </h1>
             <hr />
           </div>
           <div className={`${styles.textContainer}`}>
-            <p>{lang("servicesSection.text")}</p>
+            <p>{"Nevylepšujeme staré šablony. Stavíme nové školní weby, které pomáhají rodičům rychle najít důležité informace a škole zlepšit online prezentaci."}</p>
             <ul className={`${styles.servicesList}`}>
-              <li>{lang("servicesSection.list.0")}</li>
-              <li>{lang("servicesSection.list.1")}</li>
-              <li>{lang("servicesSection.list.2")}</li>
+              <li>{"• Kompletní návrh a vývoj webu od nuly"}</li>
+              <li>{"• Přehledná struktura pro rodiče, žáky i zaměstnance"}</li>
+              <li>{"• Technický základ pro dlouhodobou správu a rozvoj"}</li>
             </ul>
           </div>
           <Btn
@@ -104,41 +101,45 @@ export default function Home() {
             textColor="var(--color-text-reverse)"
             borderSize="none"
             hoverEffect="scaleForward"
-            ariaLabel={lang("servicesSection.btn.0.aria")}
+            ariaLabel={"Navigovat do sekce služby"}
           >
-            {lang("servicesSection.btn.0.content")}
+            {"Jak spolupracujeme"}
           </Btn>
         </div>
       </section>
       <section className={`${styles.portfolio}`}>
         <div className={`${styles.contentContainer}`}>
           <div className={`${styles.titleContainer}`}>
-            <span>{lang("portfolioSection.subtitle")}</span>
+            <span>{"REFERENCE"}</span>
             <h1>
-              {lang("portfolioSection.title.0")}
-              <strong>{lang("portfolioSection.title.1")}</strong>
-              {lang("portfolioSection.title.2")}
+              {"Podívejte se na "}
+              <strong>{"naše"}</strong>
+              {" reference"}
             </h1>
             <hr />
           </div>
           <div className={`${styles.textContainer}`}>
-            <p>{lang("portfolioSection.text")}</p>
+            <p>{"Ukázky projektů z různých oborů, na kterých jsme si ověřili kvalitní vývoj, výkon a srozumitelnou prezentaci značky."}</p>
           </div>
         </div>
         <div className={styles.grid}>
           {projects.map((project, i) => (
-            <Link href={project.url} key={i} target="_blank">
+            <Link
+              href={project.url}
+              key={i}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className={styles.project}>
                 <Image
                   src={project.image}
-                  alt={project.title}
+                  alt={project.title || "Project preview"}
                   className={styles.image}
                 />
               </div>
             </Link>
           ))}
         </div>
-        {/* <LazyPortfolioRotatedGrid /> */}
       </section>
       {/* <section className={`${styles.testimonials}`}>
         TODO TESTIMONIALS

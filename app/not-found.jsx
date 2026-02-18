@@ -3,14 +3,12 @@
 // Public & Assets
 
 // React/Next Functions
-import { useTranslations } from "next-intl";
 // Context & Actions
 
 // Componenets
 import Btn from "@/components/btn/btn.component";
 
 export default function NotFound() {
-  const lang = useTranslations("notFound");
   return (
     <main
       style={{
@@ -24,15 +22,12 @@ export default function NotFound() {
         padding: "2rem",
       }}
     >
-      <h1 style={{ fontSize: "2rem", margin: 0 }}>{lang('title')}</h1>
+      <h1 style={{ fontSize: "2rem", margin: 0 }}>{"Stránka nenalezena"}</h1>
       <p style={{ margin: 0 }}>
-        {lang('text')}
+        {"Odkaz je neplatný nebo stránka už neexistuje."}
       </p>
-      <Btn
-        href="/"
-        bgColor="var(--color-secondary)"
-      >
-        {lang('btn.0.content')}
+      <Btn href="/" bgColor="var(--color-secondary)">
+        {"Zpět na domovskou stránku"}
       </Btn>
     </main>
   );

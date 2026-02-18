@@ -98,7 +98,7 @@ const InteractiveChooser = () => {
     "components.interactiveChooser.fillFormData"
   );
   const router = useRouter();
-  const phoneNumber = "+42077780333073";
+  const phoneNumber = "+420778033073";
   const [popupPhone, setPopupPhone] = useState(false);
   const [widthOfWindow, setWidthOfWindow] = useState(1440);
   useEffect(() => {

@@ -22,7 +22,7 @@ import Popup from "../../components/popup/popup.component";
 
 const Footer = () => {
   const lang = useTranslations("footer")
-  const phoneNumber = "+42077780333073";
+  const phoneNumber = "+420778033073";
   const emailAddress = "ab@adam-bartusek.cz";
   const [popupPhone, setPopupPhone] = useState(false);
   const [popupEmail, setPopupEmail] = useState(false);

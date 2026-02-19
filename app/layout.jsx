@@ -78,7 +78,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="cs">
       <body className={`${fontPrimary.variable} ${fontSecondary.variable}`}>
-        <Header variant="leftsettings-centerlogo-rightmenu" />
+        <Header variant="leftlogo-rightmenu-rightsettings" />
         {children}
         <Footer />
       </body>

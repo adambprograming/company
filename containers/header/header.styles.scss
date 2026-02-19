@@ -52,15 +52,25 @@ $width-logo: clamp(50px, 12vw, 120px);
   max-width: var(--breakpoint-1440);
   .header-container-logo {
     margin: auto 0;
-    #logo-header {
-      cursor: pointer;
-      width: $width-logo;
-      height: auto;
-      padding: 5px 0;
-      & > * {
-        fill: var(--color-text);
-      }
+    a {
+      text-decoration: none;
     }
+    #logo-header {
+      font-size: var(--fontsize-h2);
+      font-family: var(--font-primary);
+      color: var(--color-text);
+      font-weight: 600;
+      line-height: 1.6;
+    }
+    // #logo-header {
+    //   cursor: pointer;
+    //   width: $width-logo;
+    //   height: auto;
+    //   padding: 5px 0;
+    //   & > * {
+    //     fill: var(--color-text);
+    //   }
+    // }
   }
   #header-container-menu {
     margin: auto 0;

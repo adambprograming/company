@@ -64,7 +64,7 @@ export default function Home() {
     <main className={styles.main}>
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <p className={styles.eyebrow}>{"NEWAGEWEB PRO ZÁKLADNÍ ŠKOLY"}</p>
+          <p className={styles.sectionLabel}>{"PRO ZÁKLADNÍ ŠKOLY"}</p>
           <h1>
             {"Nový školní web, který "}
             <strong>{"šetří čas rodičům"}</strong>
@@ -145,7 +145,29 @@ export default function Home() {
           ))}
         </div>
       </section>
-
+      
+      <section className={styles.solutionSection}>
+        <div className={styles.solutionIntro}>
+          <p className={styles.sectionLabel}>{"CO DODÁVÁME"}</p>
+          <h2>{"Kompletní nový web pro školu."}</h2>
+          {/* <ul>
+            <li>{"Přehledná struktura pro rodiče, žáky i zaměstnance."}</li>
+            <li>{"Moderní frontend a rychlé načítání na mobilech."}</li>
+            <li>{"Technický základ připravený na další růst školy."}</li>
+          </ul> */}
+        </div>
+        <ol className={styles.steps}>
+          {processSteps.map((step, i) => (
+            <li key={step.title}>
+              <span>{`0${i + 1}`}</span>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
 
       <section className={styles.referencesSection}>
         <p className={styles.sectionLabel}>{"REFERENCE A ZKUŠENOSTI"}</p>
@@ -169,28 +191,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.solutionSection}>
-        <div className={styles.solutionIntro}>
-          <p className={styles.sectionLabel}>{"CO DODÁVÁME"}</p>
-          <h2>{"Kompletní nový web pro školu."}</h2>
-          {/* <ul>
-            <li>{"Přehledná struktura pro rodiče, žáky i zaměstnance."}</li>
-            <li>{"Moderní frontend a rychlé načítání na mobilech."}</li>
-            <li>{"Technický základ připravený na další růst školy."}</li>
-          </ul> */}
-        </div>
-        <ol className={styles.steps}>
-          {processSteps.map((step, i) => (
-            <li key={step.title}>
-              <span>{`0${i + 1}`}</span>
-              <div>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
       {/* <section className={styles.ctaSection}>
         <h2>{"Chcete návrh nového webu pro vaši školu?"}</h2>
         <p>

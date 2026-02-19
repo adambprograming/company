@@ -32,7 +32,7 @@ const Header = ({
   backdropFilter = "blur(4px)",
   stylesForHeader = {},
 }) => {
-    const headerRef = useRef();
+  const headerRef = useRef();
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
   const menuRef = useRef();
@@ -96,11 +96,12 @@ const Header = ({
           menuRef.current?.handleLogoClick();
         }}
       >
-        <Logo
+        {/* <Logo
           alt={"Logo"}
           id="logo-header"
           aria-label={"Logo"}
-        />
+        /> */}
+        <h1 id="logo-header">NEWAGEWEB</h1>
       </Link>
     );
   };
@@ -115,10 +116,10 @@ const Header = ({
           headerOption === 0
             ? ""
             : headerOption === 1
-            ? `fixedOnScrollUp ${isVisible ? "visible" : "hidden"}`
-            : headerOption === 2
-            ? "fixedAllTime"
-            : ""
+              ? `fixedOnScrollUp ${isVisible ? "visible" : "hidden"}`
+              : headerOption === 2
+                ? "fixedAllTime"
+                : ""
         }`}
         style={{
           backgroundColor: `${bgColor}`,
@@ -140,10 +141,10 @@ const Header = ({
           headerOption === 0
             ? ""
             : headerOption === 1
-            ? `fixedOnScrollUp ${isVisible ? "visible" : "hidden"}`
-            : headerOption === 2
-            ? "fixedAllTime"
-            : ""
+              ? `fixedOnScrollUp ${isVisible ? "visible" : "hidden"}`
+              : headerOption === 2
+                ? "fixedAllTime"
+                : ""
         }`}
         style={{
           backgroundColor: `${bgColor}`,
@@ -164,10 +165,10 @@ const Header = ({
           headerOption === 0
             ? ""
             : headerOption === 1
-            ? `fixedOnScrollUp ${isVisible ? "visible" : "hidden"}`
-            : headerOption === 2
-            ? "fixedAllTime"
-            : ""
+              ? `fixedOnScrollUp ${isVisible ? "visible" : "hidden"}`
+              : headerOption === 2
+                ? "fixedAllTime"
+                : ""
         }`}
         style={{
           backgroundColor: `${bgColor}`,
@@ -189,10 +190,10 @@ const Header = ({
           headerOption === 0
             ? ""
             : headerOption === 1
-            ? `fixedOnScrollUp ${isVisible ? "visible" : "hidden"}`
-            : headerOption === 2
-            ? "fixedAllTime"
-            : ""
+              ? `fixedOnScrollUp ${isVisible ? "visible" : "hidden"}`
+              : headerOption === 2
+                ? "fixedAllTime"
+                : ""
         }`}
         style={{
           backgroundColor: `${bgColor}`,

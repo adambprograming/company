@@ -64,6 +64,16 @@ const standards = [
     Icon: IconSeo,
   },
   {
+    title: "Legislativní soulad",
+    text: "Nastavení webu tak, aby respektoval aktuální požadavky na cookies, soukromí a povinné informace.",
+    Icon: IconSeo,
+  },
+  {
+    title: "Přehlednost pro rodiče",
+    text: "Důležité informace jako zápis, kontakty, jídelna a aktuality jsou dostupné na pár kliknutí.",
+    Icon: IconResponsiveness,
+  },
+  {
     title: "Vlastní řešení",
     text: "Žádné šablony, ale web postavený přesně podle potřeb vaší školy.",
     Icon: IconAuthenticity,
@@ -103,22 +113,11 @@ const ServicesPage = () => {
             >
               {"Nezávazná konzultace"}
             </Btn>
-            <Btn
-              href="/objednavka"
-              bgColor="transparent"
-              textColor="var(--color-text)"
-              borderSize="1px"
-              borderColor="var(--color-primary)"
-              hoverEffect="scaleForward"
-              ariaLabel={"Přejít na stránku objednávky"}
-            >
-              {"Poptat nový web"}
-            </Btn>
           </div>
           <ul className={styles.heroStats}>
             <li>
-              <strong>{"4"}</strong>
-              <span>{"kroky spolupráce"}</span>
+              <strong>{"2"}</strong>
+              <span>{"programátoři"}</span>
             </li>
             <li>
               <strong>{"100 %"}</strong>
@@ -133,7 +132,9 @@ const ServicesPage = () => {
         <div className={styles.heroVisual}>
           <article className={styles.visualCard}>
             <p>{"Co na novém webu řešíme jako první"}</p>
-            <h3>{"Rodič musí najít důležité informace rychle a bez tápání."}</h3>
+            <h3>
+              {"Rodič musí najít důležité informace rychle a bez tápání."}
+            </h3>
             <ul>
               <li>{"přehledná struktura a logická navigace"}</li>
               <li>{"čitelné rozvržení pro mobil i desktop"}</li>
@@ -144,14 +145,15 @@ const ServicesPage = () => {
               <span>{"typická realizace podle rozsahu projektu"}</span>
             </div>
           </article>
-          <p className={styles.visualNote}>{"Nový web místo oprav zastaralého systému."}</p>
         </div>
       </section>
 
       <section className={styles.pillars}>
         <header className={styles.sectionHeader}>
           <p className={styles.sectionLabel}>{"NÁŠ PŘÍSTUP"}</p>
-          <h2>{"Kombinujeme kvalitu vývoje, jasný proces a férovou komunikaci."}</h2>
+          <h2>
+            {"Kombinujeme kvalitu vývoje, jasný proces a férovou komunikaci."}
+          </h2>
         </header>
         <div className={styles.pillarGrid}>
           {pillars.map((pillar) => (
@@ -196,20 +198,10 @@ const ServicesPage = () => {
           <h2>{"Co získá každá škola v každém projektu."}</h2>
         </header>
         <div className={styles.benefitGrid}>
-          <article className={styles.benefitIntro}>
-            <h3>{"Minimum, které bereme jako standard"}</h3>
-            <p>
-              {
-                "Nejde jen o hezký design. Každý web stavíme jako funkční nástroj pro komunikaci školy s rodiči a veřejností."
-              }
-            </p>
-          </article>
           {standards.map(({ title, text, Icon }, i) => (
             <article
               key={title}
-              className={`${styles.benefitCard} ${
-                i === 0 ? styles.featured : ""
-              } ${i === 3 ? styles.accented : ""}`}
+              className={`${styles.benefitCard} ${i === 5 ? styles.accented : ""}`}
             >
               <div className={styles.iconWrap}>
                 <Icon />
@@ -222,17 +214,10 @@ const ServicesPage = () => {
       </section>
 
       <section className={styles.cta}>
-        <h2>{"Chcete projít váš aktuální web a navrhnout nový směr?"}</h2>
-        <p>
-          {
-            "Pošlete nám odkaz na stávající web školy. Připravíme konkrétní návrh dalšího postupu."
-          }
-        </p>
-        <ul className={styles.ctaFacts}>
-          <li>{"jasný rozsah a očekávání před startem"}</li>
-          <li>{"transparentní komunikace během celé realizace"}</li>
-          <li>{"web připravený na dlouhodobý provoz"}</li>
-        </ul>
+        <header className={styles.sectionHeader}>
+          <p className={styles.sectionLabel}>{"DALŠÍ KROK"}</p>
+          <h2>{"Chcete projít váš aktuální web a navrhnout nový směr?"}</h2>
+        </header>
         <div className={styles.ctaActions}>
           <Btn
             href="/kontakt"

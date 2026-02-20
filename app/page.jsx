@@ -263,13 +263,13 @@ export default function Home() {
             <h2>{"Když je web školy zastaralý, ztrácí škola důvěru i čas."}</h2>
             <p className={styles.problemLead}>
               {
-                "Nejčastější bariéry, které brzdí komunikaci školy směrem k rodičům a veřejnosti."
+                "Nejčastější problémy stávajících školních webů, které řešíme jako první, jsou:"
               }
             </p>
           </div>
           <aside className={styles.problemMeta}>
-            <strong>{"30 s"}</strong>
-            <span>{"tolik má mít rodič na nalezení klíčové informace."}</span>
+            <strong>{"20 s"}</strong>
+            <span>{"tolik má mít rodič na nalezení klíčové informace"}</span>
           </aside>
         </div>
         <div className={styles.problemGrid}>
@@ -283,7 +283,7 @@ export default function Home() {
         </div>
       </section>
       
-      <section className={styles.solutionSection}>
+      <section id="proces" className={styles.solutionSection}>
         <div className={styles.solutionIntro}>
           <p className={styles.sectionLabel}>{"CO DODÁVÁME"}</p>
           <h2>{"Kompletní nový web pro školu."}</h2>
@@ -301,14 +301,14 @@ export default function Home() {
         </ol>
       </section>
 
-      <section className={`${styles.contacts}`}>
+      <section id="kontakt" className={`${styles.contacts}`}>
         <div className={`${styles.contentContainer}`}>
           <div className={`${styles.titleContainer}`}>
-            <span>{"KONTAKT"}</span>
-            <h1>
+            <p className={styles.sectionLabel}>{"KONTAKT"}</p>
+            <h2>
               {"Pojďme probrat "}
               <strong>{"nový web školy"}</strong>
-            </h1>
+            </h2>
             <hr />
           </div>
           <div className={`${styles.mainContacts}`}>
@@ -373,8 +373,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <hr style={{ width: "100%" }} />
-          <h2>{"Sledujte nás"}</h2>
+          <hr className={styles.sectionDivider} />
+          <h3>{"Sledujte nás"}</h3>
           <div className={`${styles.additionalContacts}`}>
             <Btn
               href="https://www.instagram.com/_adaamb/"
@@ -421,7 +421,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={`${styles.aboutus}`}>
+      <section id="o-nas" className={`${styles.aboutus}`}>
         <div className={`${styles.imgContainer}`}>
           <Image
             src={HeroImg}
@@ -432,24 +432,21 @@ export default function Home() {
         </div>
         <div className={`${styles.contentContainer}`}>
           <div className={`${styles.titleContainer}`}>
-            <span>{"O NÁS"}</span>
-            <h1>
-              {"Jsme"}
-              <br />
-              {" tým "}
+            <p className={styles.sectionLabel}>{"O NÁS"}</p>
+            <h2>
+              {"Jsme tým "}
               <strong>{"NewAgeWeb"}</strong>
-            </h1>
+            </h2>
             <hr />
           </div>
           <div className={`${styles.textContainer}`}>
             <p>{"Tvoříme moderní weby vlastním kódem v Next.js. Zaměřujeme se na školy, které potřebují důvěryhodný a aktuální web odpovídající dnešním očekáváním rodičů."}</p>
-            <br />
             <p>{"Jsme mladý tým s citem pro současný design a uživatelskou orientaci. Kombinujeme rychlou komunikaci, férovou cenu a technickou kvalitu bez kompromisů."}</p>
           </div>
         </div>
       </section>
 
-      <section className={styles.referencesSection}>
+      <section id="reference" className={styles.referencesSection}>
         <p className={styles.sectionLabel}>{"REFERENCE A ZKUŠENOSTI"}</p>
         <h2>{"Projekty, na kterých stojí náš standard kvality."}</h2>
         <div className={styles.referencesGrid}>

@@ -353,6 +353,7 @@
 
       span {
         font-size: var(--fontsize-smaller);
+        font-family: var(--font-secondary);
         color: var(--shadow-75);
         line-height: 1.25;
       }
@@ -555,293 +556,337 @@
   }
 
   .contacts {
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-    @media only screen and (max-width: 880px) {
-      flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: clamp(1rem, 2vw, 1.6rem);
+    border-radius: 18px;
+    border: 1px solid rgb(from var(--color-text) r g b / 0.14);
+    background: rgb(from var(--white-100) r g b / 0.56);
+    box-shadow: 0 16px 30px -34px var(--shadow-100);
+
+    @media only screen and (max-width: 1620px) {
+      border-radius: 0;
     }
+
+    @media only screen and (max-width: 980px) {
+      grid-template-columns: 1fr;
+    }
+
     .contentContainer {
-      margin: auto 0;
-      flex: 1 1 40%;
+      margin: 0;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 1rem;
+      text-align: left;
 
       .titleContainer {
         width: 100%;
+        margin: 0;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        gap: 0.5rem;
+        gap: 0.85rem;
 
-        & > span {
-          margin: auto 0;
-          text-align: left;
-          font-family: var(--font-primary);
-          font-weight: 700;
-          color: var(--color-ascent);
-        }
-
-        & > h1 {
-          margin: auto 0;
-          text-align: left;
+        > h2 {
+          margin: 0;
+          max-width: 17ch;
+          line-height: 1.08;
 
           strong {
             color: var(--color-ascent);
           }
         }
 
-        & > hr {
-          margin: 0.5rem 0;
-          width: 33%;
-          border: 1px solid var(--color-ascent);
+        > hr {
+          margin: 0;
+          width: min(180px, 36%);
+          border: 0;
+          border-top: 1px solid rgb(from var(--color-primary) r g b / 0.4);
         }
       }
 
       .mainContacts {
+        width: 100%;
         margin: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.7rem;
+
+        @media only screen and (max-width: 700px) {
+          grid-template-columns: 1fr;
+        }
 
         .address,
         .phone,
         .email,
         .ico {
+          position: relative;
+          margin: 0;
+          width: 100%;
+          padding: 0.8rem 0.9rem;
+          display: grid;
+          grid-template-columns: auto 1fr;
+          align-items: center;
+          gap: 0.7rem;
           text-decoration: none;
           cursor: pointer;
-          position: relative;
-          overflow: hidden;
-          border-radius: 25px;
-          margin: 0;
-          display: flex;
-          flex-direction: row;
-          gap: 1rem;
-          width: min-content;
+          border-radius: 14px;
+          border: 1px solid rgb(from var(--color-text) r g b / 0.1);
+          background: rgb(from var(--white-100) r g b / 0.78);
+          box-shadow: 0 10px 20px -24px var(--shadow-100);
+          transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 30px -30px var(--shadow-100);
+          }
+
+          &::before {
+            display: none;
+          }
 
           .specContainer {
-            position: relative;
-            margin: auto 0;
+            position: static;
+            right: auto;
+            min-width: 0;
+            margin: 0;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            min-width: 100%;
-            right: calc(
-              clamp(16px, 2vw, 24px) + 2 * clamp(10px, 1.5vw, 15px) + 1rem
-            );
+            gap: 0.2rem;
 
             .contactTitle {
-              position: relative;
-              padding-left: calc(
-                clamp(16px, 2vw, 24px) + 2 * clamp(10px, 1.5vw, 15px) + 1rem
-              );
-              width: calc(100% - padding-left);
+              position: static;
+              width: auto;
               margin: 0;
+              padding-left: 0;
+              display: flex;
+              align-items: center;
+              flex-wrap: wrap;
+              gap: 0.45rem;
               text-align: left;
               font-family: var(--font-primary);
-              font-size: var(--fontsize-h6);
+              font-size: var(--fontsize-small);
+              color: var(--shadow-75);
+
               span {
-                position: absolute;
-                right: 10px;
-                z-index: 20;
-                padding: 5px 15px;
-                border-radius: 20px;
+                position: static;
+                right: auto;
+                z-index: auto;
+                padding: 0.15rem 0.5rem;
+                border-radius: 999px;
+                border: 1px solid rgb(from var(--color-primary) r g b / 0.24);
+                background: rgb(from var(--color-primary) r g b / 0.1);
                 font-family: var(--font-secondary);
-                font-size: var(--fontsize-small);
-                color: var(--color-text-reverse);
-                background: var(--color-ascent);
-                -webkit-text-fill-color: initial;
+                font-size: var(--fontsize-smaller);
+                color: var(--color-primary);
+                line-height: 1.2;
+                -webkit-text-fill-color: currentcolor;
               }
             }
 
             .contactValue {
-              position: relative;
-              padding-left: calc(
-                clamp(16px, 2vw, 24px) + 2 * clamp(10px, 1.5vw, 15px) + 1rem
-              );
-              width: calc(100% - padding-left);
+              position: static;
+              width: auto;
               margin: 0;
+              padding-left: 0;
               text-align: left;
               white-space: nowrap;
               font-family: var(--font-secondary);
-              font-size: var(--fontsize-small);
-            }
-          }
+              font-size: var(--fontsize-h6);
+              color: var(--color-text);
 
-          &::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            border-radius: 25px;
-            background-color: var(--color-primary);
-            transform: translateX(-100%);
-            transition: transform 0.4s ease;
+              @media only screen and (max-width: 420px) {
+                white-space: normal;
+              }
+            }
           }
 
           .specContainer .contactTitle,
           .specContainer .contactValue {
-            background: linear-gradient(
-              to right,
-              var(--color-text-reverse) 50%,
-              var(--color-text) 50%
-            );
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: background-position 0.4s ease;
-            background-size: 200% 100%;
-            background-position: 100% 0;
+            background: none;
+            -webkit-background-clip: border-box;
+            background-clip: border-box;
+            -webkit-text-fill-color: initial;
+            transition: none;
+            background-size: auto;
+            background-position: 0 0;
           }
         }
       }
 
-      h2 {
+      h3 {
         margin: 0;
         text-align: left;
+        color: var(--color-text);
         font-size: var(--fontsize-h6);
+      }
+
+      .sectionDivider {
+        margin: 0.15rem 0 0;
+        width: 100%;
+        border: 0;
+        border-top: 1px solid rgb(from var(--color-text) r g b / 0.15);
       }
 
       .additionalContacts {
         margin: 0;
         display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 1rem;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+
+        .iconContainer {
+          border-radius: 999px;
+          transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease;
+
+          svg {
+            fill: var(--color-primary);
+          }
+
+          &:hover {
+            background: var(--color-primary);
+            border-color: rgb(from var(--color-primary) r g b / 0.65);
+
+            svg {
+              fill: var(--color-text-reverse);
+            }
+          }
+        }
       }
     }
+
     .imgContainer {
-      flex: 1 1 40%;
+      margin: 0;
       display: flex;
-      position: relative;
-      @media only screen and (max-width: 880px) {
-        display: none;
+      align-items: stretch;
+      justify-content: center;
+      min-height: 100%;
+      border-radius: 14px;
+      background: rgb(from var(--color-secondary) r g b / 0.2);
+      overflow: hidden;
+
+      @media only screen and (max-width: 980px) {
+        min-height: 240px;
       }
-      &::before {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        content: "";
-        width: 78%;
-        height: 78%;
-        background-color: rgb(from var(--color-secondary) r g b / 0.2);
-        border-radius: 15px;
-        z-index: -15;
-      }
+
       img {
-        width: 60%;
-        height: auto;
-        border-radius: 15px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 14px;
       }
     }
+
     .iconContainer {
-      margin: auto 0;
-      background-color: var(--color-primary);
-      padding: clamp(10px, 1.5vw, 15px);
-      border-radius: 50px;
-      height: clamp(16px, 2vw, 24px);
-      width: clamp(16px, 2vw, 24px);
-      cursor: pointer;
-      display: flex;
-      align-content: center;
+      margin: 0;
+      width: 2.6rem;
+      height: 2.6rem;
+      padding: 0.65rem;
+      border-radius: 12px;
+      border: 1px solid rgb(from var(--color-primary) r g b / 0.28);
+      background: rgb(from var(--color-primary) r g b / 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
 
       svg {
-        height: clamp(16px, 2vw, 24px);
-        width: clamp(16px, 2vw, 24px);
-        fill: var(--color-text-reverse);
+        width: 100%;
+        height: 100%;
+        fill: var(--color-primary);
       }
     }
   }
 
   .aboutus {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    @media only screen and (max-width: 880px) {
-      flex-direction: column-reverse;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(1rem, 2vw, 1.6rem);
+    border-radius: 18px;
+    border: 1px solid rgb(from var(--color-text) r g b / 0.14);
+    background: rgb(from var(--white-100) r g b / 0.56);
+    box-shadow: 0 16px 30px -34px var(--shadow-100);
+
+    @media only screen and (max-width: 1620px) {
+      border-radius: 0;
     }
-    div {
-      flex: 1 1 30%;
+
+    @media only screen and (max-width: 980px) {
+      grid-template-columns: 1fr;
     }
+
     .imgContainer {
-      flex: 1 1 40%;
+      margin: 0;
       display: flex;
-      position: relative;
-      @media only screen and (max-width: 880px) {
-        // display: none;
+      align-items: stretch;
+      justify-content: center;
+      min-height: 100%;
+      border-radius: 14px;
+      background: rgb(from var(--color-secondary) r g b / 0.2);
+      overflow: hidden;
+
+      @media only screen and (max-width: 980px) {
+        order: 2;
+        min-height: 240px;
       }
-      &::before {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        content: "";
-        width: 78%;
-        height: 78%;
-        background-color: rgb(from var(--color-secondary) r g b / 0.2);
-        border-radius: 15px;
-        z-index: -15;
-      }
+
       img {
-        width: 60%;
-        height: auto;
-        border-radius: 15px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 14px;
       }
     }
+
     .contentContainer {
-      margin: auto 0;
+      margin: 0;
       display: flex;
       flex-direction: column;
-      justify-content: left;
-      gap: 1.5rem;
+      justify-content: center;
+      gap: 1rem;
+      text-align: left;
+
       .titleContainer {
         width: 100%;
+        margin: 0;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        gap: 0.5rem;
-        width: 100%;
-        & > span {
-          margin: auto 0;
-          text-align: left;
-          font-family: var(--font-primary);
-          font-weight: 700;
-          color: var(--color-ascent);
-        }
-        & > h1 {
-          margin: auto 0;
-          text-align: left;
+        gap: 0.85rem;
+
+        > h2 {
+          margin: 0;
+          max-width: 18ch;
+          line-height: 1.08;
+
           strong {
             color: var(--color-ascent);
           }
         }
-        & > hr {
-          margin: 0.5rem 0;
-          width: 33%;
-          border: 1px solid var(--color-ascent);
+
+        > hr {
+          margin: 0;
+          width: min(180px, 36%);
+          border: 0;
+          border-top: 1px solid rgb(from var(--color-primary) r g b / 0.4);
         }
       }
+
       .textContainer {
-        margin: auto 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: left;
-        gap: 0.5rem;
-        & > p {
-          margin: auto 0;
+        margin: 0;
+        display: grid;
+        gap: 0.65rem;
+
+        > p {
+          margin: 0;
+          max-width: 62ch;
           text-align: left;
-          // font-size: var(--fontsize-small);
-          max-width: 55ch;
+          color: var(--shadow-75);
+          line-height: 1.4;
         }
       }
     }

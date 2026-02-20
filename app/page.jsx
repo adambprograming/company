@@ -1,3 +1,4 @@
+'use client'
 import styles from "./page.module.scss";
 import Project1 from "@/public/projects/project1.avif";
 import Project2 from "@/public/projects/project2.avif";
@@ -5,7 +6,14 @@ import Project3 from "@/public/portfolio/comarr.png";
 import HeroImg from "@/public/hero.png";
 import Image from "next/image";
 import Link from "next/link";
-
+import IconPhone from "@/components/svgs/footer-icons/icon-phone.component";
+import IconEmail from "@/components/svgs/footer-icons/icon-email.component";
+import IconLocation from "@/components/svgs/footer-icons/icon-location.component";
+import IconInstagram from "@/components/svgs/footer-icons/icon-instagram.component";
+import IconLinkedin from "@/components/svgs/footer-icons/icon-linkedin.component";
+import IconGithub from "@/components/svgs/footer-icons/icon-github.component";
+import IconInvoice from "@/components/svgs/footer-icons/icon-invoice.component";
+import { useState, useEffect } from "react";
 import Btn from "@/components/btn/btn.component";
 
 const references = [
@@ -42,24 +50,172 @@ const problems = [
     title: "Technický dluh",
     text: "Staré řešení bývá pomalé, hůř spravovatelné a není připravené na současné požadavky.",
   },
+  {
+    title: "Legislativa a přístupnost",
+    text: "Nový web je v souladu s platnou legislativou a zajišťuje přístupnost pro všechny uživatele.",
+  },
+  {
+    title: "Udržitelnost a podpora",
+    text: "Web nemá být jednorázový projekt. Myslíme na udržitelnost, snadnou správu a stabilní podporu.",
+  },
+  {
+    title: "Cena a přidaná hodnota",
+    text: "Naše řešení je cenově dostupné pro všechny školy a přináší skutečnou přidanou hodnotu.",
+  },
 ];
-
 const processSteps = [
   {
-    title: "Analýza školy",
-    text: "Projdeme stávající web, cílové skupiny a konkrétní provozní potřeby školy.",
+    title: "Úvodní konzultace",
+    text: "Vyjasníme cíle vedení školy, očekávání a rozsah projektu. Domluvíme harmonogram a odpovědnosti obou stran.",
   },
   {
-    title: "Návrh struktury a designu",
-    text: "Navrhneme jasnou informační architekturu a čistý vizuální styl.",
+    title: "Analýza současného stavu",
+    text: "Projdeme stávající web, obsah, technické řešení i slabá místa z pohledu rodičů a veřejnosti.",
   },
   {
-    title: "Vývoj, spuštění, podpora",
-    text: "Web naprogramujeme od nuly, nasadíme a předáme připravený k provozu.",
+    title: "Informační architektura",
+    text: "Navrhneme přehlednou strukturu tak, aby klíčové informace byly dostupné během několika kliknutí i z mobilu.",
+  },
+  {
+    title: "Design na míru",
+    text: "Vytvoříme moderní a důvěryhodný vizuální styl odpovídající charakteru školy a současným standardům přístupnosti.",
+  },
+  {
+    title: "Vývoj a technická příprava",
+    text: "Web naprogramujeme od nuly, optimalizujeme rychlost, responzivitu a základní SEO parametry.",
+  },
+  {
+    title: "Testování a převod obsahu",
+    text: "Zapracujeme připomínky, otestujeme funkčnost a zajistíme převod textů, dokumentů i archivů ze stávajícího webu.",
+  },
+  {
+    title: "Spuštění a dlouhodobá péče",
+    text: "Web nasadíme na doménu školy, zaškolíme administraci a zůstáváme k dispozici pro další rozvoj a technickou podporu.",
   },
 ];
+// const processSteps = [
+//   {
+//     title: "Úvodní konzultace",
+//     text: "Vyjasníme cíle, potřeby vedení školy a hlavní uživatelské skupiny. Definujeme rozsah projektu a harmonogram.",
+//   },
+//   {
+//     title: "Analýza a zadání",
+//     text: "Projdeme stávající web, identifikujeme slabá místa a připravíme konkrétní zadání pro novou strukturu.",
+//   },
+//   {
+//     title: "Informační architektura",
+//     text: "Navrhneme přehlednou strukturu tak, aby rodiče i zaměstnanci rychle našli klíčové informace.",
+//   },
+//   {
+//     title: "Design na míru",
+//     text: "Připravíme grafický návrh odpovídající charakteru školy a současným standardům důvěryhodnosti a přístupnosti.",
+//   },
+//   {
+//     title: "Vývoj a testování",
+//     text: "Web naprogramujeme, optimalizujeme pro všechna zařízení a zpřístupníme k připomínkám na testovací adrese.",
+//   },
+//   {
+//     title: "Převod obsahu a spuštění",
+//     text: "Zajistíme převod obsahu, stabilní hosting, nasazení na doménu školy a finální kontrolu funkčnosti.",
+//   },
+//   {
+//     title: "Zaškolení a dlouhodobá péče",
+//     text: "Předáme praktický návod k administraci a zůstáváme k dispozici pro další rozvoj a technickou podporu.",
+//   },
+// ];
 
 export default function Home() {
+  const [phoneNumberCopied, setPhoneNumberCopied] = useState(false);
+  const [emailAddressCopied, setEmailAddressCopied] = useState(false);
+  const [icoCopied, setIcoCopied] = useState(false);
+  const phoneNumber = "+420 778 033 073";
+  const emailAddress = "ab@adam-bartusek.cz";
+  const ico = `10700561`;
+
+
+  useEffect(() => {
+    if (phoneNumberCopied) {
+      if (emailAddressCopied) {
+        setEmailAddressCopied(false);
+      }
+      if (icoCopied) {
+        setIcoCopied(false);
+      }
+      setTimeout(() => {
+        setPhoneNumberCopied(false);
+      }, 2500);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phoneNumberCopied]);
+
+  useEffect(() => {
+    if (emailAddressCopied) {
+      if (phoneNumberCopied) {
+        setPhoneNumberCopied(false);
+      }
+      if (icoCopied) {
+        setIcoCopied(false);
+      }
+      setTimeout(() => {
+        setEmailAddressCopied(false);
+      }, 2500);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [emailAddressCopied]);
+
+  useEffect(() => {
+    if (icoCopied) {
+      if (phoneNumberCopied) {
+        setPhoneNumberCopied(false);
+      }
+      if (emailAddressCopied) {
+        setEmailAddressCopied(false);
+      }
+      setTimeout(() => {
+        setIcoCopied(false);
+      }, 2500);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [icoCopied]);
+
+  const handleCallOrCopyNumber = () => {
+    const userAgent = navigator.userAgent || window.opera;
+    // Check, if device have phone functions
+    if (/android|iphone|ipad|iPod/i.test(userAgent)) {
+      window.location.href = `tel:${phoneNumber}`;
+    } else {
+      // If not (so desktop), just copy phone
+      navigator.clipboard.writeText(phoneNumber).then(
+        () => {
+          setPhoneNumberCopied(true);
+        },
+        () => {}
+      );
+    }
+  };
+
+  const handleEmailOrCopy = () => {
+    const mailtoLink = `mailto:${emailAddress}?subject=Nez%C3%A1vazn%C3%A1%20popt%C3%A1vka%20nov%C3%A9ho%20webu%20pro%20%C5%A1kolu&body=Dobr%C3%BD%20den%2C%0D%0A%0D%0Am%C3%A1m%20z%C3%A1jem%20o%20nov%C3%BD%20web%20pro%20%C5%A1kolu.%0D%0A%0D%0AS%20pozdravem%2C%0D%0A[Va%C5%A1e%20jm%C3%A9no]`;
+    // Copy the email address to clipboard regardless of mailto success
+    navigator.clipboard.writeText(emailAddress).then(
+      () => {
+        setEmailAddressCopied(true);
+      },
+      () => {}
+    );
+    // Attempt to open the default mail client
+    window.location.href = mailtoLink;
+  };
+
+  const handleIcoCopy = () => {
+    // Copy the ico to clipboard
+    navigator.clipboard.writeText(ico).then(
+      () => {
+        setIcoCopied(true);
+      },
+      () => {}
+    );
+  };
   return (
     <main className={styles.main}>
       <section className={styles.hero}>
@@ -75,11 +231,6 @@ export default function Home() {
               "Jsme dvoučlenný tým vývojářů, který staví nové weby pro školy od nuly. Bez šablon, s důrazem na přehlednost, výkon a dlouhodobě udržitelné řešení."
             }
           </p>
-          {/* <div className={styles.heroChips}>
-            <span>{"Přehledná struktura"}</span>
-            <span>{"Vlastní vývoj"}</span>
-            <span>{"Soulad s legislativou"}</span>
-          </div> */}
           <div className={styles.heroCtas}>
             <Btn
               href="/kontakt"
@@ -92,20 +243,6 @@ export default function Home() {
               {"Nezávazná konzultace"}
             </Btn>
           </div>
-          {/* <ul className={styles.heroFacts}>
-            <li>
-              <strong>{"2"}</strong>
-              <span>{"Vývojáři v týmu"}</span>
-            </li>
-            <li>
-              <strong>{"100%"}</strong>
-              <span>{"Vlastní psaní kódu"}</span>
-            </li>
-            <li>
-              <strong>{"CZ"}</strong>
-              <span>{"Zaměření na české školy"}</span>
-            </li>
-          </ul> */}
         </div>
         <div className={styles.heroVisual}>
           <Image
@@ -150,11 +287,6 @@ export default function Home() {
         <div className={styles.solutionIntro}>
           <p className={styles.sectionLabel}>{"CO DODÁVÁME"}</p>
           <h2>{"Kompletní nový web pro školu."}</h2>
-          {/* <ul>
-            <li>{"Přehledná struktura pro rodiče, žáky i zaměstnance."}</li>
-            <li>{"Moderní frontend a rychlé načítání na mobilech."}</li>
-            <li>{"Technický základ připravený na další růst školy."}</li>
-          </ul> */}
         </div>
         <ol className={styles.steps}>
           {processSteps.map((step, i) => (
@@ -167,6 +299,154 @@ export default function Home() {
             </li>
           ))}
         </ol>
+      </section>
+
+      <section className={`${styles.contacts}`}>
+        <div className={`${styles.contentContainer}`}>
+          <div className={`${styles.titleContainer}`}>
+            <span>{"KONTAKT"}</span>
+            <h1>
+              {"Pojďme probrat "}
+              <strong>{"nový web školy"}</strong>
+            </h1>
+            <hr />
+          </div>
+          <div className={`${styles.mainContacts}`}>
+            <div onClick={handleCallOrCopyNumber} className={`${styles.phone}`}>
+              <div className={`${styles.iconContainer}`}>
+                <IconPhone />
+              </div>
+              <div className={`${styles.specContainer}`}>
+                <span className={`${styles.contactTitle}`}>
+                  {"Telefon"}
+                  {phoneNumberCopied && (
+                    <span>{"Zkopírováno!"}</span>
+                  )}
+                </span>
+                <span className={`${styles.contactValue}`}>{phoneNumber}</span>
+              </div>
+            </div>
+            <div onClick={handleEmailOrCopy} className={`${styles.email}`}>
+              <div className={`${styles.iconContainer}`}>
+                <IconEmail />
+              </div>
+              <div className={`${styles.specContainer}`}>
+                <span className={`${styles.contactTitle}`}>
+                  {"E-mail"}
+                  {emailAddressCopied && (
+                    <span>{"Zkopírováno!"}</span>
+                  )}
+                </span>
+                <span className={`${styles.contactValue}`}>{emailAddress}</span>
+              </div>
+            </div>
+            <Link
+              href="https://www.google.com/maps/place/Pardubice/@50.0342266,15.4292331,10z/data=!3m1!4b1!4m6!3m5!1s0x470dc94b239307b5:0x12d59894ccf624ae!8m2!3d50.0343092!4d15.7811994!16zL20vMGNoNTQ?entry=ttu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.address}`}
+              aria-label={"Navigovat na mapu lokace"}
+            >
+              <div className={`${styles.iconContainer}`}>
+                <IconLocation />
+              </div>
+              <div className={`${styles.specContainer}`}>
+                <span className={`${styles.contactTitle}`}>
+                  {"Město"}
+                </span>
+                <span className={`${styles.contactValue}`}>Pardubice (CZ)</span>
+              </div>
+            </Link>
+            <div onClick={handleIcoCopy} className={`${styles.ico}`}>
+              <div className={`${styles.iconContainer}`}>
+                <IconInvoice />
+              </div>
+              <div className={`${styles.specContainer}`}>
+                <span className={`${styles.contactTitle}`}>
+                  {"IČO"}
+                  {icoCopied && <span>{"Zkopírováno!"}</span>}
+                </span>
+                <span className={`${styles.contactValue}`}>
+                  {ico}
+                  {`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}
+                </span>
+              </div>
+            </div>
+          </div>
+          <hr style={{ width: "100%" }} />
+          <h2>{"Sledujte nás"}</h2>
+          <div className={`${styles.additionalContacts}`}>
+            <Btn
+              href="https://www.instagram.com/_adaamb/"
+              borderSize="none"
+              paddingOfBtn="0"
+              hoverEffect="scaleForward"
+              ariaLabel={"Navigovat na Instagram"}
+            >
+              <div className={`${styles.iconContainer}`}>
+                <IconInstagram />
+              </div>
+            </Btn>
+            <Btn
+              href="https://github.com/adambprograming"
+              borderSize="none"
+              paddingOfBtn="0"
+              hoverEffect="scaleForward"
+              ariaLabel={"Navigovat na GitHub"}
+            >
+              <div className={`${styles.iconContainer}`}>
+                <IconGithub />
+              </div>
+            </Btn>
+            <Btn
+              href={`https://www.linkedin.com/in/adam-bart%C5%AF%C5%A1ek-251107286/?locale=cs_CZ`}
+              borderSize="none"
+              paddingOfBtn="0"
+              hoverEffect="scaleForward"
+              ariaLabel={"Navigovat na LinkedIn"}
+            >
+              <div className={`${styles.iconContainer}`}>
+                <IconLinkedin />
+              </div>
+            </Btn>
+          </div>
+        </div>
+        <div className={`${styles.imgContainer}`}>
+          <Image
+            src={HeroImg}
+            alt={"Obrázek"}
+            aria-label={"Obrázek této sekce"}
+            priority
+          />
+        </div>
+      </section>
+
+      <section className={`${styles.aboutus}`}>
+        <div className={`${styles.imgContainer}`}>
+          <Image
+            src={HeroImg}
+            alt={"Obrázek"}
+            aria-label={"Obrázek této sekce"}
+            priority
+          />
+        </div>
+        <div className={`${styles.contentContainer}`}>
+          <div className={`${styles.titleContainer}`}>
+            <span>{"O NÁS"}</span>
+            <h1>
+              {"Jsme"}
+              <br />
+              {" tým "}
+              <strong>{"NewAgeWeb"}</strong>
+            </h1>
+            <hr />
+          </div>
+          <div className={`${styles.textContainer}`}>
+            <p>{"Tvoříme moderní weby vlastním kódem v Next.js. Zaměřujeme se na školy, které potřebují důvěryhodný a aktuální web odpovídající dnešním očekáváním rodičů."}</p>
+            <br />
+            <p>{"Jsme mladý tým s citem pro současný design a uživatelskou orientaci. Kombinujeme rychlou komunikaci, férovou cenu a technickou kvalitu bez kompromisů."}</p>
+          </div>
+        </div>
       </section>
 
       <section className={styles.referencesSection}>
@@ -191,37 +471,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* <section className={styles.ctaSection}>
-        <h2>{"Chcete návrh nového webu pro vaši školu?"}</h2>
-        <p>
-          {
-            "Pošlete nám odkaz na stávající web. Připravíme konkrétní návrh dalšího postupu."
-          }
-        </p>
-        <div className={styles.ctaActions}>
-          <Btn
-            href="/kontakt"
-            bgColor="var(--color-primary)"
-            textColor="var(--color-text-reverse)"
-            borderSize="none"
-            hoverEffect="scaleForward"
-            ariaLabel={"Přejít na kontaktní formulář"}
-          >
-            {"Napsat poptávku"}
-          </Btn>
-          <Btn
-            href="/objednavka"
-            bgColor="transparent"
-            textColor="var(--color-text)"
-            borderSize="1px"
-            borderColor="var(--color-primary)"
-            hoverEffect="scaleForward"
-            ariaLabel={"Přejít na stránku objednávky"}
-          >
-            {"Přejít na objednávku"}
-          </Btn>
-        </div>
-      </section> */}
     </main>
   );
 }

@@ -74,10 +74,10 @@ const Header = ({
         headerOriginalBgColor={bgColor}
         ref={menuRef}
       >
-        <MenuItem content={"Proces spolupráce"} href="#proces" />
-        <MenuItem content={"O nás"} href="#o-nas" />
-        <MenuItem content={"Kontakt"} href="#kontakt" />
-        <MenuItem content={"Reference"} href="#reference" />
+        <MenuItem content={"Proces spolupráce"} href="/#proces" />
+        <MenuItem content={"O nás"} href="/#o-nas" />
+        <MenuItem content={"Kontakt"} href="/#kontakt" />
+        <MenuItem content={"Reference"} href="/#reference" />
       </Menu>
     );
   };

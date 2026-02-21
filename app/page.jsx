@@ -2,7 +2,7 @@
 import styles from "./page.module.scss";
 import Project1 from "@/public/projects/project1.avif";
 import Project2 from "@/public/projects/project2.avif";
-import Project3 from "@/public/portfolio/comarr.png";
+import Project3 from "@/public/projects/project3.avif";
 import HeroImg from "@/public/hero.png";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,7 +14,6 @@ import { useState, useEffect } from "react";
 import Btn from "@/components/btn/btn.component";
 import ScrollToTopBtn from "@/components/scroll-to-top-btn/scroll-to-top-btn.component";
 
-
 const references = [
   {
     title: "Beauty Studio Natali",
@@ -23,17 +22,23 @@ const references = [
     category: "Prezentační web",
   },
   {
+    title: "Vypsaná Fixa",
+    image: Project3,
+    url: "https://vypsanafixa.cz/",
+    category: "Prezentační web a eshop",
+  },
+  {
     title: "Aurea Socials",
     image: Project2,
     url: "https://www.aurea-socials.cz/cs",
     category: "Firemní web",
   },
-  {
-    title: "ComArr",
-    image: Project3,
-    url: "https://www.comarr.cz/",
-    category: "Webová aplikace",
-  },
+  // {
+  //   title: "ComArr",
+  //   image: Project3,
+  //   url: "https://www.comarr.cz/",
+  //   category: "Webová aplikace",
+  // },
 ];
 
 const problems = [
@@ -51,7 +56,7 @@ const problems = [
   },
   {
     title: "Legislativa a přístupnost",
-    text: "Nový web je v souladu s platnou legislativou a zajišťuje přístupnost pro všechny uživatele.",
+    text: "Školní weby často nesplňují základní standardy přístupnosti a legislativní požadavky.",
   },
   {
     title: "Udržitelnost a podpora",
@@ -92,36 +97,6 @@ const processSteps = [
     text: "Web nasadíme na doménu školy, zaškolíme administraci a zůstáváme k dispozici pro další rozvoj a technickou podporu.",
   },
 ];
-// const processSteps = [
-//   {
-//     title: "Úvodní konzultace",
-//     text: "Vyjasníme cíle, potřeby vedení školy a hlavní uživatelské skupiny. Definujeme rozsah projektu a harmonogram.",
-//   },
-//   {
-//     title: "Analýza a zadání",
-//     text: "Projdeme stávající web, identifikujeme slabá místa a připravíme konkrétní zadání pro novou strukturu.",
-//   },
-//   {
-//     title: "Informační architektura",
-//     text: "Navrhneme přehlednou strukturu tak, aby rodiče i zaměstnanci rychle našli klíčové informace.",
-//   },
-//   {
-//     title: "Design na míru",
-//     text: "Připravíme grafický návrh odpovídající charakteru školy a současným standardům důvěryhodnosti a přístupnosti.",
-//   },
-//   {
-//     title: "Vývoj a testování",
-//     text: "Web naprogramujeme, optimalizujeme pro všechna zařízení a zpřístupníme k připomínkám na testovací adrese.",
-//   },
-//   {
-//     title: "Převod obsahu a spuštění",
-//     text: "Zajistíme převod obsahu, stabilní hosting, nasazení na doménu školy a finální kontrolu funkčnosti.",
-//   },
-//   {
-//     title: "Zaškolení a dlouhodobá péče",
-//     text: "Předáme praktický návod k administraci a zůstáváme k dispozici pro další rozvoj a technickou podporu.",
-//   },
-// ];
 
 export default function Home() {
   const [phoneNumberCopied, setPhoneNumberCopied] = useState(false);
@@ -322,7 +297,7 @@ export default function Home() {
               </div>
               <div className={`${styles.specContainer}`}>
                 <span className={`${styles.contactTitle}`}>
-                  {"Telefon"}
+                  {"Telefon TODO"}
                   {phoneNumberCopied && <span>{"Zkopírováno!"}</span>}
                 </span>
                 <span className={`${styles.contactValue}`}>{phoneNumber}</span>
@@ -334,7 +309,7 @@ export default function Home() {
               </div>
               <div className={`${styles.specContainer}`}>
                 <span className={`${styles.contactTitle}`}>
-                  {"E-mail"}
+                  {"E-mail TODO"}
                   {emailAddressCopied && <span>{"Zkopírováno!"}</span>}
                 </span>
                 <span className={`${styles.contactValue}`}>{emailAddress}</span>
@@ -361,7 +336,7 @@ export default function Home() {
               </div>
               <div className={`${styles.specContainer}`}>
                 <span className={`${styles.contactTitle}`}>
-                  {"IČO"}
+                  {"IČO TODO"}
                   {icoCopied && <span>{"Zkopírováno!"}</span>}
                 </span>
                 <span className={`${styles.contactValue}`}>
@@ -425,6 +400,41 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="proc-skoly" className={styles.whySchoolsSection}>
+        <div className={styles.whySchoolsLayout}>
+          <article className={styles.whySchoolsText}>
+            <div className={styles.whySchoolsHeader}>
+              <p className={styles.sectionLabel}>{"PROČ ŠKOLY"}</p>
+              <h2>
+                {"Proč jsme si vybrali právě"}
+                <strong>{" základní školy"}</strong>
+              </h2>
+            </div>
+            <div className={`${styles.whySchoolsBody}`}>
+              <p>
+                {
+                  "Školní weby mají specifickou odpovědnost. Neprodávají produkt, ale reprezentují instituci, která pracuje s dětmi a komunikuje s rodiči i veřejností. Přesto jsou často technicky zastaralé, nepřehledné a obtížně spravovatelné."
+                }
+              </p>
+              <p>{"Vidíme v tom prostor pro změnu."}</p>
+              <p>
+                {
+                  "Chceme, aby školní web byl důvěryhodný, srozumitelný a funkční. Aby rodič našel informace během pár sekund. Aby vedení školy mělo jednoduchou správu. A aby řešení obstálo i za několik let."
+                }
+              </p>
+              <p>
+                {
+                  "Právě dokončujeme magisterské studium, čímž máme velmi blízko k prostředí školství. Víme tedy nejlépe, jaké jsou potřeby a výzvy školních webů. A chceme přinést konkrétní řešení, které bude fungovat pro školy i pro rodiče."
+                }
+              </p>
+            </div>
+          </article>
+          <aside className={styles.whySchoolsAside}>
+            <h1>{"TODO"}</h1>
+          </aside>
+        </div>
+      </section>
+
       <section id="reference" className={styles.referencesSection}>
         <p className={styles.sectionLabel}>{"REFERENCE A ZKUŠENOSTI"}</p>
         <h2>{"Projekty, na kterých stojí náš standard kvality."}</h2>
@@ -440,7 +450,7 @@ export default function Home() {
               <Image src={project.image} alt={project.title} />
               <div>
                 <p>{project.category}</p>
-                <h3>{project.title}</h3>
+                <h4>{project.title}</h4>
               </div>
             </Link>
           ))}

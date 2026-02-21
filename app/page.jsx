@@ -9,12 +9,11 @@ import Link from "next/link";
 import IconPhone from "@/components/svgs/footer-icons/icon-phone.component";
 import IconEmail from "@/components/svgs/footer-icons/icon-email.component";
 import IconLocation from "@/components/svgs/footer-icons/icon-location.component";
-import IconInstagram from "@/components/svgs/footer-icons/icon-instagram.component";
-import IconLinkedin from "@/components/svgs/footer-icons/icon-linkedin.component";
-import IconGithub from "@/components/svgs/footer-icons/icon-github.component";
 import IconInvoice from "@/components/svgs/footer-icons/icon-invoice.component";
 import { useState, useEffect } from "react";
 import Btn from "@/components/btn/btn.component";
+import ScrollToTopBtn from "@/components/scroll-to-top-btn/scroll-to-top-btn.component";
+
 
 const references = [
   {
@@ -217,6 +216,7 @@ export default function Home() {
   };
   return (
     <main className={styles.main}>
+      <ScrollToTopBtn />
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <p className={styles.sectionLabel}>{"PRO ZÁKLADNÍ ŠKOLY"}</p>
@@ -308,6 +308,11 @@ export default function Home() {
               {"Pojďme probrat "}
               <strong>{"nový web školy"}</strong>
             </h2>
+            <p className={styles.contactLead}>
+              {
+                "Napište nám. Navrhneme konkrétní řešení a další kroky. Ozveme se Vám do 24 hodin všedních dní."
+              }
+            </p>
             <hr />
           </div>
           <div className={`${styles.mainContacts}`}>
@@ -366,43 +371,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <hr className={styles.sectionDivider} />
-          <h3>{"Sledujte nás"}</h3>
-          <div className={`${styles.additionalContacts}`}>
-            <Btn
-              href="https://www.instagram.com/_adaamb/"
-              borderSize="none"
-              paddingOfBtn="0"
-              hoverEffect="scaleForward"
-              ariaLabel={"Navigovat na Instagram"}
-            >
-              <div className={`${styles.iconContainer}`}>
-                <IconInstagram />
-              </div>
-            </Btn>
-            <Btn
-              href="https://github.com/adambprograming"
-              borderSize="none"
-              paddingOfBtn="0"
-              hoverEffect="scaleForward"
-              ariaLabel={"Navigovat na GitHub"}
-            >
-              <div className={`${styles.iconContainer}`}>
-                <IconGithub />
-              </div>
-            </Btn>
-            <Btn
-              href={`https://www.linkedin.com/in/adam-bart%C5%AF%C5%A1ek-251107286/?locale=cs_CZ`}
-              borderSize="none"
-              paddingOfBtn="0"
-              hoverEffect="scaleForward"
-              ariaLabel={"Navigovat na LinkedIn"}
-            >
-              <div className={`${styles.iconContainer}`}>
-                <IconLinkedin />
-              </div>
-            </Btn>
-          </div>
         </div>
         <div className={`${styles.imgContainer}`}>
           <Image
@@ -411,6 +379,9 @@ export default function Home() {
             aria-label={"Obrázek této sekce"}
             priority
           />
+          <div className={styles.contactNote}>
+            <p>{"Odpověď do 24 hodin"}</p>
+          </div>
         </div>
       </section>
 
@@ -427,12 +398,17 @@ export default function Home() {
             <div className={`${styles.aboutBody}`}>
               <p>
                 {
-                  "Oba podnikáme v oblasti webového vývoje. Programování jsme se naučili samostatně a současně studujeme IT management."
+                  "Od začátku nás přirozeně táhlo vytváření věcí, které dávají smysl a fungují. Ne jen hezky vypadají, ale skutečně slouží. K webovému vývoji jsme se dostali samostatně – z vlastní iniciativy, z potřeby pochopit, jak věci fungují do hloubky. Postupně se z toho stal náš obor."
                 }
               </p>
               <p>
                 {
-                  "Jeden z nás pracuje v IT, oba ale denně řešíme business web development na reálných projektech. Stavíme weby tak, aby byly technicky kvalitní, přehledné a pomáhaly růstu podnikání."
+                  "Dnes oba působíme v oblasti webového vývoje a denně pracujeme na reálných projektech. Programujeme, navrhujeme strukturu, řešíme výkon, přístupnost i dlouhodobou udržitelnost řešení. Současně studujeme IT management, což nám dává širší pohled na technologii jako nástroj řízení a rozvoje, ne jen jako technickou disciplínu."
+                }
+              </p>
+              <p>
+                {
+                  "Web pro nás není vizitka. Je to infrastruktura, která musí být přehledná, spolehlivá a připravená na další roky provozu."
                 }
               </p>
             </div>

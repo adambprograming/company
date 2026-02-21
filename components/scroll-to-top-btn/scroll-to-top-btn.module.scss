@@ -1,0 +1,26 @@
+.scrollToTopBtn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  background-color: var(--color-ascent);
+  color: var(--color-text-reverse);
+  border: none;
+  border-radius: 18px;
+  padding: 1.2rem;
+  box-shadow: 0 0 10px var(--shadow-15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.9;
+
+  &:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+
+  .icon {
+    display: block;
+  }
+}

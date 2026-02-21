@@ -126,12 +126,16 @@ body{
     // INDIVIDUAL FOR PROJECT
     --border-radius-btn: 15px;
     --gap-section: clamp(4.5rem, 6vw, 9rem);
+    --padding-smaller: clamp(0.5rem, 0.25rem + 0.25vw, 1rem);
     --padding-small: clamp(0.75rem, 0.5rem + 0.5vw, 1.5rem);
     --padding-medium: clamp(1.5rem, 1rem + 0.5vw, 2.5rem);
     --padding-large: clamp(2.5rem, 1.5rem + 1vw, 4rem);
+    --padding-larger: clamp(4rem, 2.5rem + 1.5vw, 7rem);
+    --gap-smaller: clamp(0.5rem, 0.25rem + 0.25vw, 1rem);
     --gap-small: clamp(1rem, 0.5rem + 0.5vw, 2rem);
     --gap-medium: clamp(2rem, 1rem + 0.5vw, 3rem);
     --gap-large: clamp(3rem, 1.5rem + 1vw, 5rem);
+    --gap-larger: clamp(4.5rem, 2.5rem + 1.5vw, 9rem);
 }
 
 html {

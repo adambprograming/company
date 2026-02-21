@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import styles from "./page.module.scss";
 import Project1 from "@/public/projects/project1.avif";
 import Project2 from "@/public/projects/project2.avif";
@@ -9,12 +9,11 @@ import Link from "next/link";
 import IconPhone from "@/components/svgs/footer-icons/icon-phone.component";
 import IconEmail from "@/components/svgs/footer-icons/icon-email.component";
 import IconLocation from "@/components/svgs/footer-icons/icon-location.component";
-import IconInstagram from "@/components/svgs/footer-icons/icon-instagram.component";
-import IconLinkedin from "@/components/svgs/footer-icons/icon-linkedin.component";
-import IconGithub from "@/components/svgs/footer-icons/icon-github.component";
 import IconInvoice from "@/components/svgs/footer-icons/icon-invoice.component";
 import { useState, useEffect } from "react";
 import Btn from "@/components/btn/btn.component";
+import ScrollToTopBtn from "@/components/scroll-to-top-btn/scroll-to-top-btn.component";
+
 
 const references = [
   {
@@ -132,7 +131,6 @@ export default function Home() {
   const emailAddress = "ab@adam-bartusek.cz";
   const ico = `10700561`;
 
-
   useEffect(() => {
     if (phoneNumberCopied) {
       if (emailAddressCopied) {
@@ -189,7 +187,7 @@ export default function Home() {
         () => {
           setPhoneNumberCopied(true);
         },
-        () => {}
+        () => {},
       );
     }
   };
@@ -201,7 +199,7 @@ export default function Home() {
       () => {
         setEmailAddressCopied(true);
       },
-      () => {}
+      () => {},
     );
     // Attempt to open the default mail client
     window.location.href = mailtoLink;
@@ -213,11 +211,12 @@ export default function Home() {
       () => {
         setIcoCopied(true);
       },
-      () => {}
+      () => {},
     );
   };
   return (
     <main className={styles.main}>
+      <ScrollToTopBtn />
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <p className={styles.sectionLabel}>{"PRO ZÁKLADNÍ ŠKOLY"}</p>
@@ -263,13 +262,13 @@ export default function Home() {
             <h2>{"Když je web školy zastaralý, ztrácí škola důvěru i čas."}</h2>
             <p className={styles.problemLead}>
               {
-                "Nejčastější bariéry, které brzdí komunikaci školy směrem k rodičům a veřejnosti."
+                "Nejčastější problémy stávajících školních webů, které řešíme jako první, jsou:"
               }
             </p>
           </div>
           <aside className={styles.problemMeta}>
-            <strong>{"30 s"}</strong>
-            <span>{"tolik má mít rodič na nalezení klíčové informace."}</span>
+            <strong>{"20 s"}</strong>
+            <span>{"tolik má mít rodič na nalezení klíčové informace"}</span>
           </aside>
         </div>
         <div className={styles.problemGrid}>
@@ -282,8 +281,8 @@ export default function Home() {
           ))}
         </div>
       </section>
-      
-      <section className={styles.solutionSection}>
+
+      <section id="proces" className={styles.solutionSection}>
         <div className={styles.solutionIntro}>
           <p className={styles.sectionLabel}>{"CO DODÁVÁME"}</p>
           <h2>{"Kompletní nový web pro školu."}</h2>
@@ -301,14 +300,19 @@ export default function Home() {
         </ol>
       </section>
 
-      <section className={`${styles.contacts}`}>
+      <section id="kontakt" className={`${styles.contacts}`}>
         <div className={`${styles.contentContainer}`}>
           <div className={`${styles.titleContainer}`}>
-            <span>{"KONTAKT"}</span>
-            <h1>
+            <p className={styles.sectionLabel}>{"KONTAKT"}</p>
+            <h2>
               {"Pojďme probrat "}
               <strong>{"nový web školy"}</strong>
-            </h1>
+            </h2>
+            <p className={styles.contactLead}>
+              {
+                "Napište nám. Navrhneme konkrétní řešení a další kroky. Ozveme se Vám do 24 hodin všedních dní."
+              }
+            </p>
             <hr />
           </div>
           <div className={`${styles.mainContacts}`}>
@@ -319,9 +323,7 @@ export default function Home() {
               <div className={`${styles.specContainer}`}>
                 <span className={`${styles.contactTitle}`}>
                   {"Telefon"}
-                  {phoneNumberCopied && (
-                    <span>{"Zkopírováno!"}</span>
-                  )}
+                  {phoneNumberCopied && <span>{"Zkopírováno!"}</span>}
                 </span>
                 <span className={`${styles.contactValue}`}>{phoneNumber}</span>
               </div>
@@ -333,9 +335,7 @@ export default function Home() {
               <div className={`${styles.specContainer}`}>
                 <span className={`${styles.contactTitle}`}>
                   {"E-mail"}
-                  {emailAddressCopied && (
-                    <span>{"Zkopírováno!"}</span>
-                  )}
+                  {emailAddressCopied && <span>{"Zkopírováno!"}</span>}
                 </span>
                 <span className={`${styles.contactValue}`}>{emailAddress}</span>
               </div>
@@ -351,9 +351,7 @@ export default function Home() {
                 <IconLocation />
               </div>
               <div className={`${styles.specContainer}`}>
-                <span className={`${styles.contactTitle}`}>
-                  {"Město"}
-                </span>
+                <span className={`${styles.contactTitle}`}>{"Město"}</span>
                 <span className={`${styles.contactValue}`}>Pardubice (CZ)</span>
               </div>
             </Link>
@@ -373,43 +371,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <hr style={{ width: "100%" }} />
-          <h2>{"Sledujte nás"}</h2>
-          <div className={`${styles.additionalContacts}`}>
-            <Btn
-              href="https://www.instagram.com/_adaamb/"
-              borderSize="none"
-              paddingOfBtn="0"
-              hoverEffect="scaleForward"
-              ariaLabel={"Navigovat na Instagram"}
-            >
-              <div className={`${styles.iconContainer}`}>
-                <IconInstagram />
-              </div>
-            </Btn>
-            <Btn
-              href="https://github.com/adambprograming"
-              borderSize="none"
-              paddingOfBtn="0"
-              hoverEffect="scaleForward"
-              ariaLabel={"Navigovat na GitHub"}
-            >
-              <div className={`${styles.iconContainer}`}>
-                <IconGithub />
-              </div>
-            </Btn>
-            <Btn
-              href={`https://www.linkedin.com/in/adam-bart%C5%AF%C5%A1ek-251107286/?locale=cs_CZ`}
-              borderSize="none"
-              paddingOfBtn="0"
-              hoverEffect="scaleForward"
-              ariaLabel={"Navigovat na LinkedIn"}
-            >
-              <div className={`${styles.iconContainer}`}>
-                <IconLinkedin />
-              </div>
-            </Btn>
-          </div>
         </div>
         <div className={`${styles.imgContainer}`}>
           <Image
@@ -418,38 +379,53 @@ export default function Home() {
             aria-label={"Obrázek této sekce"}
             priority
           />
-        </div>
-      </section>
-
-      <section className={`${styles.aboutus}`}>
-        <div className={`${styles.imgContainer}`}>
-          <Image
-            src={HeroImg}
-            alt={"Obrázek"}
-            aria-label={"Obrázek této sekce"}
-            priority
-          />
-        </div>
-        <div className={`${styles.contentContainer}`}>
-          <div className={`${styles.titleContainer}`}>
-            <span>{"O NÁS"}</span>
-            <h1>
-              {"Jsme"}
-              <br />
-              {" tým "}
-              <strong>{"NewAgeWeb"}</strong>
-            </h1>
-            <hr />
-          </div>
-          <div className={`${styles.textContainer}`}>
-            <p>{"Tvoříme moderní weby vlastním kódem v Next.js. Zaměřujeme se na školy, které potřebují důvěryhodný a aktuální web odpovídající dnešním očekáváním rodičů."}</p>
-            <br />
-            <p>{"Jsme mladý tým s citem pro současný design a uživatelskou orientaci. Kombinujeme rychlou komunikaci, férovou cenu a technickou kvalitu bez kompromisů."}</p>
+          <div className={styles.contactNote}>
+            <p>{"Odpověď do 24 hodin"}</p>
           </div>
         </div>
       </section>
 
-      <section className={styles.referencesSection}>
+      <section id="o-nas" className={`${styles.aboutus}`}>
+        <div className={styles.aboutLayout}>
+          <div className={styles.aboutCore}>
+            <div className={styles.aboutHeader}>
+              <p className={styles.sectionLabel}>{"O NÁS"}</p>
+              <h2>
+                {"Jsme dva podnikatelé "}
+                <strong>{"ve webovém vývoji"}</strong>
+              </h2>
+            </div>
+            <div className={`${styles.aboutBody}`}>
+              <p>
+                {
+                  "Od začátku nás přirozeně táhlo vytváření věcí, které dávají smysl a fungují. Ne jen hezky vypadají, ale skutečně slouží. K webovému vývoji jsme se dostali samostatně – z vlastní iniciativy, z potřeby pochopit, jak věci fungují do hloubky. Postupně se z toho stal náš obor."
+                }
+              </p>
+              <p>
+                {
+                  "Dnes oba působíme v oblasti webového vývoje a denně pracujeme na reálných projektech. Programujeme, navrhujeme strukturu, řešíme výkon, přístupnost i dlouhodobou udržitelnost řešení. Současně studujeme IT management, což nám dává širší pohled na technologii jako nástroj řízení a rozvoje, ne jen jako technickou disciplínu."
+                }
+              </p>
+              <p>
+                {
+                  "Web pro nás není vizitka. Je to infrastruktura, která musí být přehledná, spolehlivá a připravená na další roky provozu."
+                }
+              </p>
+            </div>
+          </div>
+          <div className={styles.aboutVisual}>
+            <ul className={styles.aboutHighlights}>
+              <li>{"self-learned background v programování"}</li>
+              <li>{"studium IT managementu"}</li>
+              <li>{"praxe v IT"}</li>
+              <li>{"podnikání ve web developmentu"}</li>
+              <li>{"tisíce lidí používají weby, na kterých jsme pracovali"}</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="reference" className={styles.referencesSection}>
         <p className={styles.sectionLabel}>{"REFERENCE A ZKUŠENOSTI"}</p>
         <h2>{"Projekty, na kterých stojí náš standard kvality."}</h2>
         <div className={styles.referencesGrid}>
@@ -470,7 +446,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
     </main>
   );
 }

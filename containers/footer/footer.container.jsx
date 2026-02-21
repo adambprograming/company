@@ -75,22 +75,12 @@ const Footer = () => {
             <span>{"Menu"}</span>
             <ul>
               <li>
-                <Link href="/" aria-label={"Navigovat na domovskou stránku"}>
-                  {"Domovská stránka"}
+                <Link href="#proces" aria-label={"Navigovat do sekce služby"}>
+                  {"Proces spolupráce"}
                 </Link>
               </li>
               <li>
-                <Link href="/o-mne" aria-label={"Navigovat do sekce o nás"}>
-                  {"O nás"}
-                </Link>
-              </li>
-              <li>
-                <Link href="/sluzby" aria-label={"Navigovat do sekce služby"}>
-                  {"Služby"}
-                </Link>
-              </li>
-              <li>
-                <Link href="/kontakt" aria-label={"Navigovat do sekce kontakt"}>
+                <Link href="#kontakt" aria-label={"Navigovat do sekce kontakt"}>
                   {"Kontakt"}
                 </Link>
               </li>
@@ -122,62 +112,6 @@ const Footer = () => {
                 <IconEmail />
                 <Popup state={popupEmail}>{"Zkopírováno!"}</Popup>
               </span>
-              <Link
-                href="https://www.google.com/maps/place/Pardubice/@50.0342266,15.4292331,10z/data=!3m1!4b1!4m6!3m5!1s0x470dc94b239307b5:0x12d59894ccf624ae!8m2!3d50.0343092!4d15.7811994!16zL20vMGNoNTQ?entry=ttu"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={"Odkaz na naši lokaci."}
-              >
-                <IconLocation />
-              </Link>
-              {/* <Link
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={"Odkaz na náš Facebook profil."}
-              >
-                <IconFacebook />
-              </Link> */}
-              <Link
-                href="https://www.instagram.com/_adaamb/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={"Odkaz na náš Instagram profil."}
-              >
-                <IconInstagram />
-              </Link>
-              {/* <Link
-                href="https://www.tiktok.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={"Odkaz na náš TikTok profil."}
-              >
-                <IconTiktok />
-              </Link> */}
-              <Link
-                href={`https://www.linkedin.com/in/adam-bart%C5%AF%C5%A1ek-251107286/?locale=cs_CZ`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={"Odkaz na náš LinkedIn profil."}
-              >
-                <IconLinkedin />
-              </Link>
-              {/* <Link
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={"Odkaz na náš X profil."}
-              >
-                <IconX />
-              </Link> */}
-              <Link
-                href="https://github.com/adambprograming"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={"Odkaz na náš GitHub profil."}
-              >
-                <IconGithub />
-              </Link>
             </div>
           </div>
         </div>

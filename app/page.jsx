@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import styles from "./page.module.scss";
 import Project1 from "@/public/projects/project1.avif";
 import Project2 from "@/public/projects/project2.avif";
@@ -132,7 +132,6 @@ export default function Home() {
   const emailAddress = "ab@adam-bartusek.cz";
   const ico = `10700561`;
 
-
   useEffect(() => {
     if (phoneNumberCopied) {
       if (emailAddressCopied) {
@@ -189,7 +188,7 @@ export default function Home() {
         () => {
           setPhoneNumberCopied(true);
         },
-        () => {}
+        () => {},
       );
     }
   };
@@ -201,7 +200,7 @@ export default function Home() {
       () => {
         setEmailAddressCopied(true);
       },
-      () => {}
+      () => {},
     );
     // Attempt to open the default mail client
     window.location.href = mailtoLink;
@@ -213,7 +212,7 @@ export default function Home() {
       () => {
         setIcoCopied(true);
       },
-      () => {}
+      () => {},
     );
   };
   return (
@@ -282,7 +281,7 @@ export default function Home() {
           ))}
         </div>
       </section>
-      
+
       <section id="proces" className={styles.solutionSection}>
         <div className={styles.solutionIntro}>
           <p className={styles.sectionLabel}>{"CO DODÁVÁME"}</p>
@@ -319,9 +318,7 @@ export default function Home() {
               <div className={`${styles.specContainer}`}>
                 <span className={`${styles.contactTitle}`}>
                   {"Telefon"}
-                  {phoneNumberCopied && (
-                    <span>{"Zkopírováno!"}</span>
-                  )}
+                  {phoneNumberCopied && <span>{"Zkopírováno!"}</span>}
                 </span>
                 <span className={`${styles.contactValue}`}>{phoneNumber}</span>
               </div>
@@ -333,9 +330,7 @@ export default function Home() {
               <div className={`${styles.specContainer}`}>
                 <span className={`${styles.contactTitle}`}>
                   {"E-mail"}
-                  {emailAddressCopied && (
-                    <span>{"Zkopírováno!"}</span>
-                  )}
+                  {emailAddressCopied && <span>{"Zkopírováno!"}</span>}
                 </span>
                 <span className={`${styles.contactValue}`}>{emailAddress}</span>
               </div>
@@ -351,9 +346,7 @@ export default function Home() {
                 <IconLocation />
               </div>
               <div className={`${styles.specContainer}`}>
-                <span className={`${styles.contactTitle}`}>
-                  {"Město"}
-                </span>
+                <span className={`${styles.contactTitle}`}>{"Město"}</span>
                 <span className={`${styles.contactValue}`}>Pardubice (CZ)</span>
               </div>
             </Link>
@@ -422,26 +415,36 @@ export default function Home() {
       </section>
 
       <section id="o-nas" className={`${styles.aboutus}`}>
-        <div className={`${styles.imgContainer}`}>
-          <Image
-            src={HeroImg}
-            alt={"Obrázek"}
-            aria-label={"Obrázek této sekce"}
-            priority
-          />
-        </div>
-        <div className={`${styles.contentContainer}`}>
-          <div className={`${styles.titleContainer}`}>
-            <p className={styles.sectionLabel}>{"O NÁS"}</p>
-            <h2>
-              {"Jsme tým "}
-              <strong>{"NewAgeWeb"}</strong>
-            </h2>
-            <hr />
+        <div className={styles.aboutLayout}>
+          <div className={styles.aboutCore}>
+            <div className={styles.aboutHeader}>
+              <p className={styles.sectionLabel}>{"O NÁS"}</p>
+              <h2>
+                {"Jsme dva podnikatelé "}
+                <strong>{"ve webovém vývoji"}</strong>
+              </h2>
+            </div>
+            <div className={`${styles.aboutBody}`}>
+              <p>
+                {
+                  "Oba podnikáme v oblasti webového vývoje. Programování jsme se naučili samostatně a současně studujeme IT management."
+                }
+              </p>
+              <p>
+                {
+                  "Jeden z nás pracuje v IT, oba ale denně řešíme business web development na reálných projektech. Stavíme weby tak, aby byly technicky kvalitní, přehledné a pomáhaly růstu podnikání."
+                }
+              </p>
+            </div>
           </div>
-          <div className={`${styles.textContainer}`}>
-            <p>{"Tvoříme moderní weby vlastním kódem v Next.js. Zaměřujeme se na školy, které potřebují důvěryhodný a aktuální web odpovídající dnešním očekáváním rodičů."}</p>
-            <p>{"Jsme mladý tým s citem pro současný design a uživatelskou orientaci. Kombinujeme rychlou komunikaci, férovou cenu a technickou kvalitu bez kompromisů."}</p>
+          <div className={styles.aboutVisual}>
+            <ul className={styles.aboutHighlights}>
+              <li>{"self-learned background v programování"}</li>
+              <li>{"studium IT managementu"}</li>
+              <li>{"praxe v IT"}</li>
+              <li>{"podnikání ve web developmentu"}</li>
+              <li>{"tisíce lidí používají weby, na kterých jsme pracovali"}</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -467,7 +470,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
     </main>
   );
 }
